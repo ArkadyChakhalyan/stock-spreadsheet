@@ -1,0 +1,156 @@
+.button {
+    border: 2px solid dodgerblue;
+    background: #fff;
+    cursor: pointer;
+    color: #333;
+    height: 32px;
+    padding: 0 8px;
+    transition: all 0.5s;
+}
+.button:hover {
+    background: dodgerblue;
+    color: #fff;
+}
+
+.button.add {
+    color: white;
+    border: 3px solid #238823;
+    border-radius: 45px;
+    height: 40px;
+    min-width: 40px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 12pt;
+    background: #238823; 
+}
+
+.button.add i {
+    padding-left: 3px;
+    padding-top: 1px
+}
+
+.button.add p {
+    margin-top: 17px;
+    margin-right: 3px;
+}
+
+.button.close {
+    border: 2px solid #D2222D;
+    border-radius: 45px;
+    color: #D2222D;
+    background: none;
+}
+
+.button.close:hover {
+    background: #D2222D;
+    color: white
+}
+
+.fas.fa-times {
+    vertical-align: middle;
+    padding-bottom: 1px;
+}
+
+.button.delete {
+    display: flex;
+    align-items: center;
+    background: none;
+    color: darkgray;
+    font-size: 15px;
+    border: none;
+}
+
+.button.delete i {
+    margin-right: 8px;
+}
+
+.fas.fa-trash {
+    vertical-align: middle;
+}
+
+.button.delete:hover {
+    color: #D2222D;
+}
+
+.button.edit {
+    display: flex;
+    align-items: center;
+    background: none;
+    color: darkgray;
+    font-size: 15px;
+    border: none;
+}
+
+.button.edit i {
+    margin-right: 8px;
+}
+
+.fas.fa-pen {
+    vertical-align: middle;
+}
+
+.button.edit:hover {
+    color: white;
+}
+
+.button.left {
+    background: none;
+    color: darkgray;
+    border: none;
+}
+
+.button.right {
+    background: none;
+    color: darkgray;
+    border: none;
+}
+
+.button.left:hover {
+    color: white;
+}
+.button.right:hover {
+    color: white;
+}
+
+.button.menu {
+    font-size: 18px;
+    background: none;
+    color: white;
+    height: 45px;
+    width: 120px;
+}
+
+.button.menu:hover {
+    background: dodgerblue;
+}
+
+.button.menu-left {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    margin-right: -2px;
+}
+
+.button.menu-right {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    margin-left: -2px;
+}
+
+.button.switch {
+    background: none;
+    color: white;
+    height: 30px;
+    width: 60px;
+}
+
+.button.switch-left {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    margin-right: -2px;
+}
+
+.button.switch-right {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
