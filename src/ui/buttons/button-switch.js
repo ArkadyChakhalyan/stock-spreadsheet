@@ -7,18 +7,17 @@ const ButtonSwitch = (props) => {
   function onClick(event) {
     if (event.target.className == "button switch switch-left") {
         event.target.style.background = 'dodgerblue';
-        document.getElementsByClassName("button switch switch-right")[0].style.background = '';
+        document.getElementsByClassName("switch-right")[0].style.background = '';
     }
     else {
         event.target.style.background = 'dodgerblue';
-        document.getElementsByClassName("button switch switch-left")[0].style.background = '';
+        document.getElementsByClassName("switch-left")[0].style.background = '';
     }
-    
   }
 
   return (
     <div onClick={onClick}>
-      <button className="button switch switch-left">
+      <button className="button switch switch-left" style={{background: 'dodgerblue'}}>
         {opt1}
       </button>
       <button className="button switch switch-right">
