@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Stock Spreadsheet
 
 ## Описание
@@ -23,3 +24,7 @@
 - container add/stock
 - input add
 
+=======
+# тут будет подробное описание проекта
+test8
+>>>>>>> 30809b71fe18e2e275816e7a06c3758a4338cdc1
