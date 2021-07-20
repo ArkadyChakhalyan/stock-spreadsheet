@@ -26,16 +26,29 @@
 
 .button.add i {
     padding-left: 3px;
-    padding-top: 1px
+    padding-top: 1px;
+    transform: scale(75%);
 }
 
 .button.add p {
     margin-top: 17px;
     margin-right: 3px;
+    margin-left: 6px;
+    display: none;
 }
 
 .button.add:hover{
-    transform: translateX(-2%)
+    transform: translateX(-2%);
+    
+}
+
+.button.add:hover p {
+    display: block;
+}
+
+.button.add:hover i {
+    transform: scale(100%);
+    transition: 0.25s ease-out;
 }
 
 .button.close {
@@ -47,8 +60,10 @@
 
 .button.close:hover {
     background: #D2222D;
-    color: white
+    color: white;
+    transform: scale(95%);
 }
+
 
 .fas.fa-times {
     vertical-align: middle;
@@ -64,8 +79,12 @@
     border: none;
 }
 
+button.delete p {
+    display: none
+}
+
 .button.delete i {
-    margin-right: 8px;
+    margin-right: 9px;
 }
 
 .fas.fa-trash {
@@ -75,6 +94,10 @@
 .button.delete:hover {
     color: #D2222D;
     transform: translateX(-2%)
+}
+
+.button.delete:hover p {
+    display: block;
 }
 
 .button.edit {
@@ -90,6 +113,10 @@
     margin-right: 8px;
 }
 
+.button.edit p {
+    display: none;
+}
+
 .fas.fa-pen {
     vertical-align: middle;
 }
@@ -97,6 +124,10 @@
 .button.edit:hover {
     color: white;
     transform: translateX(-2%)
+}
+
+.button.edit:hover p {
+    display: block;
 }
 
 .button.left {
@@ -113,21 +144,26 @@
 
 .button.left:hover {
     color: white;
+    transform: scale(105%);
 }
 .button.right:hover {
     color: white;
+    transform: scale(105%);
 }
 
 .button.menu {
+    border: none;
     font-size: 18px;
     background: none;
     color: white;
     height: 45px;
-    width: 120px;
+    width: 160px;
+    background: rgb(16, 75, 134);
 }
 
 .button.menu:hover {
     background: dodgerblue;
+    font-size:  110%;
 }
 
 .button.menu-left {
