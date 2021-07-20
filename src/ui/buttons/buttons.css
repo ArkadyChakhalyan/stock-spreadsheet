@@ -34,6 +34,10 @@
     margin-right: 3px;
 }
 
+.button.add:hover{
+    transform: translateX(-2%)
+}
+
 .button.close {
     border: 2px solid #D2222D;
     border-radius: 45px;
@@ -70,6 +74,7 @@
 
 .button.delete:hover {
     color: #D2222D;
+    transform: translateX(-2%)
 }
 
 .button.edit {
@@ -91,6 +96,7 @@
 
 .button.edit:hover {
     color: white;
+    transform: translateX(-2%)
 }
 
 .button.left {
@@ -136,21 +142,36 @@
     margin-left: -2px;
 }
 
-.button.switch {
-    background: none;
-    color: white;
+.switch-bg {
+    background: rgb(16, 75, 134);
+    border-radius: 8px;
     height: 30px;
-    width: 60px;
+    width: 120px;
 }
 
-.button.switch-left {
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-    margin-right: -2px;
+.switch-text {
+    font-family: arial;
+    font-size: 14px;
+    color: lightgray;
+    position: absolute;
+    display: inline-flex;
+    margin-top: -7px;
+    margin-left: 12px;
 }
 
-.button.switch-right {
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
+p + p {
+    margin-left: 24px
 }
 
+.switch-selected {
+    position: absolute;
+    background: dodgerblue;
+    border-radius: 6px;
+    height: 26px;
+    width: 58px;
+    margin-top: 2px;
+    margin-right: 2px;
+    margin-left: 2px; 
+    transform: translateX(0%); 
+    transition: all 0.35s ease-in-out;
+}

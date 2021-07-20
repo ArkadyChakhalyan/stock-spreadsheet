@@ -2,29 +2,42 @@ import React from 'react';
 import './buttons.css';
 
 const ButtonSwitch = (props) => {
-  const {opt1, opt2} = props;
+    const { opt1, opt2 } = props;
 
-  function onClick(event) {
-    if (event.target.className == "button switch switch-left") {
-        event.target.style.background = 'dodgerblue';
-        document.getElementsByClassName("switch-right")[0].style.background = '';
+    function onClick(e) {
+        let button = document.getElementsByClassName('switch-selected')[0];
+        let p1 = document.getElementsByClassName('switch switch-text')[0].firstChild;
+        let p2 = document.getElementsByClassName('switch switch-text')[0].lastChild;
+        if (e.target == button || e.target.style.color == 'white') return;
+        if (button.style.transform == 'translateX(100%)') {
+            button.style.transform = 'translateX(0%)';
+            p1.style.color = 'white';
+            p2.style.color = 'lightgray';
+        }
+        else {
+            button.style.transform = 'translateX(100%)';
+            p2.style.color = 'white';
+            p1.style.color = 'lightgray';
+        }
     }
-    else {
-        event.target.style.background = 'dodgerblue';
-        document.getElementsByClassName("switch-left")[0].style.background = '';
+    
+    function prevent (e) {
+        e.preventDefault();
     }
-  }
 
-  return (
-    <div onClick={onClick}>
-      <button className="button switch switch-left" style={{background: 'dodgerblue'}}>
-        {opt1}
-      </button>
-      <button className="button switch switch-right">
-        {opt2}
-      </button>
-    </div>
-  );
+    return (
+        <div
+            className='switch switch-bg'
+            onClick={onClick}
+            onMouseDown={prevent}>
+            <div className='switch switch-selected'></div>
+            <span className='switch switch-text'>
+                <p style={{color:'white'}}>{opt1}</p>
+                <p>{opt2}</p>
+            </span>
+        </div >
+    );
 }
 
 export default ButtonSwitch;
+

@@ -31,6 +31,7 @@ export default function ButtonAdd() {
     button.style.background = '#007000';
     button.style.borderColor = '#007000';
     event.preventDefault();
+    return false;
   }
 
   function mouseUp(event) {
