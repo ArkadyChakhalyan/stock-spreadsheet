@@ -1,11 +1,3 @@
-import StockAllocation from "./stock-allocation";
-import StockDividend from "./stock-dividend";
-import StockGain from "./stock-gain";
-import StockTable from "./stock-table";
+import StockMiniature from "./stock-miniature";
 
-export {
-    StockAllocation,
-    StockGain,
-    StockTable,
-    StockDividend
-}
+export default StockMiniature

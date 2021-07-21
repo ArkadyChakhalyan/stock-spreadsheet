@@ -1,37 +1,31 @@
 import React from 'react';
-import {
-  ButtonAdd,
-  ButtonEdit,
-  ButtonClose,
-  ButtonDelete,
-  ButtonLeft,
-  ButtonRight,
-  ButtonMenu,
-  ButtonSwitch
-} from '../../ui/buttons/';
-import Input from '../../ui/inputs';
-import { 
-  StockGain,
-  StockDividend,
-} from '../../ui/stock-miniature';
+import Button from '../../ui/button/';
+import Input from '../../ui/input';
+import StockMiniature from '../../ui/stock-miniature';
 import './app.css';
 
 const App = () => {
 
   return (
     <div className='App'>
-      <ButtonAdd />
-      <ButtonEdit />
-      <ButtonDelete />
-      <ButtonClose />
-      <br></br>
-      <ButtonLeft />
-      <ButtonRight />
-      <ButtonSwitch opt1={'Month'} opt2={'Year'} />
-      <ButtonMenu menu1={'Stocks'} menu2={'Dividends'} menu3={'Sectors'} />
-      <Input label={'Stock'} placeholder={'Ticker'}/>
-      <StockGain />
-      <StockDividend />
+      <Button icon = {'fas fa-plus fa-sm'} width={250} color={'#007000'}>
+        NEW BUY
+      </Button>
+      <br /><br />
+      <Button icon = {'fas fa-pen fa-sm'}>
+        EDIT
+      </Button>
+      <br /><br />
+      <Button icon = {'fas fa-trash'} color={'#D2222D'}>
+        DELETE
+      </Button>
+      <br /><br />
+      <Button type={'round'} icon = {'fas fa-times'} color={'#D2222D'}/>
+      <Input label={'ticker'} />
+      <Input label={'price'} />
+      <StockMiniature gain={10}/>
+      <StockMiniature gain={-5}/>
+      <StockMiniature />
     </div>
   )
 }

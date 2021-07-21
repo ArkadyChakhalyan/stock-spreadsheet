@@ -4,10 +4,9 @@ import './input.css';
 const Input = (props) => {
 
     return (
-        <div>
+        <div className='group'>
+            <input type='text' className='input' required/>
             <label className='label'>{props.label}</label>
-            <br></br>
-            <input className='input' placeholder={props.placeholder}></input>
         </div>
     );
 };
