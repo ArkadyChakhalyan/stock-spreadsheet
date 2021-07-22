@@ -4,7 +4,7 @@
     font-family: roboto condensed;
     letter-spacing: 1px;
     position: relative;
-    color: rgb(148, 148, 148);
+    color: rgb(143, 143, 143);
     text-transform: uppercase;
 }
 
@@ -12,20 +12,23 @@
     justify-content: center;
     padding: 12px;
     padding-bottom: 17px;
-    width: 100px;
+    width: 140px;
 }
 
+.tab.single.small.active {
+    color: dodgerblue;
+}
 
 .tab.single.active {
-    color: dodgerblue;
+    color: white;
 }
 
 .bar {
     position: absolute;
     display: black;
-    width: 124px;
+    width: 164px;
     top: 86%;
-    border-bottom: 4px solid dodgerblue;
+    border-bottom: 5px solid white;
     transition: left .5s ease;
 }
 

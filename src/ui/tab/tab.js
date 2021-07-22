@@ -6,7 +6,7 @@ const Tab = ({ options, type }) => {
     const onClick = (e) => {
         if (active) active.className = className;
         active = e.target;
-        // setLeft(active.id * 124);
+        // setLeft(active.id * 164);
         // setLeft(active.id * 86);
 
         active.className += 'active';
@@ -19,7 +19,7 @@ const Tab = ({ options, type }) => {
     let className = 'tab single ';
     let barClassName = 'bar ';
     let id = -1;
-    let left
+    let left;
     // const [left, setLeft] = useState(0);
     if (type) {
         className += 'small ';

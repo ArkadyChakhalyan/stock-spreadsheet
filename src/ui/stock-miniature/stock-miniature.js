@@ -5,7 +5,7 @@ const StockMiniature = (props) => {
 
     const { gain } = props;
 
-    let className = 'miniature container ';
+    let className = 'miniature box ';
 
     if (gain > 0) className += 'up';
     if (gain < 0) className += 'down';
