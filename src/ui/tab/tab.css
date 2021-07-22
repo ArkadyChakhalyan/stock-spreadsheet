@@ -1,0 +1,42 @@
+.tab {
+    display: inline-flex;
+    font-size: 20px;
+    font-family: roboto condensed;
+    letter-spacing: 1px;
+    position: relative;
+    color: rgb(148, 148, 148);
+    text-transform: uppercase;
+}
+
+.tab.single {
+    justify-content: center;
+    padding: 12px;
+    padding-bottom: 17px;
+    width: 100px;
+}
+
+
+.tab.single.active {
+    color: dodgerblue;
+}
+
+.bar {
+    position: absolute;
+    display: black;
+    width: 124px;
+    top: 86%;
+    border-bottom: 4px solid dodgerblue;
+    transition: left .5s ease;
+}
+
+.tab.single.small {
+    font-size: 14px;
+    width: 70px;
+    padding: 8px;
+    padding-bottom: 11px;
+}
+
+.bar.small {
+    width: 86px;
+    border-bottom: 2px solid dodgerblue;
+}

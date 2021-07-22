@@ -10,6 +10,7 @@
     padding-left: 12px;
     padding-right: 12px;
     border-radius: 6px;
+    justify-content:space-between;
 }
 
 .miniature {
@@ -25,6 +26,7 @@
 }
 
 .miniature.ticker {
+    text-transform: uppercase;
     font-size: 15px;
     margin-bottom: -11px;
 }
@@ -34,6 +36,7 @@
     letter-spacing: 0.6px;
     font-weight: bold;
     font-size: 13px;
+    padding-right: 2px;
 }
 
 .miniature.percent {
@@ -42,13 +45,8 @@
     letter-spacing: 0.6px;
     font-weight: bold;
     margin-bottom: -13px;
-    padding-left: 68px;
-    /* как заалайнить к правому крайю?? */
 }
 
-.miniature.left {
-    text-align: left;
-}
 
 .miniature.right {
     text-align: right;
