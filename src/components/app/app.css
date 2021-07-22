@@ -1,82 +1,15 @@
-.main-menu {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
-}
-
 .miniatures {
+    margin-top: 0px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-body {
-    background: rgb(236, 236, 236);
+.body h2 {
+    text-align: center;
 }
 
-.header {
-    background: rgb(8, 8, 8);
-    margin-left: -20px;
-    margin-right: -20px;
-    margin-top: -10px;
-    margin-bottom: -20px;
-    height: 236px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.body {
+    margin-top: 110px;
 }
 
-.header h2 {
-    color: rgb(168, 168, 168)
-}
-
-.holdings.gains {
-    display: inline-flex;
-}
-
-.holdings p {
-    color: rgb(199, 199, 199);
-    font-size: 10pt;
-    margin: 0px;
-}
-
-.holdings.gain {
-    color: #238823;
-    text-align: right;
-    display: flex;
-    justify-content:space-between;
-}
-
-.holdings.total {
-    color:white
-}
-
-.holdings p + p {
-    margin-left: 40px;
-}
-
-.holdings.total {
-    color: white;
-    font-size: 20pt;
-    font-weight: bold;
-    margin: 0px;
-    margin-top: 5px;
-}
-
-.holdings.container.left{
-    width: 180px
-}
-
-.holdings.container.right {
-    padding-top: 6px;
-    width: 250px;
-    text-align: right;
-}
-
-.holdings.info{
-    display: inline-flex;
-    margin-top: 15px;
-    margin-bottom: 0px;
-    padding-bottom: 10px;
-}

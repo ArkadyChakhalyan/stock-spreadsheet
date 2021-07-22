@@ -1,6 +1,7 @@
 .tab {
     display: inline-flex;
-    font-size: 20px;
+    
+    font-size: 18px;
     font-family: roboto condensed;
     letter-spacing: 1px;
     position: relative;
@@ -11,8 +12,10 @@
 .tab.single {
     justify-content: center;
     padding: 12px;
-    padding-bottom: 17px;
-    width: 140px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 25px;
+    width: 110px;
 }
 
 .tab.single.small.active {
@@ -26,7 +29,7 @@
 .bar {
     position: absolute;
     display: black;
-    width: 164px;
+    width: 128px;
     top: 86%;
     border-bottom: 5px solid white;
     transition: left .5s ease;
