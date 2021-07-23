@@ -52,10 +52,16 @@ input:valid ~ .label {
 
 input:focus {
     border-bottom: 1px solid black;
+    background: rgb(231, 231, 231);
 }
 
 input:valid {
     border-bottom: 1px solid black;
+    background: rgb(231, 231, 231);
+}
+
+input:hover {
+    background: rgb(231, 231, 231);
 }
 
 

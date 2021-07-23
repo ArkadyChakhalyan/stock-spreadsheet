@@ -6,7 +6,7 @@ const Tab = ({ options, type }) => {
     const onClick = (e) => {
         if (active) active.className = className;
         active = e.target;
-        // setLeft(active.id * 140);
+        // setLeft(active.id * 126);
         // setLeft(active.id * 86);
 
         active.className += 'active';

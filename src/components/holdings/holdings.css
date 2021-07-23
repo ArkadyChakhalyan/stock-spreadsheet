@@ -1,0 +1,46 @@
+.holdings.gains {
+    display: inline-flex;
+}
+
+.holdings p {
+    color: rgb(199, 199, 199);
+    font-size: 11pt;
+    margin: 0px;
+}
+
+.holdings.gain {
+    color: #238823;
+}
+
+.holdings.total {
+    color:white
+}
+
+.holdings p + p {
+    margin-left: 40px;
+}
+
+.holdings.total {
+    color: white;
+    font-size: 20pt;
+    font-weight: bold;
+    margin: 0px;
+    margin-top: 5px;
+}
+
+.holdings.container.left{
+    width: 180px
+}
+
+.holdings.container.right {
+    padding-top: 10px;
+    width: 260px;
+    text-align: right;
+}
+
+.holdings.info{
+    display: inline-flex;
+    padding-top: 18px;
+}
+
+

@@ -1,6 +1,5 @@
 .tab {
     display: inline-flex;
-    
     font-size: 18px;
     font-family: roboto condensed;
     letter-spacing: 1px;
@@ -11,15 +10,25 @@
 
 .tab.single {
     justify-content: center;
-    padding: 12px;
+    padding-top: 16px;
     padding-left: 8px;
     padding-right: 8px;
-    padding-bottom: 25px;
+    padding-bottom: 18px;
     width: 110px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
 }
 
 .tab.single.small.active {
     color: dodgerblue;
+}
+
+.tab.single:hover {
+    background: rgb(43, 43, 43);
+}
+
+.tab.single.small:hover {
+    background: rgb(231, 231, 231);
 }
 
 .tab.single.active {
@@ -29,8 +38,8 @@
 .bar {
     position: absolute;
     display: black;
-    width: 128px;
-    top: 86%;
+    width: 126px;
+    top: 90%;
     border-bottom: 5px solid white;
     transition: left .5s ease;
 }
@@ -39,10 +48,13 @@
     font-size: 14px;
     width: 70px;
     padding: 8px;
-    padding-bottom: 11px;
+    padding-bottom: 8px;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
 }
 
 .bar.small {
     width: 86px;
+    top: 95%;
     border-bottom: 2px solid dodgerblue;
 }

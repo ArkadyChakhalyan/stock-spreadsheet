@@ -3,6 +3,7 @@ import Button from '../../ui/button/';
 import Input from '../../ui/input';
 import StockMiniature from '../../ui/stock-miniature';
 import Tab from '../../ui/tab';
+import Table from '../../ui/table';
 import Header from '../header/'
 import './app.css';
 
@@ -23,10 +24,15 @@ const App = () => {
             <StockMiniature />
           </div>
         </div>
-        <div>
           <h2>stock list</h2>
+        <div className='stock-list'> 
+          <Table />
         </div>
-        <br /><br />
+
+
+
+
+        <br /><br /><br /><br /><br /><br />
         <Tab options={['monthly', 'yearly']} type={'small'} />
         <br /><br />
         <Button icon={'fas fa-plus fa-sm'} width={250} color={'#007000'}>
