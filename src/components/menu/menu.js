@@ -5,7 +5,7 @@ import './menu.css';
 const Menu = () => {
     return (
         <div className='menu'>
-            <Tab options={['stocks', 'dividends', 'sectors']} />
+            <Tab options={['stocks', 'dividends', 'allocation']} />
         </div>
     );
 };

@@ -1,3 +1,9 @@
-import Holdings from "./holdings";
+import HoldingsAllocation from "./holdings-allocation";
+import HoldingsDividends from "./holdings-dividends";
+import HoldingsGains from "./holdings-gains";
 
-export default Holdings;
+export {
+    HoldingsGains,
+    HoldingsDividends,
+    HoldingsAllocation
+}

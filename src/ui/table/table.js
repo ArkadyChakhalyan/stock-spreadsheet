@@ -1,7 +1,10 @@
 import React from 'react';
 import './table.css';
 
-const Table = () => {
+const Table = (props) => {
+
+    const {onClick} = props;
+
     return (
         <table className='table'>
             <tr className='head'>
@@ -17,7 +20,7 @@ const Table = () => {
                 <th>Dividend</th>
                 <th>Dividend<br />Income</th>
             </tr>
-            <tr>
+            <tr onClick={onClick}>
                 <td><p className='ticker'>APPL</p><p className='company'>Apple Inc</p></td>
                 <td>10</td>
                 <td>$120,75</td>

@@ -16,10 +16,6 @@
     color:white
 }
 
-.holdings p + p {
-    margin-left: 40px;
-}
-
 .holdings.total {
     color: white;
     font-size: 20pt;
@@ -29,7 +25,7 @@
 }
 
 .holdings.container.left{
-    width: 180px
+    width: 150px;
 }
 
 .holdings.container.right {
@@ -43,4 +39,14 @@
     padding-top: 18px;
 }
 
+.holdings td {
+    width: 150px;
+}
 
+.holdings:hover {
+    background: transparent;
+}
+
+.holdings.number {
+    font-weight: bold;
+}

@@ -3,7 +3,7 @@ import './stockMiniature.css';
 
 const StockMiniature = (props) => {
 
-    const { gain } = props;
+    const { gain, ticker, company, number, percent } = props;
 
     let className = 'miniature box ';
 
@@ -12,12 +12,12 @@ const StockMiniature = (props) => {
     return (
         <div className={className}>
             <div className='miniature left'>
-                <p className='miniature ticker'>APPL</p>
-                <p className='miniature company'>Apple Inc</p>
+                <p className='miniature ticker'>{ticker}</p>
+                <p className='miniature company'>{company}</p>
             </div>
             <div className='miniature right'>
-                <p className='miniature percent'>+2.29%</p>
-                <p className='miniature number'>$1250.35</p>
+                <p className='miniature percent'>{percent}</p>
+                <p className='miniature number'>{number}</p>
                 
             </div >
         </div>

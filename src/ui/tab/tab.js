@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './tab.css';
 
 const Tab = ({ options, type }) => {
@@ -8,14 +9,13 @@ const Tab = ({ options, type }) => {
         active = e.target;
         // setLeft(active.id * 126);
         // setLeft(active.id * 86);
-
         active.className += 'active';
+
     };
 
     // как сделать первый элемент сразу активным
     // как передвигать слайдер, юз стейт теряет переменные
-
-    let active;
+    let active
     let className = 'tab single ';
     let barClassName = 'bar ';
     let id = -1;
@@ -29,14 +29,17 @@ const Tab = ({ options, type }) => {
     const elements = options.map((item) => {
         id++
         return (
-            <div
-                className={className}
-                id={id}
-                onClick={onClick}>
-                {item}
-            </div>
+            <Link to={`/${item}/`}>
+                <div
+                    className={className}
+                    id={id}
+                    onClick={onClick}>
+                    {item}
+                </div>
+            </Link>
         )
     });
+
 
     return (
         <div className='tab'>

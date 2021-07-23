@@ -1,32 +1,24 @@
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import React from 'react';
 import Button from '../../ui/button/';
 import Input from '../../ui/input';
-import StockMiniature from '../../ui/stock-miniature';
 import Tab from '../../ui/tab';
-import Table from '../../ui/table';
 import Header from '../header/'
+import { Stocks, Dividends, Allocation } from '../pages';
+
 import './app.css';
 
 const App = () => {
 
   return (
-    <div className='app'>
-      <Header />
-      <div className='body'>
-        <div>
-          <h2>month's top movers</h2>
-          <div className='miniatures'>
-            <StockMiniature gain={10} />
-            <StockMiniature gain={10} />
-            <StockMiniature gain={10} />
-            <StockMiniature gain={-5} />
-            <StockMiniature gain={-5} />
-            <StockMiniature />
-          </div>
-        </div>
-          <h2>stock list</h2>
-        <div className='stock-list'> 
-          <Table />
+    <Router>
+      <div className='app'>
+
+        <Header />
+        <div className='body'>
+          <Route path='/stocks/' component={Stocks} />
+          <Route path='/dividends/' component={Dividends} />
+          <Route path='/allocation/' component={Allocation} />
         </div>
 
 
@@ -55,8 +47,9 @@ const App = () => {
         <Input label={'ticker'} />
         <br />
         <Input label={'price'} />
+
       </div>
-    </div>
+    </Router>
   )
 }
 

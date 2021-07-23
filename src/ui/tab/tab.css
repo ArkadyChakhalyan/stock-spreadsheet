@@ -58,3 +58,15 @@
     top: 95%;
     border-bottom: 2px solid dodgerblue;
 }
+
+.tab:active {
+    text-decoration: none;
+}
+
+.tab:visited {
+    text-decoration: none;
+}
+
+.tab a {
+    text-decoration: none;
+}
