@@ -9,14 +9,16 @@ const HoldingsAllocation = () => {
                     <p className='holdings total'>15</p></span>
             </div>
             <table className='holdings container right'>
-                <tr className='holdings gains'>
-                    <td><p>Largest Position</p></td>
-                    <td><p className='holdings number'>$240.24 (5.23%)</p></td>
-                </tr>
-                <tr className='holdings gains'>
-                    <td><p>Smallest Position</p></td>
-                    <td><p className='holdings number'>$110.94 (2.83%)</p></td>
-                </tr>
+                <tbody>
+                    <tr className='holdings gains'>
+                        <td><p>Largest Position</p></td>
+                        <td><p className='holdings number'>$240.24 (5.23%)</p></td>
+                    </tr>
+                    <tr className='holdings gains'>
+                        <td><p>Smallest Position</p></td>
+                        <td><p className='holdings number'>$110.94 (2.83%)</p></td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     );

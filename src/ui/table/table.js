@@ -7,6 +7,7 @@ const Table = (props) => {
 
     return (
         <table className='table'>
+            <thead>
             <tr className='head'>
                 <th>Name</th>
                 <th>Position</th>
@@ -20,6 +21,8 @@ const Table = (props) => {
                 <th>Dividend</th>
                 <th>Dividend<br />Income</th>
             </tr>
+            </thead>
+            <tbody>
             <tr onClick={onClick}>
                 <td><p className='ticker'>APPL</p><p className='company'>Apple Inc</p></td>
                 <td>10</td>
@@ -72,6 +75,7 @@ const Table = (props) => {
                 <td>$0,88</td>
                 <td>$10,82</td> 
             </tr>
+            </tbody>
         </table>
     );
 };

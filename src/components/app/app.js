@@ -39,8 +39,6 @@ const App = () => {
           delete
         </Button>
         <br /><br />
-        <Button type={'round'} icon={'fas fa-times'} color={'#D2222D'} />
-        <br /><br />
         <Button type={'round'} icon={'fas fa-chevron-left'} />
         <Button type={'round'} icon={'fas fa-chevron-right'} />
         <br /><br />

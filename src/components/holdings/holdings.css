@@ -8,10 +8,6 @@
     margin: 0px;
 }
 
-.holdings.gain {
-    color: #238823;
-}
-
 .holdings.total {
     color:white
 }
@@ -49,4 +45,10 @@
 
 .holdings.number {
     font-weight: bold;
+    color: white;
 }
+
+.holdings.gain {
+    color: #238823;
+}
+

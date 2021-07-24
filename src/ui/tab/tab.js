@@ -5,41 +5,53 @@ import './tab.css';
 const Tab = ({ options, type }) => {
 
     const onClick = (e) => {
-        if (active) active.className = className;
-        active = e.target;
-        // setLeft(active.id * 126);
-        // setLeft(active.id * 86);
-        active.className += 'active';
+        // if (active) active.className = className;
+        // active = e.target;
+        
+        setLeft(e.target.id * (type ? 86 : 126));
 
+        e.target.className += 'active';
     };
 
-    // как сделать первый элемент сразу активным
-    // как передвигать слайдер, юз стейт теряет переменные
-    let active
+    // let active;
+    let prev;
     let className = 'tab single ';
     let barClassName = 'bar ';
+    let key = 0;
     let id = -1;
-    let left = 0;
-    // const [left, setLeft] = useState(0);
+    const [left, setLeft] = useState(0);
+    const [active, setActive] = useState('false');
+
     if (type) {
         className += 'small ';
         barClassName += 'small';
     }
 
     const elements = options.map((item) => {
-        id++
+        id++;
+        key++;
+        if (type) {
+            return (
+                    <div
+                        id={id}
+                        ket={key}
+                        className={className}
+                        onClick={onClick}>
+                        {item}
+                    </div>
+            )
+        }
         return (
-            <Link to={`/${item}/`}>
+            <Link to={`/${item}/`} key={key} >
                 <div
-                    className={className}
                     id={id}
+                    className={className}
                     onClick={onClick}>
                     {item}
                 </div>
             </Link>
         )
     });
-
 
     return (
         <div className='tab'>
@@ -50,3 +62,5 @@ const Tab = ({ options, type }) => {
 };
 
 export default Tab;
+
+
