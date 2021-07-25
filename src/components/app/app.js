@@ -44,8 +44,6 @@ const App = () => {
         <Button type={'round'} icon={'fas fa-chevron-right fa-3x'} />
         <br /><br />
         <Input label={'ticker'} />
-        <br />
-        <Input label={'price'} />
 
       </div>
     </Router>
