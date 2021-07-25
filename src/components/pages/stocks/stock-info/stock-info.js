@@ -10,7 +10,7 @@ const StockInfo = () => {
                 <table>
                     <tbody>
                         <tr>
-                            <th colspan="4">Valuation</th>
+                            <th colSpan="4">Valuation</th>
                         </tr>
                         <tr>
                             <td>Market Cap</td>
@@ -31,7 +31,7 @@ const StockInfo = () => {
                             <td className='data'>26.54</td>
                         </tr>
                         <tr>
-                            <th colspan="4">Dividend</th>
+                            <th colSpan="4">Dividend</th>
                         </tr>
                         <tr>
                             <td>Dividend</td>
@@ -40,7 +40,7 @@ const StockInfo = () => {
                             <td className='data'>18.34%</td>
                         </tr>
                         <tr>
-                            <th colspan="4">Balance Sheet</th>
+                            <th colSpan="4">Balance Sheet</th>
                         </tr>
                         <tr>
                             <td>Total Cash</td>

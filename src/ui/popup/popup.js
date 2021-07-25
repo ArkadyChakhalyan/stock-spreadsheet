@@ -1,28 +1,27 @@
 import React from 'react';
 import Button from '../button';
-import StockInfo from '../../components/stock-info';
 import './popup.css';
 
-const Popup = ({ onClose, opacity }) => {
+const Popup = ({ onClose, head, inside }) => {
 
     document.body.style.overflow = 'hidden';
+    
+    const close = () => {
+        document.body.style.overflow = 'overlay';
+        onClose();
+    } 
 
     return (
-        <div className='popup window' onClick={onClose} style={{ opacity: opacity }}>
+        <div className='popup window' onClick={close} >
             <div className='rest'>
             </div>
             <div className='bg' onClick={e => { e.stopPropagation() }}>
-                <div className='head'>
-                    <p className='company'>Apple Inc</p>
-                    <br />
-                    <p className='ticker'>APPL</p>
-                    <div className='bar'></div>
-                </div>
+                {head}
                 <span className='close'>
-                    <Button type='round' onClick={onClose} icon={'fas fa-times fa-2x'} />
+                    <Button type='round' onClick={close} icon={'fas fa-times fa-2x'} />
                 </span>
                 <span className='info'>
-                    <StockInfo />
+                    {inside}
                 </span>
             </div>
         </div>

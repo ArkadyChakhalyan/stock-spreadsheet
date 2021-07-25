@@ -25,7 +25,7 @@ const App = () => {
 
         <br /><br /><br /><br /><br /><br />
         <br /><br /><br /><br /><br /><br />
-        <Tabs options={['monthly', 'yearly']} small />
+       
         <br /><br />
         <Button icon={'fas fa-plus fa-sm'} width={250} color={'#007000'}>
           new buy

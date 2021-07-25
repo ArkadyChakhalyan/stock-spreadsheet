@@ -23,7 +23,7 @@ const Tabs = ({ options, small }) => {
         if (small) {
             return (
                 <div
-                    ket={key}
+                    key={key}
                     className={itemClassName}
                     onClick={() => setActive(index)}
                 >

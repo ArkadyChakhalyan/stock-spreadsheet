@@ -4,7 +4,7 @@
 
 .holdings p {
     color: rgb(199, 199, 199);
-    font-size: 10pt;
+    font-size: 10.5pt;
     margin: 0px;
 }
 
@@ -40,19 +40,22 @@
 }
 
 .holdings td {
-    width: 150px;
+    width: 160px;
 }
 
 .holdings:hover {
     background: transparent;
+    cursor: default;
 }
 
 .holdings.number {
     font-weight: bold;
+    font-size: 11pt;
     color: white;
 }
 
 .holdings.gain {
-    color: #238823;
+    font-weight: bold;
+    color: #229922;
 }
 

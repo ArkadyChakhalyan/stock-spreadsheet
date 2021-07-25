@@ -1,21 +1,23 @@
 .button {
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     background: dodgerblue;
     cursor: pointer;
     color: white;
     height: 28px;
     padding-left: 15px;
     padding-right: 15px;
-    font-size: 9pt;
+    padding-top: 2px;
+    font-size: 11pt;
     font-weight: bold;
     font-family: 'Roboto', sans-serif;
-    box-shadow: 0px 2px 3px rgb(124, 124, 124);
+    box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.3);
     text-transform: uppercase;
 }
 
 .button i {
     transform: scale(80%);
+    padding-top: 2px;
 }
 
 .button i p {
@@ -57,8 +59,8 @@ button {
 }
 
 .button p {
-    padding-bottom: 1px;
     margin-left: 0 auto;
     margin-right: 0 auto;
+    font-size: 9.5pt;
 }
 
