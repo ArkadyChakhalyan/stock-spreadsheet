@@ -1,5 +1,5 @@
 import React from 'react';
-import { MiniaturesAllocation, MiniaturesGains } from '../miniatures';
+import { MiniaturesAllocation } from '../miniatures';
 import './pages.css';
 
 const Allocation = () => {

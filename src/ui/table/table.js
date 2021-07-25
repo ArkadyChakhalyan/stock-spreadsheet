@@ -3,10 +3,10 @@ import './table.css';
 
 const Table = (props) => {
 
-    const {onClick} = props;
+    const {onClick, width} = props;
 
     return (
-        <table className='table'>
+        <table className='table' style={{width:`${width + 'px'}`}}>
             <thead>
             <tr className='head'>
                 <th>Name</th>

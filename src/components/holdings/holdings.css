@@ -4,8 +4,12 @@
 
 .holdings p {
     color: rgb(199, 199, 199);
-    font-size: 11pt;
+    font-size: 10pt;
     margin: 0px;
+}
+
+.holdings .top-label {
+    font-size: 9.5pt;
 }
 
 .holdings.total {
@@ -14,14 +18,14 @@
 
 .holdings.total {
     color: white;
-    font-size: 20pt;
+    font-size: 19pt;
     font-weight: bold;
     margin: 0px;
     margin-top: 5px;
 }
 
 .holdings.container.left{
-    width: 150px;
+    width: 160px;
 }
 
 .holdings.container.right {

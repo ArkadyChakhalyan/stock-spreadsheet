@@ -1,11 +1,11 @@
 h1 {
-    font-size: 17pt;
-    font-family: roboto condensed;
+    font-size: 15pt;
+    font-family: 'Roboto', sans-serif;
     letter-spacing: 1.2px;
     color: white;
     margin-bottom: -2px;
     text-transform: uppercase;
-    line-height: 16pt; 
+    line-height: 14.5pt; 
 }
 
 h1+h2 {
@@ -13,24 +13,24 @@ h1+h2 {
 }
 
 h2 {
-    font-size: 12pt;
-    font-family: roboto condensed;
+    font-size: 11pt;
+    font-family: 'Roboto', sans-serif;
     letter-spacing: 0.9px;
     color: rgb(82, 82, 82);
     text-transform: uppercase;
 }
 
 p {
-    font-size: 10pt;
-    font-family: roboto condensed;
+    font-size: 9.5pt;
+    font-family: 'Roboto', sans-serif;
     font-weight: lighter;
     letter-spacing: 0.5px; 
 }
 
 body {
     background: rgb(236, 236, 236);
-    font-size: 10pt;
-    font-family: roboto condensed;
+    font-size: 9.5pt;
+    font-family: 'Roboto', sans-serif;
     letter-spacing: 0.5px; 
+    overflow: overlay
 }
-

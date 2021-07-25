@@ -5,7 +5,7 @@ const HoldingsAllocation = () => {
     return (
         <div className='holdings info'>
             <div className='holdings container left'>
-                <span className='holdings'><p>Number of Holdings</p>
+                <span className='holdings'><p className='top-label'>Number of Holdings</p>
                     <p className='holdings total'>15</p></span>
             </div>
             <table className='holdings container right'>

@@ -24,9 +24,9 @@
 }
 
 .label {
-    font-size: 15px;
+    font-size: 14px;
     text-transform: uppercase;
-    font-family: roboto condensed;
+    font-family: 'Roboto', sans-serif;
     color: rgb(126, 126, 126);
     letter-spacing: 0.6px;
     position: absolute;
@@ -38,14 +38,14 @@
 
 input:focus ~ .label {
     top: 5.1px;
-    font-size: 10.5px;
+    font-size: 9.5px;
     color: black;
     transition: 0.3s ease all;
 }
 
 input:valid ~ .label {
     top: 5.1px;
-    font-size: 10.5px;
+    font-size: 9.5px;
     color: black;
     transition: 0.3s ease all;
 }

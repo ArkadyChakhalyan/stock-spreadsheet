@@ -32,16 +32,16 @@
 }
 
 .miniature.number {
-    font-family: roboto condensed;
+    font-family: 'Roboto', sans-serif;
     letter-spacing: 0.6px;
     font-weight: bold;
-    font-size: 13px;
+    font-size: 12px;
     padding-right: 2px;
 }
 
 .miniature.percent {
-    font-size: 17px;
-    font-family: roboto condensed;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
     letter-spacing: 0.6px;
     font-weight: bold;
     margin-bottom: -13px;

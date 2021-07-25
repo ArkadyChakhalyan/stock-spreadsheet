@@ -1,10 +1,52 @@
-.window.stock.info {
-    background: white;
-    width: 250px;
-    height: 450px;
+.stock.info {
+    width: 600px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 
-.window {
-    z-index: 1;
-    position: fixed;
+.stock.info .chart {
+    height: 160px;
+    width: 550px;
+    background: green;
+}
+
+.stock.info .valuation td+td {
+    padding-left: 70px;
+    padding-top: 7px;
+}
+
+.stock.info .valuation th {
+    padding-right: 50px;
+    padding-bottom: 10px;
+    padding-top: 20px;
+    text-align: left;
+    font-size: 10pt;
+    border-bottom: 1px lightgray solid;
+}
+
+.stock.info .data {
+    font-weight: bold;
+}
+
+.stock.info .valuation table {
+    margin-bottom: 25px;
+}
+
+.stock.info .valuation tr:hover {
+    background: transparent;
+    cursor: default;
+}
+
+.stock.info .sales.profits {
+    height: 220px;
+    width: 550px;
+    background: green;
+    margin-bottom: 15px;
+}
+
+::-webkit-scrollbar {
+    width: 5px; left:-200px;
 }

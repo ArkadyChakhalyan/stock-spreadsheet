@@ -1,11 +1,11 @@
 import React from 'react';
-import Tab from '../../ui/tab';
+import Tabs from '../../ui/tabs';
 import './menu.css';
 
 const Menu = () => {
     return (
         <div className='menu'>
-            <Tab options={['stocks', 'dividends', 'allocation']} />
+            <Tabs options={['stocks', 'dividends', 'allocation']} />
         </div>
     );
 };

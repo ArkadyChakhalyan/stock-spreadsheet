@@ -5,7 +5,7 @@ const HoldingsGains = () => {
     return (
         <div className='holdings info'>
             <div className='holdings container left'>
-                <span className='holdings'><p>Portfolio Value</p>
+                <span className='holdings'><p className='top-label'>Portfolio Value</p>
                     <p className='holdings total'>$13213.28</p></span>
             </div>
             <table className='holdings container right'>

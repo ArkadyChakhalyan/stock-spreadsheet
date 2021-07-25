@@ -4,19 +4,20 @@
     display: flex;
     flex-direction: row;
     padding-left: 10px;
-    position: absolute;
+    position: sticky;
     left: 0;
     right: 0;
     top: 0;
-    box-shadow: 0px 2px 3px rgb(124, 124, 124);
+    box-shadow: 0px 2px 5px rgb(77, 77, 77);
     justify-content: space-between;
+    margin-bottom: -85px;
+    overflow: hidden;
 }
 
 .header h2 {
     color: rgb(168, 168, 168);
-    font-size: 13px;
+    font-size: 12px;
 }
-
 
 .name {
     margin-left: 5px;

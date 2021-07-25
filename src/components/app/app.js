@@ -2,11 +2,12 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import React from 'react';
 import Button from '../../ui/button/';
 import Input from '../../ui/input';
-import Tab from '../../ui/tab';
+import Tabs from '../../ui/tabs';
 import Header from '../header/'
 import { Stocks, Dividends, Allocation } from '../pages';
 
 import './app.css';
+// import '../../fonts/index.css';
 
 const App = () => {
 
@@ -23,9 +24,9 @@ const App = () => {
 
 
 
-
         <br /><br /><br /><br /><br /><br />
-        <Tab options={['monthly', 'yearly']} type={'small'} />
+        <br /><br /><br /><br /><br /><br />
+        <Tabs options={['monthly', 'yearly']} small />
         <br /><br />
         <Button icon={'fas fa-plus fa-sm'} width={250} color={'#007000'}>
           new buy
@@ -39,8 +40,8 @@ const App = () => {
           delete
         </Button>
         <br /><br />
-        <Button type={'round'} icon={'fas fa-chevron-left'} />
-        <Button type={'round'} icon={'fas fa-chevron-right'} />
+        <Button type={'round'} icon={'fas fa-chevron-left fa-3x'} />
+        <Button type={'round'} icon={'fas fa-chevron-right fa-3x'} />
         <br /><br />
         <Input label={'ticker'} />
         <br />
