@@ -1,6 +1,5 @@
 import React from 'react';
 import './stock-info.css';
-import "dhx-suite/codebase/suite.min.css";
 
 const StockInfo = () => {
 
