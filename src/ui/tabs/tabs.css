@@ -1,8 +1,7 @@
 .tab {
     display: inline-flex;
-    font-size: 17px;
+    font-size: 13pt;
     font-family: 'Roboto', sans-serif;
-    letter-spacing: 1px;
     position: relative;
     color: rgb(143, 143, 143);
     text-transform: uppercase;
@@ -45,7 +44,7 @@
 }
 
 .tab.single.small {
-    font-size: 13px;
+    font-size: 9pt;
     width: 70px;
     padding: 8px;
     padding-bottom: 8px;

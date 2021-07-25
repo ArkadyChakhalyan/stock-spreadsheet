@@ -11,7 +11,8 @@
     box-shadow: 0px 2px 5px rgb(77, 77, 77);
     justify-content: space-between;
     margin-bottom: -85px;
-    overflow: hidden;
+    padding-top: 5px;
+    margin: -8px
 }
 
 .header h2 {
@@ -21,8 +22,7 @@
 
 .name {
     margin-left: 5px;
-    margin-top: auto;
-    margin-bottom: auto;
+    margin-top: 5px;
     text-align: left;
     margin-right: 150px;
 }

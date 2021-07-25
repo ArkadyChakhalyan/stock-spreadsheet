@@ -33,17 +33,17 @@
 
 .miniature.number {
     font-family: 'Roboto', sans-serif;
-    letter-spacing: 0.6px;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 9pt;
+    letter-spacing: 0.3px;
     padding-right: 2px;
 }
 
 .miniature.percent {
-    font-size: 16px;
+    font-size: 13pt;
     font-family: 'Roboto', sans-serif;
-    letter-spacing: 0.6px;
     font-weight: bold;
+    letter-spacing: 0.3px;
     margin-bottom: -13px;
 }
 

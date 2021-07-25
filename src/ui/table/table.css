@@ -24,13 +24,13 @@
 }
 
 td .ticker {
-    font-size: 11pt;
+    font-size: 10.2pt;
     font-weight: bold;
-    margin-bottom: -11px;
+    margin-bottom: -10px;
 }
 
 td .company {
-    font-size: 8pt;
+    font-size: 7.5pt;
 }
 
 tr:hover {

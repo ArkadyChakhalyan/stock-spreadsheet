@@ -14,7 +14,6 @@ const App = () => {
   return (
     <Router>
       <div className='app'>
-
         <Header />
         <div className='body'>
           <Route path='/stocks/' component={Stocks} />
