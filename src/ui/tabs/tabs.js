@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './tabs.css';
 
@@ -6,7 +6,7 @@ const Tabs = ({ options, small }) => {
 
     let className = 'tab single ';
     let barClassName = 'bar ';
-    let key = 0;
+
     const [active, setActive] = useState(0);
 
     if (small) {
@@ -15,7 +15,6 @@ const Tabs = ({ options, small }) => {
     }
 
     const elements = options.map((item, index) => {
-        key++;
         let itemClassName = className;
         if (index === active) {
             itemClassName += 'active';
@@ -23,7 +22,7 @@ const Tabs = ({ options, small }) => {
         if (small) {
             return (
                 <div
-                    key={key}
+                    key={index}
                     className={itemClassName}
                     onClick={() => setActive(index)}
                 >
@@ -32,11 +31,11 @@ const Tabs = ({ options, small }) => {
             )
         }
         return (
-            <Link to={`/${item}/`} key={key} >
+            <Link to={`/${item}/`} key={index} >
                 <div
                     className={itemClassName}
                     onClick={() => setActive(index)}
-            >
+                >
                     {item}
                 </div>
             </Link>
@@ -46,7 +45,7 @@ const Tabs = ({ options, small }) => {
     return (
         <div className='tab'>
             {elements}
-            <span className={barClassName} style={{ left: `${active * (small ? 86 : 126) }px` }} />
+            <span className={barClassName} style={{ left: `${active * (small ? 86 : 126)}px` }} />
         </div>
     );
 };

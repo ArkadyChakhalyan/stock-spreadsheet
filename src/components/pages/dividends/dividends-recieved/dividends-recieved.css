@@ -1,0 +1,14 @@
+.dividends.recieved {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.dividends.arrows {
+    display: flex;
+}
+
+.dividends.arrows table {
+    margin-left: 20px;
+    margin-right: 20px;
+}

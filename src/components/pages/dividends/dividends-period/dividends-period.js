@@ -6,7 +6,7 @@ const DividendsPeriod = () => {
     return (
         <div className='dividends period container'>
              <Tabs options={['monthly', 'yearly']} small />
-             <div className='chart'>Chart</div>
+             <div className='chart'></div>
         </div>
     );
 }

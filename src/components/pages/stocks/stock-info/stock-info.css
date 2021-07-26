@@ -47,6 +47,111 @@
     margin-bottom: 15px;
 }
 
-::-webkit-scrollbar {
-    width: 5px; left:-200px;
+.your-holdings {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-items: flex-end;
+    margin-bottom: 15px;
 }
+
+.your-holdings .inside {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background: #007000;
+    box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.3);
+    border-radius: 4px;
+    padding: 10px;
+    height: 42px;
+    width: 375px;
+    margin-bottom: 8px;
+}
+
+.your-holdings .inside > h2 {
+    color: white;
+    font-size: 10pt;
+    text-align: left;
+    margin-top: 0px;
+}
+
+.your-holdings .data{
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    text-align: right;
+    color: white;
+    font-size: 6pt;
+    margin-top: 0px;
+}
+
+.your-holdings .data p {
+    margin-bottom: -10px;
+}
+
+.your-holdings .text {
+    font-size: 8.6pt;
+    color: rgb(230, 230, 230)
+}
+
+.your-holdings .number {
+    font-weight: bold;
+    font-size: 9.5pt;
+}
+
+.your-holdings .buttons button {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.your-holdings .buttons {
+    margin-left: 5px;
+    display: flex;
+    flex-direction: column;
+    margin-top: -7px;
+}
+
+.edit.stock.head {
+    z-index: 1;
+    position: fixed;
+    background: white;
+    margin-top: -30px;
+    padding-top: 10px;
+    margin-right: -1px;
+    padding-bottom: 15px;
+    height: 58px;
+    width: 260px;
+ } 
+ 
+ .edit.stock.head .company {
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13pt;
+ }
+ 
+ .edit.stock.head .ticker {
+    margin-top: -29px;
+    font-family: 'Roboto', sans-serif;
+    color: rgb(82, 82, 82);
+    font-size: 9pt;
+ }
+ 
+ .edit.stock.head .bar {
+    margin-top: 8px;
+    width: 260px;
+    border-bottom: 1px darkgray solid;
+ }
+ 
+ .edit.stock.info {
+    margin-top: 0px;
+    margin-left:  auto;
+    margin-right: auto;
+    width: 260px;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 5px;
+ }
+
+ .edit.stock.info input {
+     margin-bottom: 10px;
+ }

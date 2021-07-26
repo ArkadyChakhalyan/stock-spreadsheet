@@ -1,0 +1,19 @@
+.dividends-sector {
+    margin-top: 6px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.dividends-sector .chart {
+    height: 479px;
+    width: 700px;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.3);
+}
+
+.dividends-sector > h2 {
+    font-size: 16pt;
+    margin-bottom: 10px;
+}

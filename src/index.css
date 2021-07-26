@@ -13,10 +13,10 @@ h1+h2 {
 }
 
 h2 {
-    font-size: 12.5pt;
-    letter-spacing: 0.2px;
+    font-size: 14pt;
+    font-weight: bold;
     font-family: 'Roboto', sans-serif;
-    color: rgb(82, 82, 82);
+    color: rgb(94, 94, 94);
     text-transform: uppercase;
 }
 

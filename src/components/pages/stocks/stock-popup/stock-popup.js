@@ -6,15 +6,15 @@ import './stock-popup.css';
 const StockPopup = ({ onClose }) => {
 
     const head = (
-        <div className='head'>
-            <p className='company'>Apple Inc</p>
+        <div className='stock head'>
+            <p className='stock company'>Apple Inc</p>
             <br />
-            <p className='ticker'>APPL</p>
-            <div className='bar'></div>
+            <p className='stock ticker'>APPL</p>
+            <div className='stock bar'></div>
         </div>
     );
 
-    const inside = <StockInfo />;
+    const inside = <div className='stock info'><StockInfo onDeleteStock={onClose} /></div>;
 
     return (
         <Popup onClose={onClose} head={head} inside={inside} />

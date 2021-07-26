@@ -1,9 +1,7 @@
 import React from 'react';
 import './button.css';
 
-const Button = (props) => {
-
-  const { type, icon, width, onClick, children, color } = props;
+const Button = ({ type, icon, width, onClick, children, color }) => {
 
   const insertIcon = icon ? <i className={icon} /> : null;
   const text= children ? <p>{children}</p> : null;

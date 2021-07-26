@@ -5,20 +5,33 @@
     text-align: left;
     border-collapse: collapse;
     margin-right: 6px;
+    text-align: center;
 }
 
 .table th {
-    padding: 20px;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     font-weight: normal;
     border-bottom: 1px solid darkgray;
 }
 
+.head th:hover {
+    background-color: transparent;
+    cursor: default;
+}
+
+.head.sort th:hover {
+    background-color: rgb(245, 245, 245);
+    cursor: pointer;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
 .table td {
-    padding: 20px;
-    padding-top: 0px;
-    padding-bottom: 0px;
+    padding: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     font-weight: bold;
     border-bottom: 1px solid darkgray;
 }
@@ -42,6 +55,7 @@ tr:hover {
     background: transparent;
 }
 
-.green-test {
-    color: #007000;
+.table .foot tr:hover {
+    background-color: transparent;
+    cursor: default;
 }

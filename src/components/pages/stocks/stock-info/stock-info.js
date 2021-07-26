@@ -1,10 +1,68 @@
-import React from 'react';
+import Input from '../../../../ui/input';
+import React, { useState } from 'react';
+import Button from '../../../../ui/button';
+import Popup from '../../../../ui/popup';
 import './stock-info.css';
 
-const StockInfo = () => {
+const StockInfo = ({ onDeleteStock }) => {
+
+    const onClose = () => {
+        setPopupOn(false);
+    }
+
+    const onSubmit = () => {
+        document.body.style.overflow = 'overlay';
+        onClose();
+    }
+
+    const onDelete = () => {
+        document.body.style.overflow = 'overlay';
+        onDeleteStock();
+    }
+
+    const head = (
+        <div className='edit stock head'>
+            <p className='edit stock company'>Apple Inc</p>
+            <br />
+            <p className='edit stock ticker'>APPL</p>
+            <div className='edit stock bar'></div>
+        </div>
+    );
+
+    const inside = (
+        <div>
+            <div className='edit stock info'>
+                <Input label={'Price'} value={'110.54'} width={'250'} />
+                <Input label={'Shares'} value={'15'} width={'250'} />
+            </div>
+            <div className='edit stock submit'>
+                <Button onClick={onSubmit} width={'262'}>submit</Button>
+            </div>
+        </div>
+    );
+
+    const [popupOn, setPopupOn] = useState(false);
+    const popup = popupOn ? <Popup onClose={onClose} inside={inside} head={head} /> : null;
+
+    const onClick = () => {
+        setPopupOn(true);
+    }
 
     return (
         <div className='stock info'>
+            <div className='your-holdings'>
+                <div className='inside'>
+                    {popup}
+                    <h2>Your<br />Holdings</h2>
+                    <span className='data'><p className='text'>Market Value</p><p className='number'>$1235.56</p></span>
+                    <span className='data'><p className='text'>Shares</p><p className='number'>5</p></span>
+                    <span className='data'><p className='text'>Avarage Cost</p><p className='number'>$110.54</p></span>
+                </div>
+                <div className='buttons'>
+                    <Button width={'92'} icon={'fas fa-pen fa-sm'} onClick={onClick}>Edit</Button>
+                    <Button icon={'fas fa-trash'} color={'#D2222D'} onClick={onDelete}>delete</Button>
+                </div>
+            </div>
             <div className='chart'>Stock chart</div>
             <div className='valuation'>
                 <table>

@@ -6,6 +6,7 @@
     color: rgb(199, 199, 199);
     font-size: 10.5pt;
     margin: 0px;
+    white-space: nowrap;
 }
 
 .holdings .top-label {
@@ -52,10 +53,5 @@
     font-weight: bold;
     font-size: 11pt;
     color: white;
-}
-
-.holdings.gain {
-    font-weight: bold;
-    color: #229922;
 }
 

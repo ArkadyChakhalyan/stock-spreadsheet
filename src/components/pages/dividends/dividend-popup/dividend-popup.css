@@ -1,0 +1,42 @@
+.dividend.head {
+   z-index: 1;
+   position: fixed;
+   background: white;
+   margin-top: -30px;
+   padding-top: 10px;
+   margin-right: -1px;
+   padding-bottom: 15px;
+   height: 58px;
+   width: 260px;
+} 
+
+.dividend.head .company {
+   font-weight: bold;
+   font-family: 'Roboto', sans-serif;
+   font-size: 13pt;
+}
+
+.dividend.head .ticker {
+   margin-top: -29px;
+   font-family: 'Roboto', sans-serif;
+   color: rgb(82, 82, 82);
+   font-size: 9pt;
+}
+
+.dividend.head .bar {
+   margin-top: 8px;
+   width: 260px;
+   border-bottom: 1px darkgray solid;
+}
+
+.dividend.info {
+   margin-top: 70px;
+   margin-left:  auto;
+   margin-right: auto;
+   width: 260px;
+   display: flex;
+   align-items: flex-end;
+   margin-bottom: 20px;
+}
+
+

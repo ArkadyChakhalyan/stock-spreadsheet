@@ -1,83 +1,82 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './table.css';
 
-const Table = (props) => {
+const Table = ({ onClick, width, collumns, data, bottom, sort }) => {
 
-    const {onClick, width} = props;
+    const head = collumns.map((item, index) => {
+        return <th key={index}>{item}</th>
+    });
+
+    let foot = null;
+
+    if (bottom) {
+        foot = bottom.map((item, index) => {
+            return <th key={index}>{item}</th>
+        });
+    }
+
+    let sortedData = [...data];
+
+    const [view, setView] = useState(data);
+
+    let className = 'head ';
+
+    const onSort = (e) => {
+        let idx = collumns.indexOf(e.target.innerHTML);
+
+        sortedData.sort((a, b) => {
+            if (a[idx] > b[idx]) return 1;
+            if (a[idx] < b[idx]) return -1;
+            return 0;
+        });
+        if (sortedData[0][idx] === view[0][idx]) {
+            sortedData.sort((a, b) => {
+                if (a[idx] < b[idx]) return 1;
+                if (a[idx] > b[idx]) return -1;
+                return 0;
+            });
+
+
+            if (sortedData[0][idx] === view[0][idx]) {
+                sortedData.sort((a, b) => b[idx] - a[idx]);
+            }
+        }
+
+        setView(sortedData);
+    }
+
+    let sortable;
+
+    if (sort) {
+        sortable = onSort;
+        className += 'sort'
+    }
+
+    const raws = view.map((item, index) => {
+        const raw = item.map((item, index) => {
+            return <td key={index} >{item}</td>
+        })
+        return <tr key={index} onClick={onClick}>{raw}</tr>
+    });
 
     return (
-        <table className='table' style={{width:`${width + 'px'}`}}>
-            <thead>
-            <tr className='head'>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Avarage<br />Price</th>
-                <th>Cost</th>
-                <th>Price</th>
-                <th>Market<br />Value</th>
-                <th>Gains/Loses</th>
-                <th>Portfolio<br />Allocation</th>
-                <th>Yield</th>
-                <th>Dividend</th>
-                <th>Dividend<br />Income</th>
-            </tr>
+        <table className='table' style={{ width: `${width + 'px'}` }}>
+            <thead onClick={sortable}>
+                <tr className={className}>
+                    {head}
+                </tr>
             </thead>
             <tbody>
-            <tr onClick={onClick}>
-                <td><p className='ticker'>APPL</p><p className='company'>Apple Inc</p></td>
-                <td>10</td>
-                <td>$120,75</td>
-                <td>$1207,50</td>
-                <td>$130,84</td>
-                <td>$1620,23</td>
-                <td className='green-test'>$1103.94 (+20.83%)</td>
-                <td>12,25%</td>
-                <td>1,02%</td>
-                <td>$0,88</td>
-                <td>$10,82</td>
-            </tr>
-            <tr>
-                <td><p className='ticker'>APPL</p><p className='company'>Apple Inc</p></td>
-                <td>10</td>
-                <td>$120,75</td>
-                <td>$1207,50</td>
-                <td>$130,84</td>
-                <td>$1620,23</td>
-                <td className='green-test'>$1103.94 (+20.83%)</td>
-                <td>12,25%</td>
-                <td>1,02%</td>
-                <td>$0,88</td>
-                <td>$10,82</td>
-            </tr>
-            <tr>
-                <td><p className='ticker'>APPL</p><p className='company'>Apple Inc</p></td>
-                <td>10</td>
-                <td>$120,75</td>
-                <td>$1207,50</td>
-                <td>$130,84</td>
-                <td>$1620,23</td>
-                <td className='green-test'>$1103.94 (+20.83%)</td>
-                <td>12,25%</td>
-                <td>1,02%</td>
-                <td>$0,88</td>
-                <td>$10,82</td>
-            </tr>
-            <tr>
-            <td><p className='ticker'>APPL</p><p className='company'>Apple Inc</p></td>
-                <td>10</td>
-                <td>$120,75</td>
-                <td>$1207,50</td>
-                <td>$130,84</td>
-                <td>$1620,23</td>
-                <td className='green-test'>$1103.94 (+20.83%)</td>
-                <td>12,25%</td>
-                <td>1,02%</td>
-                <td>$0,88</td>
-                <td>$10,82</td> 
-            </tr>
+                {raws}
             </tbody>
+            <tfoot className='foot'>
+                <tr>
+                    {foot}
+                </tr>
+            </tfoot>
         </table>
     );
 };
+
 
 export default Table;

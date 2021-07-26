@@ -12,11 +12,11 @@ const HoldingsGains = () => {
                 <tbody>
                     <tr className='holdings gains'>
                         <td><p>Month's Gain</p></td>
-                        <td><p className='holdings number gain'>$240.24 (+5.23%)</p></td>
+                        <td><p className='holdings number'>$240.24 (+5.23%)</p></td>
                     </tr>
                     <tr className='holdings gains'>
                         <td><p>Total Gain</p></td>
-                        <td><p className='holdings number gain'>$1103.94 (+20.83%)</p></td>
+                        <td><p className='holdings number'>$1103.94 (+20.83%)</p></td>
                     </tr>
                 </tbody>
             </table>

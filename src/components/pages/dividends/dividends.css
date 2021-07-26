@@ -2,3 +2,16 @@
     margin-right: auto;
     margin-left: auto;
 }
+
+.dividends.second {
+    margin-top: 5px;
+    display: flex;
+    margin-right: 6px;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.dividends > h2 {
+    font-size: 20pt;
+    margin-bottom: 10px;
+}

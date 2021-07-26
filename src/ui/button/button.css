@@ -35,7 +35,7 @@
 .button.round {
     height: 28px;
     width: 28px;
-    color: rgb(228, 228, 228);
+    color: rgb(187, 187, 187);
     background: none;
     display: inline-flex;
     align-items: center;
@@ -44,7 +44,7 @@
 }
 
 .button.round:hover {
-    color: rgb(216, 216, 216);
+    color: dodgerblue;
 }
 
 .button.round i {

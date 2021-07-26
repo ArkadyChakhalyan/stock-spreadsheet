@@ -1,5 +1,7 @@
 .popup.window {
     z-index: 1;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     display: flex;
@@ -14,7 +16,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all ease 1s;
 }
 
 
@@ -41,8 +42,7 @@
     background: white;
     border-radius: 6px;
     box-shadow: 0px 2px 5px rgb(77, 77, 77);
-    max-width: 600px;
-    height: 570px;
+    max-height: 570px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -56,42 +56,5 @@
     margin-top: -20px;
     margin-right: -20px;
 }
-
-.popup .head {
-    z-index: 1;
-    position: fixed;
-    background: white;
-    margin-top: -30px;
-    padding-top: 10px;
-    margin-right: -1px;
-    padding-bottom: 15px;
-    height: 58px;
-    width: 602px
-} 
-
-.popup .head .company {
-    font-weight: bold;
-    font-family: 'Roboto', sans-serif;
-    font-size: 13pt;
-}
-
-.popup .head .ticker {
-    margin-top: -29px;
-    font-family: 'Roboto', sans-serif;
-    color: rgb(82, 82, 82);
-    font-size: 9pt;
-}
-
-.popup .head .bar {
-    margin-top: 8px;
-    border-bottom: 1px darkgray solid;
-    width: 600px;
-}
-
-.popup .info {
-    margin-top: 35px;
-    position:relative;
-}
-
 
 
