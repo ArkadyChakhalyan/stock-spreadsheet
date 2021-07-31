@@ -1,0 +1,19 @@
+.allocation.container {
+    border-radius: 4px;
+    width: 1140;
+    background: white;
+    margin-right: 6px;
+    box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    padding: 20px
+}
+
+.allocation.container .chart {
+    width: 830px;
+    height: 570px;
+    
+    margin-right: 20px;
+    border: 1px solid red
+    
+}

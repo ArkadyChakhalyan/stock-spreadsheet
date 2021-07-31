@@ -31,4 +31,5 @@ body {
     font-size: 10.5pt;
     font-family: 'Roboto', sans-serif;
     overflow: overlay;
+    padding-bottom: 45px;
 }

@@ -5,7 +5,7 @@ const DividendsSector = () => {
     return (
         <div className='dividends-sector'>
             <h2>Dividends By Sector</h2>
-            <div className='dividends-sector chart'></div>
+            <div className='chart'></div>
         </div>
     );
 }

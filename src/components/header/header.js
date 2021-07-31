@@ -1,5 +1,5 @@
 import React from 'react';
-import Menu from '../menu';
+import Menu from './menu';
 import { Route } from 'react-router-dom';
 import { HoldingsAllocation, HoldingsDividends, HoldingsGains } from '../holdings';
 import './header.css';

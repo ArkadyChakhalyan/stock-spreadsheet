@@ -4,7 +4,7 @@
 }
 
 .dividends.second {
-    margin-top: 5px;
+    margin-top: 25px;
     display: flex;
     margin-right: 6px;
     align-items: flex-start;
@@ -12,6 +12,7 @@
 }
 
 .dividends > h2 {
-    font-size: 20pt;
+    font-size: 18pt;
     margin-bottom: 10px;
+    margin-top: -5px;
 }

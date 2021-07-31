@@ -10,7 +10,7 @@
 .stock.info .chart {
     height: 160px;
     width: 550px;
-    background: green;
+    border: 1px solid red
 }
 
 .stock.info .valuation td+td {
@@ -43,7 +43,7 @@
 .stock.info .sales.profits {
     height: 220px;
     width: 550px;
-    background: green;
+    border: 1px solid red;
     margin-bottom: 15px;
 }
 

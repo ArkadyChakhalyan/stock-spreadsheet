@@ -15,7 +15,7 @@ const Table = ({ onClick, width, collumns, data, bottom, sort }) => {
         });
     }
 
-    let sortedData = [...data];
+    let sortedData = [...data]
 
     const [view, setView] = useState(data);
 

@@ -15,7 +15,6 @@ const App = () => {
           <Route path='/dividends/' component={Dividends} />
           <Route path='/allocation/' component={Allocation} />
         </div>
-        
       </div>
   )
 }
