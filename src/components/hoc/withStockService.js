@@ -4,8 +4,7 @@ import { StockServiceConsumer } from '../stock-service-context/stock-service-con
 
 const withStockService = () => (Wrapped) => {
 
-    return (props) => {
-        
+    const Service = (props) => {  
         return (
             <StockServiceConsumer>
                 {
@@ -16,6 +15,8 @@ const withStockService = () => (Wrapped) => {
             </StockServiceConsumer>
         );
     }
+
+    return Service;
 };
 
 export default withStockService;

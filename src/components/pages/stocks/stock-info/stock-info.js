@@ -10,20 +10,24 @@ import './stock-info.css';
 const StockInfo = ({ onDeleteStock, stock, deleteStock, editStock }) => {
 
     const onClose = () => {
+        setErrorPrice(false);
+        setErrorShares(false);
+        setPriceInputValue(stock.avarageCost);
+        setSharesInputValue(stock.shares);
         setPopupOn(false);
     }
 
-    const [priceValue, setPriceValue] = useState('');
-    const [sharesValue, setSharesValue] = useState('');
+    const [priceValue, setPriceValue] = useState(stock.avarageCost);
+    const [sharesValue, setSharesValue] = useState(stock.shares);
 
     const onSubmit = () => {
-
-        if (priceValue === '' || sharesValue === '') {
-            alert('We need you to fill up all the fields before adding new holding to your list!');
+        
+        if (priceValue === '' || sharesValue === '' || errorShares || errorPrice) {
+            alert('We need you to fill up all the fields correctly!');
             return;
         }
-        stock.avarageCost = priceValue
-        stock.shares = sharesValue;
+        stock.avarageCost = Math.round(priceValue * 100) / 100;
+        stock.shares = Math.round(sharesValue * 100) / 100;
 
         editStock(stock)
 
@@ -37,6 +41,10 @@ const StockInfo = ({ onDeleteStock, stock, deleteStock, editStock }) => {
         onDeleteStock();
     }
 
+    const onKeyPress = (e) => {
+        if (e.code === 'Enter') onSubmit();
+    }
+
     const head = (
         <div className='edit stock head'>
             <p className='edit stock company'>{stock.longName}</p>
@@ -48,6 +56,28 @@ const StockInfo = ({ onDeleteStock, stock, deleteStock, editStock }) => {
 
     const [priceInputValue, setPriceInputValue] = useState(stock.avarageCost);
     const [sharesInputValue, setSharesInputValue] = useState(stock.shares);
+    const [inputPriceValue, setInputPriceValue] = useState('');
+    const [inputSharesValue, setInputSharesValue] = useState('');
+    const [errorPrice, setErrorPrice] = useState(false);
+    const [errorShares, setErrorShares] = useState(false);
+
+    const onBlurPrice = () => {
+        let rgx = /^[0-9]*\.?[0-9]*$/;
+        if (!inputPriceValue.match(rgx)) setErrorPrice(true)
+    }
+
+    const onFocusPrice = () => {
+        if (errorPrice) setErrorPrice(false)
+    }
+
+    const onBlurShares = () => {
+        let rgx = /^[0-9]*\.?[0-9]*$/;
+        if (!inputSharesValue.match(rgx) || '') setErrorShares(true)
+    }
+
+    const onFocusShares = () => {
+        if (errorShares) setErrorShares(false)
+    }
 
     const inside = (
         <div>
@@ -56,22 +86,28 @@ const StockInfo = ({ onDeleteStock, stock, deleteStock, editStock }) => {
                     label={'Price'}
                     value={priceInputValue}
                     width={'250'}
-                    onChange={e => {
-                        let rgx = /^[0-9]*\.?[0-9]*$/;
-                        if (!e.target.value.match(rgx)) e.target.value = '';
-                        setPriceInputValue(e.target.value)
-                        setPriceValue(e.target.value)
-                    }} />
+                    onChange={e => {     
+                        setPriceInputValue(e.target.value)               
+                        setInputPriceValue(e.target.value)
+                        setPriceValue(e.target.value);
+                    }}
+                    onBlur={onBlurPrice}
+                    onFocus={onFocusPrice}
+                    error={errorPrice}
+                    errorMessage={'Something went wrong'} />
                 <Input
                     label={'Shares'}
                     value={sharesInputValue}
                     width={'250'}
                     onChange={e => {
-                        let rgx = /^[0-9]*\.?[0-9]*$/;
-                        if (!e.target.value.match(rgx)) e.target.value = '';
-                        setSharesInputValue(e.target.value)
-                        setSharesValue(e.target.value)
-                    }} />
+                        setSharesInputValue(e.target.value) 
+                        setInputSharesValue(e.target.value)
+                        setSharesValue(e.target.value);
+                    }}
+                    onBlur={onBlurShares}
+                    onFocus={onFocusShares}
+                    error={errorShares}
+                    errorMessage={'Something went wrong'} />
             </div>
             <div className='edit stock submit'>
                 <Button onClick={onSubmit} width={'262'}>submit</Button>
@@ -80,7 +116,7 @@ const StockInfo = ({ onDeleteStock, stock, deleteStock, editStock }) => {
     );
 
     const [popupOn, setPopupOn] = useState(false);
-    const popup = popupOn ? <Popup onClose={onClose} inside={inside} head={head} /> : null;
+    const popup = popupOn ? <Popup onClose={onClose} inside={inside} head={head} onKeyPress={onKeyPress} /> : null;
 
     const onClick = () => {
         setPopupOn(true);
@@ -92,7 +128,7 @@ const StockInfo = ({ onDeleteStock, stock, deleteStock, editStock }) => {
                 <div className='inside'>
                     {popup}
                     <h2>Your<br />Holdings</h2>
-                    <span className='data'><p className='text'>Market Value</p><p className='number'>${stock.avarageCost * stock.shares}</p></span>
+                    <span className='data'><p className='text'>Market Value</p><p className='number'>${Math.round((stock.avarageCost * stock.shares) * 100) / 100}</p></span>
                     <span className='data'><p className='text'>Shares</p><p className='number'>{stock.shares}</p></span>
                     <span className='data'><p className='text'>Avarage Cost</p><p className='number'>${stock.avarageCost}</p></span>
                 </div>

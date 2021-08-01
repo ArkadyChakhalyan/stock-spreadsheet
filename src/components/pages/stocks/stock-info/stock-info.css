@@ -119,7 +119,6 @@
     padding-top: 10px;
     margin-right: -1px;
     padding-bottom: 15px;
-    height: 58px;
     width: 260px;
  } 
  
@@ -137,7 +136,7 @@
  }
  
  .edit.stock.head .bar {
-    margin-top: 8px;
+    margin-top: 15px;
     width: 260px;
     border-bottom: 1px darkgray solid;
  }

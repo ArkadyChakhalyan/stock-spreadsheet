@@ -13,6 +13,8 @@ import { connect } from 'react-redux';
 const Stocks = ({ stockService, tableData, addStock }) => {
 
     const onClose = () => {
+        setErrorPrice(false);
+        setErrorShares(false);
         setPopupOn(false);
     }
 
@@ -28,6 +30,8 @@ const Stocks = ({ stockService, tableData, addStock }) => {
     }
 
     const onCloseNew = () => {
+        setErrorPrice(false);
+        setErrorShares(false)
         setPopupNewOn(false);
     }
 
@@ -37,16 +41,16 @@ const Stocks = ({ stockService, tableData, addStock }) => {
 
     const onSubmitNew = () => {
 
-        if (tickerValue === '' || priceValue === '' || sharesValue === '') {
-            alert('We need you to fill up all the fields before adding new holding to your list!');
+        if (tickerValue === '' || priceValue === '' || sharesValue === '' || errorShares || errorPrice) {
+            alert('We need you to fill up all the fields correctly!');
             return;
         }
 
         const newStock = stockService.getStock(tickerValue.toUpperCase())
 
         if (newStock) {
-            newStock.avarageCost = priceValue;
-            newStock.shares = sharesValue;
+            newStock.avarageCost = Math.round(priceValue * 100) /100;
+            newStock.shares = Math.round(sharesValue * 100) /100;
             addStock(newStock);
         } 
 
@@ -63,6 +67,29 @@ const Stocks = ({ stockService, tableData, addStock }) => {
             </div>
         );
 
+        const [inputPriceValue, setInputPriceValue] = useState('');
+        const [inputSharesValue, setInputSharesValue] = useState('');
+        const [errorPrice, setErrorPrice] = useState(false);
+        const [errorShares, setErrorShares] = useState(false);
+
+        const onBlurPrice = () => {
+            let rgx = /^[0-9]*\.?[0-9]*$/;
+            if (!inputPriceValue.match(rgx)) setErrorPrice(true)
+        }
+
+        const onFocusPrice = () => {
+            if (errorPrice) setErrorPrice(false)
+        }
+
+        const onBlurShares = () => {
+            let rgx = /^[0-9]*\.?[0-9]*$/;
+            if (!inputSharesValue.match(rgx) || '') setErrorShares(true)
+        }
+
+        const onFocusShares = () => {
+            if (errorShares) setErrorShares(false)
+        }
+
         const inside = (
             <div>
                 <form className='edit stock info' style={{ marginTop: '70px' }}>
@@ -73,19 +100,25 @@ const Stocks = ({ stockService, tableData, addStock }) => {
                     <Input
                         label={'Price'}
                         width={'250'}
-                        onChange={e => {
-                            let rgx = /^[0-9]*\.?[0-9]*$/;
-                            if (!e.target.value.match(rgx)) e.target.value = '';
-                            setPriceValue(e.target.value)
-                        }} />
+                        onChange={e => {                    
+                            setInputPriceValue(e.target.value)
+                            setPriceValue(e.target.value);
+                        }}
+                        onBlur={onBlurPrice}
+                        onFocus={onFocusPrice}
+                        error={errorPrice}
+                        errorMessage={'Something went wrong'} />
                     <Input
                         label={'Shares'}
                         width={'250'}
                         onChange={e => {
-                            let rgx = /^[0-9]*\.?[0-9]*$/;
-                            if (!e.target.value.match(rgx)) e.target.value = '';
-                            setSharesValue(e.target.value)
-                        }} />
+                            setInputSharesValue(e.target.value)
+                            setSharesValue(e.target.value);
+                        }}
+                        onBlur={onBlurShares}
+                        onFocus={onFocusShares}
+                        error={errorShares}
+                        errorMessage={'Something went wrong'} />
                 </form>
                 <div className='edit stock submit'>
                     <Button onClick={onSubmitNew} width={'262'}>add</Button>
@@ -93,8 +126,12 @@ const Stocks = ({ stockService, tableData, addStock }) => {
             </div>
         );
 
+        const onKeyPress = (e) => {
+            if (e.code === 'Enter') onSubmitNew();
+        }
+
         const [popupNewOn, setPopupNewOn] = useState(false);
-        const popupNew = popupNewOn ? <Popup onClose={onCloseNew} head={head} inside={inside} /> : null;
+        const popupNew = popupNewOn ? <Popup onClose={onCloseNew} head={head} inside={inside} onKeyPress={onKeyPress}/> : null;
 
         const onClickNew = () => {
             setPopupNewOn(true);

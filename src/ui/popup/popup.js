@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '../button';
 import './popup.css';
 
-const Popup = ({ onClose, head, inside }) => {
+const Popup = ({ onClose, head, inside, onKeyPress }) => {
 
     document.body.style.overflow = 'hidden';
     
@@ -12,7 +12,7 @@ const Popup = ({ onClose, head, inside }) => {
     } 
 
     return (
-        <div className='popup window' onClick={close} >
+        <div className='popup window' onClick={close} onKeyPress={onKeyPress} >
             <div className='rest'>
             </div>
             <div className='bg' onClick={e => { e.stopPropagation() }}>
