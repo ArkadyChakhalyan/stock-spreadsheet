@@ -1,6 +1,5 @@
-export default class StockService {
-
-    aapl = {
+const data = {
+    aapl: {
         symbol: 'APPL',
         longName: 'Apple Inc.',
         currentPrice: '210.86',
@@ -22,9 +21,9 @@ export default class StockService {
             2: { date: 2019, earnings: 23475000, revenue: 44667000 },
             3: { date: 2020, earnings: 65730000, revenue: 116896000 }
         }
-    };
+    },
 
-    iipr = {
+    iipr: {
         symbol: 'IIPR',
         longName: 'Innovative Industrial Properties, Inc.',
         currentPrice: '210.86',
@@ -46,9 +45,9 @@ export default class StockService {
             2: { date: 2019, earnings: 23475000, revenue: 44667000 },
             3: { date: 2020, earnings: 65730000, revenue: 116896000 }
         }
-    };
+    },
 
-    abt = {
+    abt: {
         symbol: 'ABT',
         longName: 'Abbott Laborotories',
         currentPrice: '210.86',
@@ -70,16 +69,18 @@ export default class StockService {
             2: { date: 2019, earnings: 23475000, revenue: 44667000 },
             3: { date: 2020, earnings: 65730000, revenue: 116896000 }
         }
-    };
+    },
+}
+
+export default class StockService {
 
     getStock(ticker) {
-        if (ticker === 'AAPL') return this.aapl;
-        else if (ticker === 'IIPR') return this.iipr;
-        else if (ticker === "ABT") return this.abt;
-        else {
-            alert(`Unfortunatly, we coudn't find ${ticker} stock-ticker! Check if everything is correct and try again, please.`);
-            return null
-        }
+        return data[ticker.toLowerCase()];
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve(data[ticker.toLowerCase()]);
+            }, 100)
+        });
     }
 }
 
