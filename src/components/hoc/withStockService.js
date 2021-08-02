@@ -1,8 +1,8 @@
 import React from 'react';
-import { StockServiceConsumer } from '../stock-service-context/stock-service-context';
+import { StockServiceConsumer } from '../../stock-service-context/stock-service-context';
 
 
-const withStockService = () => (Wrapped) => {
+export const withStockService = () => (Wrapped) => {
 
     const Service = (props) => {  
         return (
@@ -18,5 +18,3 @@ const withStockService = () => (Wrapped) => {
 
     return Service;
 };
-
-export default withStockService;

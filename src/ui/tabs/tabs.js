@@ -2,7 +2,14 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './tabs.css';
 
-const Tabs = ({ options, small }) => {
+/**
+ * tabs
+ * @param {string[]} options - tabs
+ * @param {boolean} small - creates small version
+ * @returns {ReactElement} tabs component
+ */
+
+export const Tabs = ({ options, small }) => {
 
     let className = 'tab single ';
     let barClassName = 'bar ';
@@ -49,7 +56,5 @@ const Tabs = ({ options, small }) => {
         </div>
     );
 };
-
-export default Tabs;
 
 

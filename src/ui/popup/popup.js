@@ -1,8 +1,17 @@
 import React from 'react';
-import Button from '../button';
+import { Button } from '../';
 import './popup.css';
 
-const Popup = ({ onClose, head, inside, onKeyPress }) => {
+/**
+ * popup
+ * @param {function} onClose - event for closing a popup by click
+ * @param {function} onKeyPress - event on key press
+ * @param {ReactElement} head - header component of a popup
+ * @param {ReactElement} inside - body component of a popup
+ * @returns {ReactElement} popup component
+ */
+
+export const Popup = ({ onClose, head, inside, onKeyPress }) => {
 
     document.body.style.overflow = 'hidden';
     
@@ -28,5 +37,3 @@ const Popup = ({ onClose, head, inside, onKeyPress }) => {
 
     );
 }
-
-export default Popup;

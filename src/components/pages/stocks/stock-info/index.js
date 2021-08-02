@@ -1,3 +1,3 @@
-import StockInfo from "./stock-info";
+import { StockInfo } from "./stock-info";
 
-export default StockInfo;
+export { StockInfo };

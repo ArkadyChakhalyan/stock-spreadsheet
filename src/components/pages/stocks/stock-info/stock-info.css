@@ -113,12 +113,12 @@
 
 .edit.stock.head {
     z-index: 1;
-    position: fixed;
+    position: absolute;
     background: white;
     margin-top: -30px;
     padding-top: 10px;
     margin-right: -1px;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
     width: 260px;
  } 
  
@@ -136,21 +136,25 @@
  }
  
  .edit.stock.head .bar {
-    margin-top: 15px;
-    width: 260px;
+    position: relative;
+    margin-top: -50px;
+    width: 255px;
     border-bottom: 1px darkgray solid;
  }
  
  .edit.stock.info {
-    margin-top: 0px;
+    margin-top: 10px;
     margin-left:  auto;
     margin-right: auto;
-    width: 260px;
+    width: 265px;
     display: flex;
-    align-items: flex-end;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
  }
 
  .edit.stock.info input {
-     margin-bottom: 10px;
+    margin-bottom: 10px;
+ }
+
+ .edit.stock.submit {
+    margin-left: 4px;
  }

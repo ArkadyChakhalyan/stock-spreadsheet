@@ -1,10 +1,8 @@
 import React from 'react';
-import Button from '../../../../ui/button';
-import Input from '../../../../ui/input';
-import Popup from '../../../../ui/popup';
+import { Button, Input, Popup } from '../../../../ui/';
 import './dividend-popup.css';
 
-const DividendPopup = ({ onClose }) => {
+export const DividendPopup = ({ onClose }) => {
 
     const onSubmit = () => {
         document.body.style.overflow = 'overlay';
@@ -35,5 +33,3 @@ const DividendPopup = ({ onClose }) => {
         <Popup onClose={onClose} head={head} inside={inside} />
     );
 }
-
-export default DividendPopup;

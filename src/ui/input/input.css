@@ -52,11 +52,13 @@ input:valid ~ .label {
 input:focus {
     border-bottom: 2px solid dodgerblue;
     background: rgb(231, 231, 231);
+    padding-top: 8px;
 }
 
 input:valid {
     border-bottom: 2px solid dodgerblue;
     background: rgb(231, 231, 231);
+    padding-top: 8px;
 }
 
 input:hover {
@@ -71,11 +73,13 @@ input::-webkit-inner-spin-button {
 input:focus.error {
     border-bottom: 2px solid #D2222D;
     background: rgb(231, 231, 231);
+    padding-top: 8px;
 }
 
 input:valid.error {
     border-bottom: 2px solid #D2222D;
     background: rgb(231, 231, 231);
+    padding-top: 8px;
 }
 
 .label.error {
@@ -96,6 +100,10 @@ input:valid ~ .label.error {
     font-size: 8pt;
     margin-top: -8px;
     margin-bottom: 5px;
+}
+
+.empty {
+    height: 10px;
 }
 
 

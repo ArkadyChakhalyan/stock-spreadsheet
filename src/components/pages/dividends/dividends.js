@@ -1,12 +1,11 @@
 import React from 'react';
 import { MiniaturesDividends } from '../../miniatures';
-import DividendsPeriod from './dividends-period';
+import { DividendsPeriod } from './dividends-period';
+import { DividendsRecieved } from './dividends-recieved';
+import { DividendsSector } from './dividends-sector';
 import './dividends.css';
-import DividendsRecieved from './dividends-recieved';
-import DividendsSector from './dividends-sector';
 
-const Dividends = () => {
-
+export const Dividends = () => {
     return (
         <div className='dividends container'>
             <MiniaturesDividends />
@@ -18,5 +17,3 @@ const Dividends = () => {
         </div>
     );
 };
-
-export default Dividends;

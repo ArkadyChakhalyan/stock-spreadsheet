@@ -1,3 +1,3 @@
-import DividendsSector from "./dividends-sector";
+import { DividendsSector } from "./dividends-sector";
 
-export default DividendsSector;
+export { DividendsSector };

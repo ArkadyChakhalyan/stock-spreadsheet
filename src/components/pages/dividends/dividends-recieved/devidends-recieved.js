@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
-import Button from '../../../../ui/button';
-import Table from '../../../../ui/table';
-import DividendPopup from '../dividend-popup';
+import React, { useState } from 'react';
+import { Button, Table } from '../../../../ui/';
+import { DividendPopup } from '../dividend-popup';
 import './dividends-recieved.css';
 
-const DividendsRecieved = () => {
+export const DividendsRecieved = () => {
 
     const onClose = () => {
         setPopupOn(false);
@@ -18,7 +17,7 @@ const DividendsRecieved = () => {
     }
 
     return (
-        
+
         <div className='dividends recieved'>
             {popup}
             <h2>2021</h2>
@@ -35,5 +34,3 @@ const DividendsRecieved = () => {
         </div>
     )
 }
-
-export default DividendsRecieved;

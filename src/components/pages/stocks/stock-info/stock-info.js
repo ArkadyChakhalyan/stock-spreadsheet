@@ -1,13 +1,11 @@
-import Input from '../../../../ui/input';
 import React, { useState } from 'react';
-import Button from '../../../../ui/button';
-import Popup from '../../../../ui/popup';
+import { Popup, Button, Input } from '../../../../ui/';
 import { connect } from 'react-redux';
-import compose from '../../../../utils';
 import { deleteStock, editStock } from '../../../../actions';
 import './stock-info.css';
+import { compose } from '../../../../utils';
 
-const StockInfo = ({ onDeleteStock, stock, deleteStock, editStock }) => {
+const ComponentStockInfo = ({ onDeleteStock, stock, deleteStock, editStock }) => {
 
     const onClose = () => {
         setErrorPrice(false);
@@ -21,7 +19,7 @@ const StockInfo = ({ onDeleteStock, stock, deleteStock, editStock }) => {
     const [sharesValue, setSharesValue] = useState(stock.shares);
 
     const onSubmit = () => {
-        
+
         if (priceValue === '' || sharesValue === '' || errorShares || errorPrice) {
             alert('We need you to fill up all the fields correctly!');
             return;
@@ -85,9 +83,9 @@ const StockInfo = ({ onDeleteStock, stock, deleteStock, editStock }) => {
                 <Input
                     label={'Price'}
                     value={priceInputValue}
-                    width={'250'}
-                    onChange={e => {     
-                        setPriceInputValue(e.target.value)               
+                    width={'245'}
+                    onChange={e => {
+                        setPriceInputValue(e.target.value)
                         setInputPriceValue(e.target.value)
                         setPriceValue(e.target.value);
                     }}
@@ -98,9 +96,9 @@ const StockInfo = ({ onDeleteStock, stock, deleteStock, editStock }) => {
                 <Input
                     label={'Shares'}
                     value={sharesInputValue}
-                    width={'250'}
+                    width={'245'}
                     onChange={e => {
-                        setSharesInputValue(e.target.value) 
+                        setSharesInputValue(e.target.value)
                         setInputSharesValue(e.target.value)
                         setSharesValue(e.target.value);
                     }}
@@ -110,7 +108,7 @@ const StockInfo = ({ onDeleteStock, stock, deleteStock, editStock }) => {
                     errorMessage={'Something went wrong'} />
             </div>
             <div className='edit stock submit'>
-                <Button onClick={onSubmit} width={'262'}>submit</Button>
+                <Button onClick={onSubmit} width={'257'}>submit</Button>
             </div>
         </div>
     );
@@ -128,9 +126,9 @@ const StockInfo = ({ onDeleteStock, stock, deleteStock, editStock }) => {
                 <div className='inside'>
                     {popup}
                     <h2>Your<br />Holdings</h2>
-                    <span className='data'><p className='text'>Market Value</p><p className='number'>${Math.round((stock.avarageCost * stock.shares) * 100) / 100}</p></span>
-                    <span className='data'><p className='text'>Shares</p><p className='number'>{stock.shares}</p></span>
                     <span className='data'><p className='text'>Avarage Cost</p><p className='number'>${stock.avarageCost}</p></span>
+                    <span className='data'><p className='text'>Shares</p><p className='number'>{stock.shares}</p></span>
+                    <span className='data'><p className='text'>Total Gains</p><p className='number'>{Math.round(((stock.currentPrice - stock.avarageCost) * stock.shares) * 100) / 100} ({Math.round(((stock.currentPrice - stock.avarageCost) / stock.avarageCost) * 100 * 100) / 100}%)</p></span>
                 </div>
                 <div className='buttons'>
                     <Button width={'92'} icon={'fas fa-pen fa-sm'} onClick={onClick}>Edit</Button>
@@ -190,6 +188,10 @@ const StockInfo = ({ onDeleteStock, stock, deleteStock, editStock }) => {
 
 const mapDispatchToProps = { deleteStock, editStock }
 
-export default compose(
-    connect(null, mapDispatchToProps)
-)(StockInfo);
+export const StockInfo = (
+    compose(
+        connect(null, mapDispatchToProps)
+    )(ComponentStockInfo)
+);
+
+

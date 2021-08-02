@@ -1,8 +1,9 @@
 import React from 'react';
-import Tabs from '../../../ui/tabs';
+import { Tabs } from '../../../ui';
+
 import './menu.css';
 
-const Menu = () => {
+export const Menu = () => {
     return (
         <div className='menu'>
             <Tabs options={['stocks', 'dividends', 'allocation']} />
@@ -10,4 +11,3 @@ const Menu = () => {
     );
 };
 
-export default Menu;

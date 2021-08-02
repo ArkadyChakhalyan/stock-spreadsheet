@@ -1,3 +1,3 @@
-import DividendsRecieved from "./devidends-recieved";
+import { DividendsRecieved } from "./devidends-recieved";
 
-export default DividendsRecieved;
+export { DividendsRecieved };

@@ -1,10 +1,16 @@
 import React from 'react';
 import './table.css';
+
 /**
- * 
- * @param {Object} props 
- * @returns 
+ * table
+ * @param {function} onClick - event on tr by click
+ * @param {(string|number)} width - width of a table
+ * @param {string[]} collumns - table head collumns
+ * @param {array[string[]]} data - table data, where one raw is an array
+ * @param {string[]} bottom - table foot
+ * @returns {ReactElement} table component
  */
+
  export const Table = ({ onClick, width, collumns, data, bottom }) => {
 
     const head = collumns.map((item, index) => {

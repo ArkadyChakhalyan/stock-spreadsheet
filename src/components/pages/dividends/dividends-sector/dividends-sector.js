@@ -1,7 +1,7 @@
 import React from 'react';
 import './dividends-sector.css';
 
-const DividendsSector = () => {
+export const DividendsSector = () => {
     return (
         <div className='dividends-sector'>
             <h2>Dividends By Sector</h2>
@@ -9,5 +9,3 @@ const DividendsSector = () => {
         </div>
     );
 }
-
-export default DividendsSector;

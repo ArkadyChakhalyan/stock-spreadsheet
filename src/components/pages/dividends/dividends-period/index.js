@@ -1,3 +1,3 @@
-import DividendsPeriod from "./dividends-period";
+import { DividendsPeriod } from "./dividends-period";
 
-export default DividendsPeriod;
+export { DividendsPeriod };

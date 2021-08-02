@@ -1,10 +1,10 @@
 import React from 'react';
-import Menu from './menu';
+import { Menu } from './menu';
 import { Route } from 'react-router-dom';
 import { HoldingsAllocation, HoldingsDividends, HoldingsGains } from '../holdings';
 import './header.css';
 
-const Header = () => {
+export const Header = () => {
     return (
         <div className='header'>
             <div className='name'>
@@ -18,5 +18,3 @@ const Header = () => {
         </div>
     )
 }
-
-export default Header;

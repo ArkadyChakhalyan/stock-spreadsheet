@@ -1,3 +1,3 @@
-import StockPopup from "./stock-popup";
+import { StockPopup } from "./stock-popup";
 
-export default StockPopup;
+export { StockPopup };

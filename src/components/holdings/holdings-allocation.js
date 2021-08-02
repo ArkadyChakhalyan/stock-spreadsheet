@@ -1,7 +1,7 @@
 import React from 'react';
 import './holdings.css';
 
-const HoldingsAllocation = () => {
+export const HoldingsAllocation = () => {
     return (
         <div className='holdings info'>
             <div className='holdings container left'>
@@ -23,5 +23,3 @@ const HoldingsAllocation = () => {
         </div>
     );
 };
-
-export default HoldingsAllocation;

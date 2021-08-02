@@ -1,3 +1,3 @@
-import DividendPopup from "./dividend-popup";
+import { DividendPopup } from "./dividend-popup";
 
-export default DividendPopup;
+export { DividendPopup };

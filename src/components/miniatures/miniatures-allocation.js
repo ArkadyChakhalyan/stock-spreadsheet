@@ -1,8 +1,7 @@
 import React from 'react';
-import StockMiniature from '../../ui/stock-miniature';
-import './miniatures.css';
+import { StockMiniature } from '../../ui';
 
-const MiniaturesAllocation = () => {
+export const MiniaturesAllocation = () => {
     return (
         <div>
             <h2>top holdings</h2>
@@ -17,5 +16,3 @@ const MiniaturesAllocation = () => {
         </div>
     );
 };
-
-export default MiniaturesAllocation;

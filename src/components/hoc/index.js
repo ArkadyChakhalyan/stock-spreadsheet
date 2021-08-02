@@ -1,4 +1,4 @@
-import withStockService from "./withStockService";
+import { withStockService } from "./withStockService";
 
 export {
     withStockService
