@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './button.css';
 
 /**
@@ -28,4 +29,16 @@ export const Button = ({ type, icon, width, onClick, children, color }) => {
       {text}
     </button>
   );
+}
+
+Button.propTypes = {
+  type: PropTypes.bool,
+  icon: PropTypes.string,
+  width: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
+  onClick: PropTypes.func,
+  children: PropTypes.string,
+  color: PropTypes.string,
 }

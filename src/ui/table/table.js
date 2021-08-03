@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './table.css';
 
 /**
@@ -50,4 +51,18 @@ import './table.css';
         </table>
     );
 };
+
+Table.propTypes = {
+    onClick: PropTypes.func,
+    width: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number
+      ]),
+    collumns: PropTypes.arrayOf(PropTypes.string),
+    data: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number
+      ]))),
+    bottom: PropTypes.arrayOf(PropTypes.string)
+}
 

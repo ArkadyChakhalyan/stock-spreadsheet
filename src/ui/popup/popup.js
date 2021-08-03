@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from '../';
+import PropTypes from 'prop-types';
 import './popup.css';
 
 /**
@@ -36,4 +37,11 @@ export const Popup = ({ onClose, head, inside, onKeyPress }) => {
         </div>
 
     );
+}
+
+Popup.propTypes = {
+    onClose: PropTypes.func,
+    onKeyPress: PropTypes.func,
+    head: PropTypes.element,
+    inside: PropTypes.element,
 }

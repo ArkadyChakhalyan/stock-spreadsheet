@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './tabs.css';
 
 /**
@@ -56,5 +57,10 @@ export const Tabs = ({ options, small }) => {
         </div>
     );
 };
+
+Tabs.propTypes = {
+    options: PropTypes.arrayOf(PropTypes.string),
+    small: PropTypes.bool
+}
 
 

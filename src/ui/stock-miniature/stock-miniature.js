@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './stockMiniature.css';
 
 /**
@@ -6,8 +7,8 @@ import './stockMiniature.css';
  * @param {number} gain - positive number colors background in green, negative - in red
  * @param {string} ticker - stock's ticker
  * @param {string} company - stock's full company name
- * @param {string} number - absolute number
- * @param {string} percent - percentage
+ * @param {(string|number)} number - absolute number
+ * @param {(string|number)} percent - percentage
  * @returns {ReactElement} stock miniature component
  */
 
@@ -30,4 +31,18 @@ export const StockMiniature = ({ gain, ticker, company, number, percent }) => {
             </div >
         </div>
     );
+}
+
+StockMiniature.propTypes = {
+    gain: PropTypes.number,
+    ticker: PropTypes.string,
+    company: PropTypes.string,
+    number: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number
+      ]),
+    percent: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number
+      ]),
 }

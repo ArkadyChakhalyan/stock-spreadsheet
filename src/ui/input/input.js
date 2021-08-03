@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './input.css';
 
 /**
@@ -34,3 +35,20 @@ export const Input = ({ label, value, width, onChange, onFocus, onBlur, error, e
         </div>
     );
 };
+
+Input.propTypes = {
+    error: PropTypes.bool,
+    label: PropTypes.string,
+    value: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number
+      ]),
+    width: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number
+      ]),
+    onChange: PropTypes.func,
+    onFocus: PropTypes.func,
+    onBlur: PropTypes.func,
+    errorMessage: PropTypes.string,
+  }
