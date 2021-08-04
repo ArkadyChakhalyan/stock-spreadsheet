@@ -1,13 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import './holdings.css';
+
+/**
+ * Holdings Gains.
+ * @returns {Element} HoldingsGains component.
+ */
 
 const ComponentHoldingsGains = ({ totalGains, totalValue }) => {
 
-    let percentage;
+    let percentage = ' (0%)';
     if (totalGains) percentage = totalGains > 0 ? `(+${Math.round((totalGains / totalValue) * 100 * 100) / 100}%)` : `(${Math.round((totalGains / totalValue) * 100 * 100) / 100}%)`
     
-    let number;
+    let number ='$0';
     if (totalGains) number = totalGains > 0 ? `+${totalGains}` : totalGains
 
     return (
@@ -40,5 +46,10 @@ const mapStateToProps = ({ totalGains, totalValue }) => {
 }
 
 export const HoldingsGains = connect(mapStateToProps, null)(ComponentHoldingsGains);
+
+ComponentHoldingsGains.propTypes = {
+    totalGains: PropTypes.number,
+    totalValue: PropTypes.number
+}
 
 

@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import './stockMiniature.css';
 
 /**
- * stock miniature
- * @param {number} gain - positive number colors background in green, negative - in red
- * @param {string} ticker - stock's ticker
- * @param {string} company - stock's full company name
- * @param {(string|number)} number - absolute number
- * @param {(string|number)} percent - percentage
- * @returns {ReactElement} stock miniature component
+ * Stock miniature.
+ * @param {number} gain - Positive number colors background in green, negative - in red.
+ * @param {string} ticker - Stock's ticker.
+ * @param {string} company - Stock's full company name.
+ * @param {(string|number)} number - Absolute number.
+ * @param {(string|number)} percent - Percentage.
+ * @returns {Element} Stock miniature component.
  */
 
 export const StockMiniature = ({ gain, ticker, company, number, percent }) => {

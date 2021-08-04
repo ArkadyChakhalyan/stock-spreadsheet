@@ -1,6 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { StockMiniature } from '../../ui';
+import PropTypes from 'prop-types';
+
+/**
+ * Miniatrues Gains.
+ * @param stocks - Stock list from redux state.
+ * @returns {Element} MiniaturesGains component.
+ */
 
 const ComponentMiniaturesGains = ({ stocks }) => {
     let stocksCopy = [...stocks]
@@ -63,3 +70,7 @@ const mapStateToProps = ({ stocks }) => {
 }
 
 export const MiniaturesGains = connect(mapStateToProps, null)(ComponentMiniaturesGains);
+
+ComponentMiniaturesGains.propTypes = {
+    stocks: PropTypes.array
+}

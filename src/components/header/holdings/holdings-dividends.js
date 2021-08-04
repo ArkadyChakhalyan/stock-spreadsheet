@@ -1,6 +1,11 @@
 import React from 'react';
 import './holdings.css';
 
+/**
+ * Holdings Dividends.
+ * @returns {Element} HoldingsDividends component.
+ */
+
 export const HoldingsDividends = () => {
     return (
         <div className='holdings info'>

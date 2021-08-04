@@ -20,10 +20,10 @@ export const reducer = (state = initialState, action) => {
 };
 
 /**
- * function add (when a new stock has been added to a portfolio)
- * @param {object} state - current state
- * @param {object} action - redux action
- * @returns {object} new state with updated stocks, tableData, totalValue, totalGains
+ * Function add (when a new stock has been added to a portfolio).
+ * @param {object} state - Current state.
+ * @param {object} action - Redux action.
+ * @returns {object} New state with updated stocks, tableData, totalValue, totalGains.
  */
 
 const add = (state, action) => {
@@ -70,10 +70,10 @@ const add = (state, action) => {
 }
 
 /**
- * function edit (when a stock has been edited)
- * @param {object} state - current state
- * @param {object} action - redux action
- * @returns {object} new state with updated stocks, tableData, totalValue, totalGains
+ * Function edit (when a stock has been edited).
+ * @param {object} state - Current state.
+ * @param {object} action - Redux action.
+ * @returns {object} New state with updated stocks, tableData, totalValue, totalGains.
  */
 
 const edit = (state, action) => {
@@ -123,10 +123,10 @@ const edit = (state, action) => {
 }
 
 /**
- * function delete (when a stock has been deleted to a portfolio)
- * @param {object} state - current state
- * @param {object} action - redux action
- * @returns {object} new state with updated stocks, tableData, totalValue, totalGains
+ * Function delete (when a stock has been deleted to a portfolio).
+ * @param {object} state - Current state.
+ * @param {object} action - Redux action.
+ * @returns {object} New state with updated stocks, tableData, totalValue, totalGains.
  */
 
 const deleted = (state, action) => {

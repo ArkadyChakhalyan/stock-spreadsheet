@@ -1,6 +1,12 @@
 import React from 'react';
 import { Button, Input, Popup } from '../../../../ui/';
+import PropTypes from 'prop-types';
 import './dividend-popup.css';
+
+/**
+ * Dividend popup.
+ * @returns {Element} DividendPopup component.
+ */
 
 export const DividendPopup = ({ onClose }) => {
 
@@ -32,4 +38,8 @@ export const DividendPopup = ({ onClose }) => {
     return (
         <Popup onClose={onClose} head={head} inside={inside} />
     );
+}
+
+DividendPopup.propTypes = {
+    onClose: PropTypes.func
 }

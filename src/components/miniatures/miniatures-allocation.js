@@ -1,6 +1,11 @@
 import React from 'react';
 import { StockMiniature } from '../../ui';
 
+/**
+ * Miniatrues Allocation.
+ * @returns {Element} MiniaturesAllocation component.
+ */
+
 export const MiniaturesAllocation = () => {
     return (
         <div>

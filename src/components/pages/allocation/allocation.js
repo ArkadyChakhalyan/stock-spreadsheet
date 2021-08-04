@@ -3,6 +3,11 @@ import { Table } from '../../../ui/';
 import { MiniaturesAllocation } from '../../miniatures';
 import './allocation.css';
 
+/**
+ * Allocation page.
+ * @returns {Element} Allocation component.
+ */
+
 export const Allocation = () => {
     return (
         <div>

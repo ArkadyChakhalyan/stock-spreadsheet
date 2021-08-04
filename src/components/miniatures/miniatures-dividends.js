@@ -1,6 +1,11 @@
 import React from 'react';
 import { StockMiniature } from '../../ui';
 
+/**
+ * Miniatrues Dividends.
+ * @returns {Element} MiniaturesDividends component.
+ */
+
 export const MiniaturesDividends = () => {
     return (
         <div>

@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import './tabs.css';
 
 /**
- * tabs
- * @param {string[]} options - tabs
- * @param {boolean} small - creates small version
- * @returns {ReactElement} tabs component
+ * Tabs.
+ * @param {string[]} options - Tabs.
+ * @param {boolean} small - Creates small version.
+ * @returns {Element} Tabs component.
  */
 
 export const Tabs = ({ options, small }) => {

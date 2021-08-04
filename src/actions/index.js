@@ -1,7 +1,7 @@
 /**
- * function addStock (when a new stock has been added to a portfolio)
- * @param {object} newStock - new stock with all the data from API, amount of shares and cost per share
- * @returns {object} redux action with stock object
+ * Function addStock (when a new stock has been added to a portfolio).
+ * @param {object} newStock - New stock with all the data from API, amount of shares and cost per share.
+ * @returns {object} Redux action with stock object.
  */
 
 const addStock = (newStock) => {
@@ -12,9 +12,9 @@ const addStock = (newStock) => {
 };
 
 /**
- * function editStock (when a stock has been edited)
- * @param {object} editedStock - edited stock with previous data from API and updated information on amount of shares and cost per share
- * @returns {object} redux action with stock object
+ * Function editStock (when a stock has been edited).
+ * @param {object} editedStock - Edited stock with previous data from API and updated information on amount of shares and cost per share.
+ * @returns {object} Redux action with stock object.
  */
 
 const editStock = (editedStock) => {
@@ -25,9 +25,9 @@ const editStock = (editedStock) => {
 };
 
 /**
- * function deleteStock (when a stock has been deleted to a portfolio)
- * @param {object} deletedStockTicker - ticker of a stock that has been deleted
- * @returns {object} redux action with stock ticker
+ * Function deleteStock (when a stock has been deleted to a portfolio).
+ * @param {object} deletedStockTicker - Ticker of a stock that has been deleted.
+ * @returns {object} Redux action with stock ticker.
  */
 
 const deleteStock = (deletedStockTicker) => {

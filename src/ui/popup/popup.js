@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import './popup.css';
 
 /**
- * popup
- * @param {function} onClose - event for closing a popup by click
- * @param {function} onKeyPress - event on key press
- * @param {ReactElement} head - header component of a popup
- * @param {ReactElement} inside - body component of a popup
- * @returns {ReactElement} popup component
+ * Popup.
+ * @param {Function} onClose - Event for closing a popup by click.
+ * @param {Function} onKeyPress - Event on key press.
+ * @param {Element} head - Header component of a popup.
+ * @param {Element} inside - Body component of a popup.
+ * @returns {Element} Popup component.
  */
 
 export const Popup = ({ onClose, head, inside, onKeyPress }) => {
@@ -21,14 +21,21 @@ export const Popup = ({ onClose, head, inside, onKeyPress }) => {
         onClose();
     } 
 
+    let classNameWindow = 'popup window ';
+    let classNamePopup = 'bg ';
+    if (top) {
+        classNameWindow += 'top';
+        classNamePopup += 'top';
+    }
+
     return (
-        <div className='popup window' onClick={close} onKeyPress={onKeyPress} >
+        <div className={classNameWindow} onClick={close} onKeyPress={onKeyPress}>
             <div className='rest'>
             </div>
-            <div className='bg' onClick={e => { e.stopPropagation() }}>
+            <div className={classNamePopup} onClick={e => { e.stopPropagation() }}>
                 {head}
                 <span className='close'>
-                    <Button type='round' onClick={close} icon={'fas fa-times fa-2x'} />
+                    <Button navigation onClick={close} icon={'fas fa-times fa-2x'} />
                 </span>
                 <span className='info'>
                     {inside}

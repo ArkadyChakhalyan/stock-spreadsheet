@@ -1,6 +1,11 @@
 import React from 'react';
 import './holdings.css';
 
+/**
+ * Holdings Allocation.
+ * @returns {Element} HoldingsAllocations component.
+ */
+
 export const HoldingsAllocation = () => {
     return (
         <div className='holdings info'>

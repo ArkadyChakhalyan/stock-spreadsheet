@@ -4,6 +4,11 @@ import { Header } from '../header/'
 import { Stocks, Dividends, Allocation } from '../pages';
 import './app.css';
 
+/**
+ * App.
+ * @returns {Element} App component.
+ */
+
 export const App = () => {
 
   return (

@@ -1,10 +1,18 @@
 import React from 'react';
-import { Popup } from '../../../../ui/';
+import { Popup } from '../../../../ui';
 import { StockInfo } from '../stock-info';
 import { connect } from 'react-redux';
 import { compose } from '../../../../utils';
+import PropTypes from 'prop-types';
 import './stock-popup.css';
 
+/**
+ * Stocks info popup.
+ * @param {Function} onClose - Callback function for closing popup.
+ * @param {string} ticker - Stock list from redux state.
+ * @param {string[]} stocks - Stock list from redux state.
+ * @returns {Element} StockPopup component.
+ */
 
 const ComponentStockPopup = ({ onClose, ticker, stocks }) => {
 
@@ -37,3 +45,9 @@ export const StockPopup = (
         connect(mapStateToProps, null)
     )(ComponentStockPopup)
 );
+
+ComponentStockPopup.propTypes = {
+    onClose: PropTypes.func,
+    ticker: PropTypes.string,
+    stocks: PropTypes.array
+}

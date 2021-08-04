@@ -5,6 +5,11 @@ import { DividendsRecieved } from './dividends-recieved';
 import { DividendsSector } from './dividends-sector';
 import './dividends.css';
 
+/**
+ * Dividends page.
+ * @returns {Element} Dividends component.
+ */
+
 export const Dividends = () => {
     return (
         <div className='dividends container'>

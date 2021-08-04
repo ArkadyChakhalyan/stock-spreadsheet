@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import './table.css';
 
 /**
- * table
- * @param {function} onClick - event on tr by click
- * @param {(string|number)} width - width of a table
- * @param {string[]} collumns - table head collumns
- * @param {array[string[]]} data - table data, where one raw is an array
- * @param {string[]} bottom - table foot
- * @returns {ReactElement} table component
+ * Table.
+ * @param {Function} onClick - Event on tr by click.
+ * @param {(string|number)} width - Width of a table.
+ * @param {string[]} collumns - Table head collumns.
+ * @param {string[]} data - Table data, where one raw is an array.
+ * @param {string[]} bottom - Table foot.
+ * @returns {Element} Table component.
  */
 
  export const Table = ({ onClick, width, collumns, data, bottom }) => {

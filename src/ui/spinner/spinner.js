@@ -2,8 +2,8 @@ import React from 'react';
 import './spinner.css';
 
 /**
- * spinner
- * @returns {ReactElement} spinner component
+ * Spinner.
+ * @returns {Element} Spinner component.
  */
 
 export const Spinner = () => {

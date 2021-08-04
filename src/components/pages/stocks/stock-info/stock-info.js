@@ -2,8 +2,18 @@ import React, { useState } from 'react';
 import { Popup, Button, Input } from '../../../../ui/';
 import { connect } from 'react-redux';
 import { deleteStock, editStock } from '../../../../actions';
-import './stock-info.css';
 import { compose } from '../../../../utils';
+import PropTypes from 'prop-types';
+import './stock-info.css';
+
+/**
+ * Stock's info page inside stock popup.
+ * @param {Function} onDeleteStock - Stock list with necessery data for the table from redux state.
+ * @param {Function} editStock - Redux action for editing stock.
+ * @param {Function} deleteStock - Redux action for deleting stock.
+ * @param {object} stock - Stock data.
+ * @returns {Element} StockInfo component.
+ */
 
 const ComponentStockInfo = ({ onDeleteStock, stock, deleteStock, editStock }) => {
 
@@ -20,14 +30,12 @@ const ComponentStockInfo = ({ onDeleteStock, stock, deleteStock, editStock }) =>
 
     const onSubmit = () => {
 
-        if (priceValue === '' || sharesValue === '' || errorShares || errorPrice) {
-            alert('We need you to fill up all the fields correctly!');
-            return;
-        }
+        if (priceValue === '' || sharesValue === '' || errorShares || errorPrice) return;
+        
         stock.avarageCost = Math.round(priceValue * 100) / 100;
         stock.shares = Math.round(sharesValue * 100) / 100;
 
-        editStock(stock)
+        editStock(stock);
 
         document.body.style.overflow = 'overlay';
         onClose();
@@ -58,21 +66,17 @@ const ComponentStockInfo = ({ onDeleteStock, stock, deleteStock, editStock }) =>
     const [inputSharesValue, setInputSharesValue] = useState('');
     const [errorPrice, setErrorPrice] = useState(false);
     const [errorShares, setErrorShares] = useState(false);
-
     const onBlurPrice = () => {
         let rgx = /^[0-9]*\.?[0-9]*$/;
         if (!inputPriceValue.match(rgx)) setErrorPrice(true)
     }
-
     const onFocusPrice = () => {
         if (errorPrice) setErrorPrice(false)
     }
-
     const onBlurShares = () => {
         let rgx = /^[0-9]*\.?[0-9]*$/;
         if (!inputSharesValue.match(rgx) || '') setErrorShares(true)
     }
-
     const onFocusShares = () => {
         if (errorShares) setErrorShares(false)
     }
@@ -193,5 +197,12 @@ export const StockInfo = (
         connect(null, mapDispatchToProps)
     )(ComponentStockInfo)
 );
+
+ComponentStockInfo.propTypes = {
+    onDeleteStock: PropTypes.func,
+    deleteStock: PropTypes.func,
+    editStock: PropTypes.func,
+    stock: PropTypes.object
+}
 
 

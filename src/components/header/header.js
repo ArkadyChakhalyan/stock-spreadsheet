@@ -1,8 +1,13 @@
 import React from 'react';
 import { Menu } from './menu';
 import { Route } from 'react-router-dom';
-import { HoldingsAllocation, HoldingsDividends, HoldingsGains } from '../holdings';
+import { HoldingsAllocation, HoldingsDividends, HoldingsGains } from './holdings';
 import './header.css';
+
+/**
+ * Header.
+ * @returns {Element} Header component.
+ */
 
 export const Header = () => {
     return (
