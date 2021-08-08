@@ -49,8 +49,8 @@ module.exports = {
         "jsdoc/no-defaults": 1,
         // "jsdoc/no-missing-syntax": 1,
         "jsdoc/no-multi-asterisks": 1, // Recommended
-        "jsdoc/no-restricted-syntax": 1,
-        "jsdoc/no-types": 1,
+        // "jsdoc/no-restricted-syntax": 1,
+        // "jsdoc/no-types": 1,
         "jsdoc/no-undefined-types": 1, // Recommended
         "jsdoc/require-asterisk-prefix": 1,
         "jsdoc/require-description": 1,
