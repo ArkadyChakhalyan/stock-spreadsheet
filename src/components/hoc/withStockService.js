@@ -5,7 +5,6 @@ import { StockServiceConsumer } from '../../stock-service-context/stock-service-
  * WithStocksService.
  * @returns {Element} Element wrapped into stock service.
  */
-
 export const withStockService = () => (Wrapped) => {
 
     const Service = (props) => {  

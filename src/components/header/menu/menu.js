@@ -6,7 +6,6 @@ import './menu.css';
  * Menu.
  * @returns {Element} Menu component.
  */
-
 export const Menu = () => {
     return (
         <div className='menu'>

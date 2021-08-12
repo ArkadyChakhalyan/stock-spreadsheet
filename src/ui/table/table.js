@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './table.css';
+import styles from './table.module.css';
 
 /**
  * Table.
- * @param {Function} onClick - Event on tr by click.
- * @param {(string|number)} width - Width of a table.
- * @param {string[]} collumns - Table head collumns.
- * @param {string[]} data - Table data, where one raw is an array.
- * @param {string[]} bottom - Table foot.
+ * @param {object} props - Props.
+ * @param {Function} props.onClick - Event on tr by click.
+ * @param {(string|number)} props.width - Width of a table.
+ * @param {string[]} props.collumns - Table head collumns.
+ * @param {string[]} props.data - Table data, where one raw is an array.
+ * @param {string[]} props.bottom - Table foot.
  * @returns {Element} Table component.
  */
-
- export const Table = ({ onClick, width, collumns, data, bottom }) => {
+export const Table = ({ onClick, width, collumns, data, bottom }) => {
 
     const head = collumns.map((item, index) => {
         return <th key={index}>{item}</th>
@@ -30,20 +30,20 @@ import './table.css';
         const raw = item.map((item, index) => {
             return <td key={index} >{item}</td>
         })
-        return <tr key={index} onClick={onClick}>{raw}</tr>
+        return <tr key={index} onClick={() => onClick(item[1])}>{raw}</tr>
     });
 
     return (
-        <table className='table' style={{ width: `${width + 'px'}` }}>
+        <table className={styles.table} style={{ width: `${width + 'px'}` }}>
             <thead>
-                <tr className='head'>
+                <tr className={styles.head}>
                     {head}
                 </tr>
             </thead>
             <tbody>
                 {raws}
             </tbody>
-            <tfoot className='foot'>
+            <tfoot className={styles.foot}>
                 <tr>
                     {foot}
                 </tr>
@@ -57,12 +57,12 @@ Table.propTypes = {
     width: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number
-      ]),
+    ]),
     collumns: PropTypes.arrayOf(PropTypes.string),
     data: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number
-      ]))),
+    ]))),
     bottom: PropTypes.arrayOf(PropTypes.string)
 }
 

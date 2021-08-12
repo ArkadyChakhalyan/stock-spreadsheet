@@ -1,0 +1,24 @@
+.container {
+    border-radius: var(--border-radius);
+    width: 1140px;
+    background: var(--color-bg-accent);
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+}
+
+.chart {
+    width: 830px;
+    height: 570px;
+    margin-right: 20px;
+    border: 1px solid red   
+}
+
+.switch {
+    position: absolute;
+    right: 0px;
+    top: 0px
+}
+

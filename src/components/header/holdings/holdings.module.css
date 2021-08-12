@@ -1,0 +1,52 @@
+.container {
+    display: inline-flex;
+    padding-top: 18px;
+}
+
+.container td {
+    width: 160px;
+}
+
+.container .gains {
+    display: inline-flex;
+}
+
+.container p {
+    color: var(--font-color-secondary);
+    font-size: var(--font-size);
+    margin: 0px;
+    white-space: nowrap;
+}
+
+.container .label {
+    font-size: var(--font-size);
+}
+
+.container .total {
+    color: var(--font-color-main);
+    font-size: 19pt;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.container .left{
+    width: 160px;
+}
+
+.container .right {
+    padding-top: 10px;
+    width: 260px;
+    text-align: right;
+}
+
+.container tr:hover {
+    background: transparent;
+    cursor: default;
+}
+
+.container .number {
+    font-weight: bold;
+    font-size: 11pt;
+    color: var(--font-color-main);
+}
+

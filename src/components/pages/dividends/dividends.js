@@ -1,24 +1,42 @@
 import React from 'react';
-import { MiniaturesDividends } from '../../miniatures';
+import { MiniaturesDividends } from '../miniatures';
 import { DividendsPeriod } from './dividends-period';
 import { DividendsRecieved } from './dividends-recieved';
 import { DividendsSector } from './dividends-sector';
-import './dividends.css';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import styles from './dividends.module.css';
 
 /**
  * Dividends page.
+ * @param {object} props - Props.
+ * @param {object[]} props.stocks - Stock list from redux state.
  * @returns {Element} Dividends component.
  */
+export const ComponentDividends = ({stocks}) => {
 
-export const Dividends = () => {
+    const miniatures = stocks.length > 5 ? <MiniaturesDividends /> : <h2 className={styles.miniatures}>dividend activity</h2>;
+
     return (
-        <div className='dividends container'>
-            <MiniaturesDividends />
+        <div className={styles.container1}>
+            {miniatures}
             <DividendsPeriod />
-            <div className='dividends second'>
+            <div className={styles.container2}>
                 <DividendsRecieved />
                 <DividendsSector />
             </div>
         </div>
     );
 };
+
+const mapStateToProps = ({ stocks }) => {
+    return {
+        stocks,
+    };
+}
+
+export const Dividends = connect(mapStateToProps, null)(ComponentDividends);
+
+ComponentDividends.propTypes = {
+    stocks: PropTypes.array
+}

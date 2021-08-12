@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { Button, Table } from '../../../../ui/';
 import { DividendPopup } from '../dividend-popup';
-import './dividends-recieved.css';
+import styles from './dividends-recieved.module.css';
 
 /**
  * Dividends recieved table.
  * @returns {Element} DividendsRecieved component.
  */
-
 export const DividendsRecieved = () => {
 
     const onClose = () => setPopupOn(false);
@@ -17,10 +16,10 @@ export const DividendsRecieved = () => {
 
     return (
 
-        <div className='dividends recieved'>
+        <div className={styles.container}>
             {popup}
             <h2>2021</h2>
-            <div className='dividends arrows'>
+            <div className={styles.arrows}>
                 <Button navigation icon={'fas fa-chevron-left fa-3x'} />
                 <Table
                     width={'350'}

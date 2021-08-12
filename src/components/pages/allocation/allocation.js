@@ -1,24 +1,48 @@
 import React from 'react';
-import { Table } from '../../../ui/';
-import { MiniaturesAllocation } from '../../miniatures';
-import './allocation.css';
+import { Table, Tabs } from '../../../ui/';
+import { MiniaturesAllocation } from '../miniatures';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import styles from './allocation.module.css';
 
 /**
  * Allocation page.
+ * @param {object} props - Props.
+ * @param {object[]} props.stocks - Stock list from redux state.
+ * @param {string[]} props.allocation - Allocation data for table from redux state.
  * @returns {Element} Allocation component.
  */
+export const ComponentAllocation = ({ stocks, allocation }) => {
 
-export const Allocation = () => {
+    const miniatures = stocks.length > 5 ? <MiniaturesAllocation /> : <h2>portfolio allocation</h2>;
+
     return (
         <div>
-            <MiniaturesAllocation />
-            <div className='allocation container'>
-                <div className='chart'></div>
+            {miniatures}
+            <div className={styles.container}>
+                <span className={styles.switch}>
+                    <Tabs options={['sector', 'contry']} small />
+                </span>
+                <div className={styles.chart}></div>
                 <Table
                     width={'280'}
                     collumns={['Sector', 'Allocation']}
-                    data={[['IT', '12%'], ['Communication', '9%'], ['Consumer Defensive', '9%'], ['Consumer Cyclical', '8%'], ['Industrial', '5%'], ['Healthcare', '5%'], ['Financial', '5%'], ['Real Estate', '5%'], ['Energy', '4%'], ['Basic Materials', '2%'], ['Utilities', '1%']]} />
+                    data={allocation} />
             </div>
         </div>
     );
 };
+
+const mapStateToProps = ({ stocks, allocation }) => {
+    return {
+        stocks,
+        allocation
+    };
+}
+
+export const Allocation = connect(mapStateToProps, null)(ComponentAllocation);
+
+ComponentAllocation.propTypes = {
+    stocks: PropTypes.array,
+    allocation: PropTypes.array,
+}

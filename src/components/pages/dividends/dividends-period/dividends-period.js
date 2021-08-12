@@ -1,17 +1,18 @@
 import React from 'react';
 import { Tabs } from '../../../../ui/';
-import './dividends-period.css';
+import styles from './dividends-period.module.css';
 
 /**
  * Dividends by month/year chart.
  * @returns {Element} DividendsPeriod component.
  */
-
 export const DividendsPeriod = () => {
     return (
-        <div className='dividends period container'>
-            <Tabs options={['monthly', 'yearly']} small />
-            <div className='chart'></div>
+        <div className={styles.container}>
+            <span className={styles.switch}>
+                <Tabs options={['monthly', 'yearly']} small />
+            </span>
+            <div className={styles.chart}></div>
         </div>
     );
 }

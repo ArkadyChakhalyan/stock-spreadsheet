@@ -1,33 +1,31 @@
-.group {
+.input {
     position: relative;
 }
 
-.input {
+.field {
     height: 38px;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    background: rgb(235, 235, 235);
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    background: var(--color-secondary-light);
     border: none;
     border-bottom: 1px solid #757575;
     padding-left: 10px;
     padding-top: 9px;
-    padding-bottom: 0px;
     display: block;
     text-transform: uppercase;
     font-weight: bold;
-    font-family: 'Roboto', sans-serif;
-    font-size: 11pt;
+    font-family: var(--font);
+    font-size: var(--font-size);
 }
 
-.input:focus{
+input:focus{
     outline: none;
 }
 
 .label {
-    font-size: 11.5pt;
+    font-size: 11pt;
     text-transform: uppercase;
-    font-family: 'Roboto', sans-serif;
-    color: rgb(138, 138, 138);
+    color: var(--color-secondary-strong);
     position: absolute;
     left: 10px;
     top: 17px;
@@ -38,64 +36,59 @@
 input:focus ~ .label {
     top: 5.1px;
     font-size: 7pt;
-    color: dodgerblue;
+    color: var(--color-accent);
     transition: 0.3s ease all;
 }
 
 input:valid ~ .label {
     top: 5.1px;
     font-size: 7pt;
-    color: dodgerblue;
+    color: var(--color-accent);
     transition: 0.3s ease all;
 }
 
 input:focus {
-    border-bottom: 2px solid dodgerblue;
-    background: rgb(231, 231, 231);
+    border-bottom: 2px solid var(--color-accent);
+    background: rgb(232, 232, 232);
     padding-top: 8px;
 }
 
 input:valid {
-    border-bottom: 2px solid dodgerblue;
-    background: rgb(231, 231, 231);
+    border-bottom: 2px solid var(--color-accent);
+    background: rgb(232, 232, 232);
     padding-top: 8px;
 }
 
 input:hover {
-    background: rgb(231, 231, 231);
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
+    background: rgb(232, 232, 232);
 }
 
 input:focus.error {
-    border-bottom: 2px solid #D2222D;
+    border-bottom: 2px solid var(--color-error);
     background: rgb(231, 231, 231);
     padding-top: 8px;
 }
 
 input:valid.error {
-    border-bottom: 2px solid #D2222D;
+    border-bottom: 2px solid var(--color-error);
     background: rgb(231, 231, 231);
     padding-top: 8px;
 }
 
 .label.error {
-    color:#D2222D
+    color: var(--color-error);
 }
 
 input:focus ~ .label.error {
-    color:#D2222D
+    color: var(--color-error);
 }
 
 input:valid ~ .label.error {
-    color:#D2222D
+    color: var(--color-error);
 }
 
-.error-messsage {
-    color:#D2222D;
+.messsage {
+    color: var(--color-error);
     padding-left: 5px;
     font-size: 8pt;
     margin-top: -8px;

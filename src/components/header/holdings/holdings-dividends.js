@@ -1,30 +1,54 @@
 import React from 'react';
-import './holdings.css';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import styles from './holdings.module.css';
 
 /**
  * Holdings Dividends.
+ * @param {object} props - Props.
+ * @param {number} props.totalValue - Total value of a portfolio from redux state.
+ * @param {number} props.totalGains - Total gains of a portfolio from redux state.
+ * @param {number} props.totalDividends - Total dividends per year from redux state.
  * @returns {Element} HoldingsDividends component.
  */
+const ComponentHoldingsDividends = ({ totalDividends, totalValue, totalGains }) => {
+    const yieldOnCost = totalDividends ? (Math.round((totalDividends / (totalValue - totalGains)) * 10000) / 100 + '%') : '-';
+    const paidPerMonth = totalDividends ? ('$' + Math.round((totalDividends / 12) * 100 )/ 100) : '-';
 
-export const HoldingsDividends = () => {
     return (
-        <div className='holdings info'>
-            <div className='holdings container left'>
-                <span className='holdings'><p className='top-label'>Annual Dividend Income</p>
-                    <p className='holdings total'>$140.40</p></span>
+        <div className={styles.container}>
+            <div className={styles.left}>
+                <span><p className={styles.label}>Annual Dividend Income</p>
+                    <p className={styles.total}>${totalDividends}</p></span>
             </div>
-            <table className='holdings container right'>
+            <table className={styles.right}>
                 <tbody>
-                    <tr className='holdings gains'>
+                    <tr className={styles.gains}>
                         <td><p>Paid per Month</p></td>
-                        <td><p className='holdings number'>$14.24</p></td>
+                        <td><p className={styles.number}>{paidPerMonth}</p></td>
                     </tr>
-                    <tr className='holdings gains'>
+                    <tr className={styles.gains}>
                         <td><p>Yield on Cost</p></td>
-                        <td><p className='holdings number'>3.83%</p></td>
+                        <td><p className={styles.number}>{yieldOnCost}</p></td>
                     </tr>
                 </tbody>
             </table>
         </div>
     );
 };
+
+const mapStateToProps = ({ totalDividends, totalValue, totalGains }) => {
+    return {
+        totalDividends,
+        totalValue,
+        totalGains
+    };
+}
+
+export const HoldingsDividends = connect(mapStateToProps, null)(ComponentHoldingsDividends);
+
+ComponentHoldingsDividends.propTypes = {
+    totalDividends: PropTypes.number,
+    totalValue: PropTypes.number,
+    totalGains: PropTypes.number
+}

@@ -1,0 +1,67 @@
+.head {
+    z-index: 1;
+    position: fixed;
+    background: var(--color-bg-accent);
+    margin-top: -32px;
+    padding-top: 10px;
+    margin-right: -1px;
+    padding-bottom: 16px;
+    height: 54px;
+    width: 602px
+} 
+
+.company {
+    font-weight: bold;
+    font-family: var(--font);
+    font-size: 13pt;
+}
+
+.ticker {
+    margin-top: -28px;
+    font-family: var(--font);
+    color: var(--color-secondary-strong);
+    font-size: 9pt;
+}
+
+.bar {
+    padding-top: 3px;
+    width: 600px;
+    border-bottom: 1px solid var(--color-secondary);;
+}
+
+.inside {
+    margin-top: 70px;
+    position: relative;
+}
+
+.headSmall {
+    z-index: 1;
+    position: absolute;
+    background: var(--color-bg-accent);
+    margin-top: -30px;
+    padding-top: 10px;
+    margin-right: -1px;
+    padding-bottom: 10px;
+    width: 260px;
+} 
+ 
+.barSmall {
+    position: relative;
+    margin-top: 10px;
+    width: 255px;
+    border-bottom: 1px var(--color-secondary) solid;
+}
+ 
+.insideSmall {
+    margin-top: 80px;
+    margin-left:  auto;
+    margin-right: auto;
+    width: 255px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+}
+
+.insideSmall input {
+    margin-bottom: 8px;
+}

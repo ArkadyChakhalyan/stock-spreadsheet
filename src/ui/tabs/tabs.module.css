@@ -1,37 +1,38 @@
 .tab {
     display: inline-flex;
     font-size: 13pt;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font);
     position: relative;
-    color: rgb(143, 143, 143);
+    color: var(--color-secondary);
     text-transform: uppercase;
 }
 
-.tab.single {
+.single {
     justify-content: center;
     padding-top: 16px;
     padding-left: 8px;
     padding-right: 8px;
     padding-bottom: 18px;
     width: 110px;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
+    border-top-right-radius: var(--border-radius);
+    border-top-left-radius: var(--border-radius);
 }
 
-.tab.single.small.active {
-    color: dodgerblue;
-}
 
-.tab.single:hover {
+.single:hover {
     background: rgb(43, 43, 43);
 }
 
-.tab.single.small:hover {
-    background: rgb(245, 245, 245);
+.smalltab:hover {
+    background: var(--color-bg-secondary);
 }
 
-.tab.single.active {
-    color: white;
+.active {
+    color: var(--color-bg-accent);
+}
+
+.smalltab.active {
+    color: var(--color-accent);
 }
 
 .bar {
@@ -39,23 +40,23 @@
     display: black;
     width: 126px;
     top: 90%;
-    border-bottom: 5px solid white;
+    border-bottom: 5px solid var(--color-bg-accent);
     transition: left .5s ease;
 }
 
-.tab.single.small {
+.smalltab {
     font-size: 10pt;
     width: 70px;
     padding: 8px;
     padding-bottom: 8px;
-    border-top-right-radius: 4px;
-    border-top-left-radius: 4px;
+    border-top-right-radius: var(--border-radius);
+    border-top-left-radius: var(--border-radius);
 }
 
-.bar.small {
+.smallbar {
     width: 86px;
     top: 95%;
-    border-bottom: 2px solid dodgerblue;
+    border-bottom: 2px solid var(--color-accent);
 }
 
 .tab:active {

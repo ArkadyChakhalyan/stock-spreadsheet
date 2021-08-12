@@ -1,14 +1,14 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { StockMiniature } from '../../ui';
+import { StockMiniature } from '../../../ui';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 /**
  * Miniatrues Gains.
- * @param stocks - Stock list from redux state.
+ * @param {object} props - Props.
+ * @param {object[]} props.stocks - Stock list from redux state.
  * @returns {Element} MiniaturesGains component.
  */
-
 const ComponentMiniaturesGains = ({ stocks }) => {
     let stocksCopy = [...stocks]
     stocksCopy.sort((a, b) => (b.currentPrice - b.avarageCost) - (a.currentPrice - a.avarageCost));

@@ -5,16 +5,16 @@ import { withStockService } from '../../../hoc';
 import { connect } from 'react-redux';
 import { compose } from '../../../../utils';
 import PropTypes from 'prop-types';
-import './stock-popup.css';
+import styles from './popup.module.css';
 
 /**
  * Add new stock popup.
- * @param {Function} onClose - Callback function for closing popup.
- * @param {Function} addStock - Redux action fro additing new stock.
- * @param {object} stockService - Stock API service.
+ * @param {object} props - Props.
+ * @param {Function} props.onClose - Callback function for closing popup.
+ * @param {Function} props.addStock - Redux action fro additing new stock.
+ * @param {object} props.stockService - Stock API service.
  * @returns {Element} StockPopup component.
  */
-
 const ComponentAddStockPopup = ({ onClose, stockService, addStock }) => {
 
     const close = () => {
@@ -33,7 +33,9 @@ const ComponentAddStockPopup = ({ onClose, stockService, addStock }) => {
 
         newStock = stockService.getStock(tickerValue);
 
-        if (tickerValue === '' || priceValue === '' || sharesValue === '' || errorTicker || errorShares || errorPrice) return
+        let rgx = /^[0-9]*\.?[0-9]*$/;
+
+        if (tickerValue === '' || priceValue === '' || sharesValue === '' || +sharesValue === 0 || !sharesValue.match(rgx) || errorTicker || errorShares || errorPrice) return
 
         if (newStock) {
             newStock.avarageCost = Math.round(priceValue * 100) / 100;
@@ -75,20 +77,20 @@ const ComponentAddStockPopup = ({ onClose, stockService, addStock }) => {
     }
 
     const head = (
-        <div className='edit stock head'>
-            <p className='edit stock company'>New Holding</p>
+        <div className={styles.headSmall}>
+            <p className={styles.company}>New Holding</p>
             <br />
-            <p className='edit stock ticker'>Type ticker, avarage price and shares bought</p>
-            <div className='edit stock bar'></div>
+            <p className={styles.ticker}>Type ticker, avarage price and shares bought</p>
+            <div className={styles.barSmall}></div>
         </div>
     );
 
     const inside = (
         <div>
-            <form className='edit stock info' style={{ marginTop: '70px' }}>
+            <form className={styles.insideSmall}>
                 <Input
                     label={'Ticker'}
-                    width={'245'}
+                    width={'242'}
                     onChange={e => {
                         setInputTickerValue(e.target.value);
                         setTickerValue(e.target.value)}}
@@ -98,7 +100,7 @@ const ComponentAddStockPopup = ({ onClose, stockService, addStock }) => {
                     errorMessage={`We coudn't find the ticker`} />
                 <Input
                     label={'Price'}
-                    width={'245'}
+                    width={'242'}
                     onChange={e => {
                         setInputPriceValue(e.target.value)
                         setPriceValue(e.target.value);
@@ -109,7 +111,7 @@ const ComponentAddStockPopup = ({ onClose, stockService, addStock }) => {
                     errorMessage={'Something went wrong'} />
                 <Input
                     label={'Shares'}
-                    width={'245'}
+                    width={'242'}
                     onChange={e => {
                         setInputSharesValue(e.target.value)
                         setSharesValue(e.target.value);
@@ -119,7 +121,7 @@ const ComponentAddStockPopup = ({ onClose, stockService, addStock }) => {
                     error={errorShares}
                     errorMessage={'Something went wrong'} />
             </form>
-            <div className='edit stock submit'>
+            <div className={styles.submit}>
                 <Button onClick={onSubmit} width={'258'}>add</Button>
             </div>
         </div>

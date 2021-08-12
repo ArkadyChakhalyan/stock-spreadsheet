@@ -1,31 +1,39 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import './tabs.css';
+import styles from './tabs.module.css';
 
 /**
  * Tabs.
- * @param {string[]} options - Tabs.
- * @param {boolean} small - Creates small version.
+ * @param {object} props - Props.
+ * @param {string[]} props.options - Tabs.
+ * @param {boolean} props.small - Creates small version.
  * @returns {Element} Tabs component.
  */
-
 export const Tabs = ({ options, small }) => {
 
-    let className = 'tab single ';
-    let barClassName = 'bar ';
+    let className = `${styles.tab} ${styles.single} `;
+    let barClassName = `${styles.bar} `;
 
-    const [active, setActive] = useState(0);
+    let activeTab = 0;
+    if (!small) {
+        const history = useHistory();
+        let rgx = /\/(.*)\//;
+        let opened = history.location.pathname.match(rgx)[1];
+        activeTab = options.indexOf(opened);
+    }
+
+    const [active, setActive] = useState(activeTab);
 
     if (small) {
-        className += 'small ';
-        barClassName += 'small';
+        className += `${styles.smalltab} `;
+        barClassName += `${styles.smallbar} `;
     }
 
     const elements = options.map((item, index) => {
         let itemClassName = className;
         if (index === active) {
-            itemClassName += 'active';
+            itemClassName += styles.active;
         }
         if (small) {
             return (
@@ -51,7 +59,7 @@ export const Tabs = ({ options, small }) => {
     });
 
     return (
-        <div className='tab'>
+        <div className={styles.tab}>
             {elements}
             <span className={barClassName} style={{ left: `${active * (small ? 86 : 126)}px` }} />
         </div>

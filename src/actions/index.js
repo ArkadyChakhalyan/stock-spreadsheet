@@ -3,7 +3,6 @@
  * @param {object} newStock - New stock with all the data from API, amount of shares and cost per share.
  * @returns {object} Redux action with stock object.
  */
-
 const addStock = (newStock) => {
     return {
         type: 'ADD_STOCK',
@@ -16,7 +15,6 @@ const addStock = (newStock) => {
  * @param {object} editedStock - Edited stock with previous data from API and updated information on amount of shares and cost per share.
  * @returns {object} Redux action with stock object.
  */
-
 const editStock = (editedStock) => {
     return {
         type: 'EDIT_STOCK',
@@ -29,7 +27,6 @@ const editStock = (editedStock) => {
  * @param {object} deletedStockTicker - Ticker of a stock that has been deleted.
  * @returns {object} Redux action with stock ticker.
  */
-
 const deleteStock = (deletedStockTicker) => {
     return {
         type: 'DELETE_STOCK',
