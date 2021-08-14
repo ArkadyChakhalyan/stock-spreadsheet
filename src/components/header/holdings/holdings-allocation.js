@@ -7,24 +7,15 @@ import styles from './holdings.module.css';
  * Holdings Allocation.
  * @param {object} props - Props.
  * @param {object[]} props.stocks - Stock list from redux state.
- * @param {number} props.totalValue - - Total value of a portfolio from redux state.
+ * @param {string[]} props.allocationSector - Portfolio allocation by sectors rom redux state.
+ * @param {string[]} props.allocationContry - Portfolio allocation by contries rom redux state.
  * @returns {Element} HoldingsAllocations component.
  */
-export const ComponentHoldingsAllocation = ({ stocks, totalValue }) => {
+export const ComponentHoldingsAllocation = ({ stocks, allocationSector, allocationContry }) => {
 
-    let stockL;
-    let stockS;
-    if (stocks.length > 0) {
-        let stocksCopy = [...stocks]
-        stocksCopy.sort((a, b) => (b.currentPrice * b.shares) - (a.currentPrice * a.shares));
-        let stock1 = stocksCopy[0];
-        let stock2 = stocksCopy[stocks.length - 1];
-        stockL = `$${Math.round((stock1.currentPrice * stock1.shares) * 100) / 100} (${Math.round((stock1.currentPrice * stock1.shares) / totalValue * 10000) / 100}%)`;
-        stockS = `$${Math.round((stock2.currentPrice * stock2.shares) * 100) / 100} (${Math.round((stock2.currentPrice * stock2.shares) / totalValue * 10000) / 100}%)`;
-    }
 
-    const largestPosition = stocks.length > 0 ? stockL : '-';
-    const smallestPosition = stocks.length > 0 ? stockS : '-';
+    const sectors = allocationSector.length > 0 ? allocationSector.length : '-';
+    const contries = allocationContry.length > 0 ? allocationContry.length : '-';
 
     return (
         <div className={styles.container}>
@@ -35,12 +26,12 @@ export const ComponentHoldingsAllocation = ({ stocks, totalValue }) => {
             <table className={styles.right}>
                 <tbody>
                     <tr className={styles.gains}>
-                        <td><p>Largest Position</p></td>
-                        <td><p className={styles.number}>{largestPosition}</p></td>
+                        <td><p>Sector Exposure</p></td>
+                        <td><p className={styles.number}>{sectors}</p></td>
                     </tr>
                     <tr className={styles.gains}>
-                        <td><p>Smallest Position</p></td>
-                        <td><p className={styles.number}>{smallestPosition}</p></td>
+                        <td><p>Geographic Exposure</p></td>
+                        <td><p className={styles.number}>{contries}</p></td>
                     </tr>
                 </tbody>
             </table>
@@ -48,16 +39,18 @@ export const ComponentHoldingsAllocation = ({ stocks, totalValue }) => {
     );
 };
 
-const mapStateToProps = ({ stocks, totalValue }) => {
+const mapStateToProps = ({ portfolio }) => {
     return {
-        stocks,
-        totalValue
+        stocks: portfolio.stocks,
+        allocationSector: portfolio.allocationSector,
+        allocationContry: portfolio.allocationContry
     };
 }
 
 export const HoldingsAllocation = connect(mapStateToProps, null)(ComponentHoldingsAllocation);
 
 ComponentHoldingsAllocation.propTypes = {
-    totalValue: PropTypes.number,
-    stocks: PropTypes.array
+    stocks: PropTypes.array,
+    allocationContry: PropTypes.array,
+    allocationSector: PropTypes.array
 }

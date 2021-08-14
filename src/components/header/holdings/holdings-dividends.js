@@ -37,11 +37,11 @@ const ComponentHoldingsDividends = ({ totalDividends, totalValue, totalGains }) 
     );
 };
 
-const mapStateToProps = ({ totalDividends, totalValue, totalGains }) => {
+const mapStateToProps = ({ portfolio }) => {
     return {
-        totalDividends,
-        totalValue,
-        totalGains
+        totalDividends: portfolio.totalDividends,
+        totalValue: portfolio.totalValue,
+        totalGains: portfolio.totalGains
     };
 }
 

@@ -6,6 +6,7 @@ import { compose } from '../../../utils';
 import { withStockService } from '../../hoc';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import styles from './stocks.module.css';
 
 /**
  * Stocks page.
@@ -19,14 +20,15 @@ const ComponentStocks = ({ tableData, stocks }) => {
     const onClose = () => {
         setStockPopupOn(false);
         setAddStockPopupOn(false);
-    }
+    };
+
     const [ticker, setTicker] = useState('');
     const [stockPopupOn, setStockPopupOn] = useState(false);
     const stockPopup = stockPopupOn ? <StockPopup onClose={onClose} ticker={ticker} /> : null;
     const [addStockPopupOn, setAddStockPopupOn] = useState(false);
     const addStockPopup = addStockPopupOn ? <AddStockPopup onClose={onClose} /> : null;
     const onClickStockInfo = (symbol) => {
-        setTicker(symbol);
+        setTicker(symbol[1]);
         setStockPopupOn(true);
     }
     const onClickAddStock = () => {
@@ -42,30 +44,46 @@ const ComponentStocks = ({ tableData, stocks }) => {
             data={tableData} /> : null;
 
     let miniatures;
-    if (stocks.length < 1) miniatures = <h2>add few stocks</h2>
-    else if (stocks.length < 6) miniatures = <h2>stock list</h2>
+    if (stocks.length < 6) miniatures = <h2>stock list</h2>
     else miniatures = <MiniaturesGains />
 
+    const button = stocks.length < 1 ?
+        <div className={styles.empty}>
+            <p className={styles.text}>Add your first stock for the start</p>
+            <Button icon={'fas fa-plus fa-sm'}
+                width={'240'}
+                color={'var(--color-gain)'}
+                onClick={onClickAddStock} >
+                add new holding
+            </Button>
+        </div>
+        :
+        <div className={styles.button}>
+            <Button icon={'fas fa-plus fa-sm'}
+                width={'1182'}
+                color={'var(--color-gain)'}
+                onClick={onClickAddStock} >
+                add new holding
+            </Button>
+        </div>
+
     return (
-        <div>
+        <div className={styles.page}>
             {miniatures}
             <div className='stock-list'>
                 {stockPopup}
                 {table}
             </div>
-            <br />
             {addStockPopup}
-            <Button icon={'fas fa-plus fa-sm'} width={'1182'} color={'var(--color-gain)'} onClick={onClickAddStock} >
-                add new holding
-            </Button>
+            {button}
         </div>
     );
 };
 
-const mapStateToProps = ({ stocks, tableData }) => {
+const mapStateToProps = ({ portfolio}) => {
     return {
-        stocks,
-        tableData
+        stocks: portfolio.stocks,
+        tableData: portfolio.tableData
     };
 }
 

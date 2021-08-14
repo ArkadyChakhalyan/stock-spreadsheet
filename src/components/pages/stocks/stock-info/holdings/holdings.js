@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from '../../../../../ui/';
 import { connect } from 'react-redux';
-import { deleteStock, editStock } from '../../../../../actions';
+import { deleteStock } from '../../../../../actions';
 import { compose } from '../../../../../utils';
 import PropTypes from 'prop-types';
 import { EditStockPopup } from '../../popups/edit-stock-popup';
@@ -10,19 +10,19 @@ import styles from './holdings.module.css';
 /**
  * Stock's info page inside stock popup.
  * @param {object} props - Props.
- * @param {Function} props.onDeleteStock - Stock list with necessery data for the table from redux state.
  * @param {Function} props.deleteStock - Redux action for deleting stock.
+ * @param {Function} props.onDeleteStock - Callback function for closing stock popup.
  * @param {object} props.stock - Stock data.
  * @returns {Element} StockInfo component.
  */
-const ComponentHoldings = ({ onDeleteStock, stock, deleteStock }) => {
+const ComponentHoldings = ({ stock, deleteStock, onDeleteStock }) => {
 
     const onClose = () => {
         setPopupOn(false);
     }
 
     const onDelete = () => {
-        deleteStock(stock.symbol)
+        deleteStock(stock.symbol);
         document.body.style.overflow = 'overlay';
         onDeleteStock();
     }
@@ -53,7 +53,7 @@ const ComponentHoldings = ({ onDeleteStock, stock, deleteStock }) => {
     );
 }
 
-const mapDispatchToProps = { deleteStock, editStock }
+const mapDispatchToProps = { deleteStock }
 
 export const Holdings = (
     compose(

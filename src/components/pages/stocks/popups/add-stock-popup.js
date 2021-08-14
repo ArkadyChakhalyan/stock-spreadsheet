@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import { Popup, Input, Button } from '../../../../ui';
 import { addStock } from '../../../../actions';
 import { withStockService } from '../../../hoc';
@@ -38,24 +38,22 @@ const ComponentAddStockPopup = ({ onClose, stockService, addStock }) => {
         if (tickerValue === '' || priceValue === '' || sharesValue === '' || +sharesValue === 0 || !sharesValue.match(rgx) || errorTicker || errorShares || errorPrice) return
 
         if (newStock) {
-            newStock.avarageCost = Math.round(priceValue * 100) / 100;
-            newStock.shares = Math.round(sharesValue * 100) / 100;
-            addStock(newStock);
+            let ticker = tickerValue;
+            let avarageCost = Math.round(priceValue * 100) / 100;
+            let shares = Math.round(sharesValue * 100) / 100;
+            addStock(newStock, ticker, avarageCost, shares);
         }
 
         document.body.style.overflow = 'overlay';
         close();
     }
 
-    const [inputTickerValue, setInputTickerValue] = useState('');
-    const [inputPriceValue, setInputPriceValue] = useState('');
-    const [inputSharesValue, setInputSharesValue] = useState('');
     const [errorTicker, setErrorTicker] = useState(false);
     const [errorPrice, setErrorPrice] = useState(false);
     const [errorShares, setErrorShares] = useState(false);
 
     const onBlurTicker = () => {
-        newStock = stockService.getStock(inputTickerValue);
+        newStock = stockService.getStock(tickerValue);
         if (!newStock) setErrorTicker(true);
     }
     const onFocusTicker = () => {
@@ -63,14 +61,14 @@ const ComponentAddStockPopup = ({ onClose, stockService, addStock }) => {
     }
     const onBlurPrice = () => {
         let rgx = /^[0-9]*\.?[0-9]*$/;
-        if (!inputPriceValue.match(rgx)) setErrorPrice(true);
+        if (!priceValue.toString().match(rgx) || priceValue === '') setErrorPrice(true);
     }
     const onFocusPrice = () => {
         if (errorPrice) setErrorPrice(false);
     }
     const onBlurShares = () => {
         let rgx = /^[0-9]*\.?[0-9]*$/;
-        if (!inputSharesValue.match(rgx) || '') setErrorShares(true);
+        if (!sharesValue.toString().match(rgx) || sharesValue === '') setErrorShares(true);
     }
     const onFocusShares = () => {
         if (errorShares) setErrorShares(false);
@@ -86,14 +84,14 @@ const ComponentAddStockPopup = ({ onClose, stockService, addStock }) => {
     );
 
     const inside = (
-        <div>
-            <form className={styles.insideSmall}>
+        <Fragment>
+            <div className={styles.insideSmall}>
                 <Input
                     label={'Ticker'}
                     width={'242'}
                     onChange={e => {
-                        setInputTickerValue(e.target.value);
-                        setTickerValue(e.target.value)}}
+                        setTickerValue(e.target.value)
+                    }}
                     onBlur={onBlurTicker}
                     onFocus={onFocusTicker}
                     error={errorTicker}
@@ -102,7 +100,6 @@ const ComponentAddStockPopup = ({ onClose, stockService, addStock }) => {
                     label={'Price'}
                     width={'242'}
                     onChange={e => {
-                        setInputPriceValue(e.target.value)
                         setPriceValue(e.target.value);
                     }}
                     onBlur={onBlurPrice}
@@ -113,18 +110,17 @@ const ComponentAddStockPopup = ({ onClose, stockService, addStock }) => {
                     label={'Shares'}
                     width={'242'}
                     onChange={e => {
-                        setInputSharesValue(e.target.value)
                         setSharesValue(e.target.value);
                     }}
                     onBlur={onBlurShares}
                     onFocus={onFocusShares}
                     error={errorShares}
                     errorMessage={'Something went wrong'} />
-            </form>
+            </div>
             <div className={styles.submit}>
                 <Button onClick={onSubmit} width={'258'}>add</Button>
             </div>
-        </div>
+        </Fragment>
     );
 
     const onKeyPress = (e) => {

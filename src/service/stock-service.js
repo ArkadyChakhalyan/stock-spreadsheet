@@ -1,6 +1,6 @@
 const data = {
     aapl: {
-        symbol: 'APPL',
+        symbol: 'AAPL',
         longName: 'Apple Inc.',
         longBusinessSummery: "Innovative Industrial Properties, Inc. is a self-advised Maryland corporation focused on the acquisition, ownership and management of specialized properties leased to experienced, state-licensed operators for their regulated medical-use cannabis facilities. Innovative Industrial Properties, Inc. has elected to be taxed as a real estate investment trust, commencing with the year ended December 31, 2017.",
         currentPrice: '210.86',
@@ -12,7 +12,7 @@ const data = {
         freeCashFlowPerStock: Math.round((125424248 / 23926300) * 100) / 100, 
         priceToFreeCashFlow: Math.round((5120000000 / 125424248) * 100) / 100, 
         contry: 'United States',
-        sector: 'IT',
+        sector: 'Technology',
         marketCap: '5.04B',
         enterpriseValue: '5.12B',
         priceToBook: '3.36',

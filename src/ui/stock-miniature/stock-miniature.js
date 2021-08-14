@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { StockPopup } from '../../components/pages/stocks/popups';
 import styles from './stock-miniature.module.css';
 
 /**
@@ -19,17 +20,30 @@ export const StockMiniature = ({ gain, ticker, company, number, percent }) => {
     if (gain > 0) className += styles.up;
     if (gain < 0) className += styles.down;
 
+    const onClose = () => {
+        setStockPopupOn(false);
+    };
+
+    const [stockPopupOn, setStockPopupOn] = useState(false);
+    const stockPopup = stockPopupOn ? <div className={styles.popup}><StockPopup onClose={onClose} ticker={ticker} /></div> : null;
+    const onClick = () => {
+        setStockPopupOn(true);
+    }
+
     return (
-        <div className={className}>
-            <div className={styles.left}>
-                <p className={styles.ticker}>{ticker}</p>
-                <p className={styles.company}>{company}</p>
+        <Fragment>
+            {stockPopup}
+            <div className={className} onClick={onClick}>
+                <div className={styles.left}>
+                    <p className={styles.ticker}>{ticker}</p>
+                    <p className={styles.company}>{company}</p>
+                </div>
+                <div className={styles.right}>
+                    <p className={styles.percent}>{percent}</p>
+                    <p className={styles.number}>{number}</p>
+                </div >
             </div>
-            <div className={styles.right}>
-                <p className={styles.percent}>{percent}</p>
-                <p className={styles.number}>{number}</p>
-            </div >
-        </div>
+        </Fragment>
     );
 }
 
@@ -40,9 +54,9 @@ StockMiniature.propTypes = {
     number: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number
-      ]),
+    ]),
     percent: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number
-      ]),
+    ]),
 }

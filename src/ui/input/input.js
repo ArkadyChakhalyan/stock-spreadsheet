@@ -13,9 +13,10 @@ import styles from './input.module.css';
  * @param {string} props.label - Label of an input.
  * @param {boolean} props.error - True or false for error.
  * @param {string} props.errorMessage - Error message when error is true.
+ * @param {boolean} props.focus - True or false for autofocus on input.
  * @returns {Element} Input component.
  */
-export const Input = ({ label, value, width, onChange, onFocus, onBlur, error, errorMessage }) => {
+export const Input = ({ label, value, width, onChange, onFocus, onBlur, error, errorMessage, focus }) => {
 
     let inputClassName = `${styles.field} `;
     let labelClassName = `${styles.label} `;
@@ -29,7 +30,16 @@ export const Input = ({ label, value, width, onChange, onFocus, onBlur, error, e
 
     return (
         <div className={styles.input}>
-            <input type='text' className={inputClassName} required value={value} style={{ width: `${width}px` }} onChange={onChange} onFocus={onFocus} onBlur={onBlur} />
+            <input
+                type='text'
+                className={inputClassName}
+                required
+                autoFocus={focus}
+                value={value}
+                style={{ width: `${width}px` }}
+                onChange={onChange}
+                onFocus={onFocus}
+                onBlur={onBlur} />
             <label className={labelClassName}>{label}</label>
             {errorNotification}
         </div>
@@ -42,13 +52,14 @@ Input.propTypes = {
     value: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number
-      ]),
+    ]),
     width: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number
-      ]),
+    ]),
     onChange: PropTypes.func,
     onFocus: PropTypes.func,
     onBlur: PropTypes.func,
     errorMessage: PropTypes.string,
-  }
+    focus: PropTypes.bool
+}

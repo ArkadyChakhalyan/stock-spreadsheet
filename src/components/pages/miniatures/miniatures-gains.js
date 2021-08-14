@@ -63,9 +63,9 @@ const ComponentMiniaturesGains = ({ stocks }) => {
     );
 };
 
-const mapStateToProps = ({ stocks }) => {
+const mapStateToProps = ({ portfolio }) => {
     return {
-        stocks
+        stocks: portfolio.stocks
     }
 }
 

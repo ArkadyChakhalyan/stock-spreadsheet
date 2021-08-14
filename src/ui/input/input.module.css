@@ -91,12 +91,13 @@ input:valid ~ .label.error {
     color: var(--color-error);
     padding-left: 5px;
     font-size: 8pt;
-    margin-top: -8px;
-    margin-bottom: 5px;
+    margin-top: 0px;
+    margin-bottom: 8px;
+    
 }
 
 .empty {
-    height: 10px;
+    margin-bottom: 21px;
 }
 
 

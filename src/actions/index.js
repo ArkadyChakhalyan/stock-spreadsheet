@@ -1,12 +1,18 @@
 /**
  * Function addStock (when a new stock has been added to a portfolio).
- * @param {object} newStock - New stock with all the data from API, amount of shares and cost per share.
+ * @param {string} stock - Stock data from API.
+ * @param {string} ticker - Added stock's ticker.
+ * @param {string} avarageCost - Added stock's avarage cost per share.
+ * @param {string} shares - Added stock's shares.
  * @returns {object} Redux action with stock object.
  */
-const addStock = (newStock) => {
+const addStock = (stock, ticker, avarageCost, shares) => {
     return {
         type: 'ADD_STOCK',
-        stock: newStock
+        stock: stock,
+        ticker: ticker,
+        avarageCost: avarageCost,
+        shares: shares
     };
 };
 
@@ -34,8 +40,38 @@ const deleteStock = (deletedStockTicker) => {
     };
 };
 
+/**
+ * Function addDividend (when recieved dividend have been added or changed).
+ * @param {number} year - Year when dividend has been recieved.
+ * @param {string} month - Month when dividend has been recieved.
+ * @param {string} paid - Dividends recieved at that period.
+ * @returns {object} Redux action with year, month and dividends paid.
+ */
+const addDividend = (year, month, paid) => {
+    return {
+        type: 'ADD_DIVIDEND',
+        year: year,
+        month: month,
+        paid: paid
+    };
+};
+
+/**
+ * Function addYear (when new year have been added).
+ * @param {object} year - New year of dividends payments.
+ * @returns {object} Redux action with year.
+ */
+const addYear = (year) => {
+    return {
+        type: 'ADD_YEAR',
+        year: year,
+    }
+}
+
 export {
     addStock,
     editStock,
-    deleteStock
+    deleteStock,
+    addDividend,
+    addYear
 };

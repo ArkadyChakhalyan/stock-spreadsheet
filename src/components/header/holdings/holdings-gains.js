@@ -12,7 +12,8 @@ import styles from './holdings.module.css';
  */
 const ComponentHoldingsGains = ({ totalGains, totalValue }) => {
 
-    let gain = totalGains ? `${totalGains > 0 ? `+${totalGains}` : totalGains} ${totalGains > 0 ? `(+${Math.round((totalGains / totalValue) * 100 * 100) / 100}%)` : `(${Math.round((totalGains / totalValue) * 100 * 100) / 100}%)`}` : '-';
+    let gainTotal = totalGains ? `${totalGains > 0 ? `+${totalGains}` : totalGains} ${totalGains > 0 ? `(+${Math.round((totalGains / totalValue) * 100 * 100) / 100}%)` : `(${Math.round((totalGains / totalValue) * 100 * 100) / 100}%)`}` : '-';
+    let gainMonth = totalGains ? `${totalGains > 0 ? `+${totalGains}` : totalGains} ${totalGains > 0 ? `(+${Math.round((totalGains / totalValue) * 100 * 100) / 100}%)` : `(${Math.round((totalGains / totalValue) * 100 * 100) / 100}%)`}` : '-';
 
     return (
         <div className={styles.container}>
@@ -24,11 +25,11 @@ const ComponentHoldingsGains = ({ totalGains, totalValue }) => {
                 <tbody>
                     <tr className={styles.gains}>
                         <td><p>Months Gain</p></td>
-                        <td><p className={styles.number}>240.24 (+5.23%)</p></td>
+                        <td><p className={styles.number}>{gainMonth}</p></td>
                     </tr>
                     <tr className={styles.gains}>
                         <td><p>Total Gain</p></td>
-                        <td><p className={styles.number}>{gain}</p></td>
+                        <td><p className={styles.number}>{gainTotal}</p></td>
                     </tr>
                 </tbody>
             </table>
@@ -36,10 +37,10 @@ const ComponentHoldingsGains = ({ totalGains, totalValue }) => {
     );
 };
 
-const mapStateToProps = ({ totalGains, totalValue }) => {
+const mapStateToProps = ({ portfolio }) => {
     return {
-        totalGains,
-        totalValue
+        totalGains: portfolio.totalGains,
+        totalValue: portfolio.totalValue
     };
 }
 

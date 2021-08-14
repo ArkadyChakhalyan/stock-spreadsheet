@@ -10,7 +10,8 @@ import { connect } from 'react-redux';
  * @returns {Element} MiniaturesDividends component.
  */
 export const ComponentMiniaturesDividends = ({ stocks }) => {
-    let stocksCopy = [...stocks]
+
+    let stocksCopy = [...stocks];
     stocksCopy.sort((a, b) => (b.dividendRate * b.shares) - (a.dividendRate * a.shares));
     let stock1 = stocksCopy[0];
     let stock2 = stocksCopy[1];
@@ -58,9 +59,9 @@ export const ComponentMiniaturesDividends = ({ stocks }) => {
     );
 };
 
-const mapStateToProps = ({ stocks }) => {
+const mapStateToProps = ({ portfolio }) => {
     return {
-        stocks
+        stocks: portfolio.stocks
     }
 }
 

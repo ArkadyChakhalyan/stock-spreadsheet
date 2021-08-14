@@ -30,13 +30,13 @@
 }
 
 .inside {
-   margin-top: 70px;
+   margin-top: 80px;
    margin-left:  auto;
    margin-right: auto;
    width: 260px;
    display: flex;
    align-items: flex-end;
-   margin-bottom: 20px;
+   margin-bottom: 8px;
 }
 
 

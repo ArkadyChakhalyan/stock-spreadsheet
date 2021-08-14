@@ -60,10 +60,10 @@ export const ComponentMiniaturesAllocation = ({ stocks, totalValue }) => {
     );
 };
 
-const mapStateToProps = ({ stocks, totalValue }) => {
+const mapStateToProps = ({ portfolio }) => {
     return {
-        stocks,
-        totalValue
+        stocks: portfolio.stocks,
+        totalValue: portfolio.totalValue
     }
 }
 

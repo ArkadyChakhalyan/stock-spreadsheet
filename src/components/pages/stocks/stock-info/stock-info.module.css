@@ -59,10 +59,16 @@
     margin-right: 15px;
 }
 
+.description {
+    padding-left: 8px;
+    padding-right: 8px;
+    text-indent: 8pt;
+    text-align: justify;
+}
+
 .sales {
     height: 220px;
     width: 550px;
     border: 1px solid red;
-    margin-top: 24px;
     margin-bottom: 16px;
 }

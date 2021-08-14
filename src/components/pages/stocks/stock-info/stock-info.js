@@ -6,14 +6,15 @@ import styles from './stock-info.module.css';
 /**
  * Stock's info page inside stock popup.
  * @param {object} props - Props.
+ * @param {Function} props.onDeleteStock - Callback function for closing stock popup.
  * @param {object} props.stock - Stock data.
  * @returns {Element} StockInfo component.
  */
-export const StockInfo = ({ stock }) => {
+export const StockInfo = ({ stock, onDeleteStock }) => {
 
     return (
         <div className={styles.container}>
-            <Holdings stock={stock} />
+            <Holdings stock={stock} onDeleteStock={onDeleteStock} />
             <div className={styles.chart}>Stock chart</div>
             <div className={styles.valuation}>
                 <div>
@@ -29,7 +30,7 @@ export const StockInfo = ({ stock }) => {
                 <div>
                     <p className={styles.group}>Dividends</p>
                     <span className={styles.line}><p className={styles.label}>Dividend Rate</p><p className={styles.number}>${stock.dividendRate}</p></span>
-                    <span className={styles.line}><p className={styles.label}>Yeild</p><p className={styles.number}>{stock.dividendYield}</p></span>
+                    <span className={styles.line}><p className={styles.label}>Yield</p><p className={styles.number}>{stock.dividendYield}</p></span>
                     <span className={styles.line}><p className={styles.label}>Payout Ration</p><p className={styles.number}>{stock.payoutRatio}</p></span>
                     <span className={styles.line}><p className={styles.label}>Free Cash Flow</p><p className={styles.number}>${stock.freeCashFlowPerStock}</p></span>
                 </div>
@@ -41,10 +42,10 @@ export const StockInfo = ({ stock }) => {
                     <span className={styles.line}><p className={styles.label}>Total Debt</p><p className={styles.number}>{stock.totalDebt}</p></span>
                 </div>
                 <div>
-                    <p className={styles.group}>About</p>
+                    <p className={styles.group}>Company Profile</p>
                     <span className={styles.about}><p className={styles.label}>Contry</p><p className={styles.number}>{stock.contry}</p></span>
                     <span className={styles.about}><p className={styles.label}>Sector</p><p className={styles.number}>{stock.sector}</p></span>
-                    <p className={styles.about}>{stock.longBusinessSummery}</p>
+                    <p className={styles.description}>{stock.longBusinessSummery}</p>
                 </div>
             </div>
             <div className={styles.sales}>Sales and profits charts</div>

@@ -37,13 +37,14 @@ export const Tabs = ({ options, small }) => {
         }
         if (small) {
             return (
-                <div
-                    key={index}
-                    className={itemClassName}
-                    onClick={() => setActive(index)}
-                >
-                    {item}
-                </div>
+                <Link to={`${item}`} key={index} >
+                    <div
+                        className={itemClassName}
+                        onClick={() => setActive(index)}
+                    >
+                        {item}
+                    </div>
+                </Link>
             )
         }
         return (

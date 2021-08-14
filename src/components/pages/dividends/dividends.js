@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { MiniaturesDividends } from '../miniatures';
+import { Button } from '../../../ui/';
 import { DividendsPeriod } from './dividends-period';
 import { DividendsRecieved } from './dividends-recieved';
 import { DividendsSector } from './dividends-sector';
 import { connect } from 'react-redux';
+import { AddStockPopup } from '../stocks/popups';
 import PropTypes from 'prop-types';
 import styles from './dividends.module.css';
 
@@ -13,15 +15,37 @@ import styles from './dividends.module.css';
  * @param {object[]} props.stocks - Stock list from redux state.
  * @returns {Element} Dividends component.
  */
-export const ComponentDividends = ({stocks}) => {
+const ComponentDividends = ({ stocks }) => {
+
+    const onClose = () => {
+        setAddStockPopupOn(false);
+    }
+   
+    const [addStockPopupOn, setAddStockPopupOn] = useState(false);
+    const addStockPopup = addStockPopupOn ? <AddStockPopup onClose={onClose} /> : null;
+
+    const onAddStock = () => {
+        setAddStockPopupOn(true);
+    }
 
     const miniatures = stocks.length > 5 ? <MiniaturesDividends /> : <h2 className={styles.miniatures}>dividend activity</h2>;
 
+    if (stocks.length < 1) return (
+        <div className={styles.empty}>
+            {miniatures}
+            <p className={styles.text}>Add few stocks and fill up how many dividends have been recived</p>
+            {addStockPopup}
+            <Button icon={'fas fa-plus fa-sm'} width={'240'} color={'var(--color-gain)'} onClick={onAddStock}>
+                add new holding
+            </Button>
+        </div>
+    )
+
     return (
-        <div className={styles.container1}>
+        <div className={styles.page}>
             {miniatures}
             <DividendsPeriod />
-            <div className={styles.container2}>
+            <div className={styles.container}>
                 <DividendsRecieved />
                 <DividendsSector />
             </div>
@@ -29,9 +53,9 @@ export const ComponentDividends = ({stocks}) => {
     );
 };
 
-const mapStateToProps = ({ stocks }) => {
+const mapStateToProps = ({ portfolio }) => {
     return {
-        stocks,
+        stocks: portfolio.stocks,
     };
 }
 

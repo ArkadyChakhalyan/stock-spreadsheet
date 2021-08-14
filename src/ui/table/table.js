@@ -30,7 +30,7 @@ export const Table = ({ onClick, width, collumns, data, bottom }) => {
         const raw = item.map((item, index) => {
             return <td key={index} >{item}</td>
         })
-        return <tr key={index} onClick={() => onClick(item[1])}>{raw}</tr>
+        return <tr key={index} onClick={() => onClick(item)}>{raw}</tr>
     });
 
     return (

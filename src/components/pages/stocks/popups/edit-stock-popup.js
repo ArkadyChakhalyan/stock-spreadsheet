@@ -18,8 +18,8 @@ const ComponentEditStockPopup = ({ onClose, stock, editStock }) => {
     const close = () => {
         setErrorPrice(false);
         setErrorShares(false);
-        setPriceInputValue(stock.avarageCost);
-        setSharesInputValue(stock.shares);
+        setPriceValue(stock.avarageCost);
+        setSharesValue(stock.shares);
         onClose();
     }
     
@@ -29,8 +29,8 @@ const ComponentEditStockPopup = ({ onClose, stock, editStock }) => {
     const onSubmit = () => {
 
         let rgx = /^[0-9]*\.?[0-9]*$/;
-    
-        if (priceValue === '' || sharesValue === '' || errorShares || errorPrice || +sharesValue === 0 || !sharesValue.match(rgx)) return;
+        
+        if (priceValue === '' || sharesValue === '' || errorShares || errorPrice || +sharesValue === 0 || !sharesValue.toString().match(rgx)) return;
     
         stock.avarageCost = Math.round(priceValue * 100) / 100;
         stock.shares = Math.round(sharesValue * 100) / 100;
@@ -39,11 +39,11 @@ const ComponentEditStockPopup = ({ onClose, stock, editStock }) => {
     
         document.body.style.overflow = 'overlay';
         close();
-    }
+    };
     
     const onKeyPress = (e) => {
         if (e.code === 'Enter') onSubmit();
-    }
+    };
     
     const head = (
         <div className={styles.headSmall}>
@@ -54,37 +54,34 @@ const ComponentEditStockPopup = ({ onClose, stock, editStock }) => {
         </div>
     );
     
-    const [priceInputValue, setPriceInputValue] = useState(stock.avarageCost);
-    const [sharesInputValue, setSharesInputValue] = useState(stock.shares);
-    const [inputPriceValue, setInputPriceValue] = useState('');
-    const [inputSharesValue, setInputSharesValue] = useState('');
+
     const [errorPrice, setErrorPrice] = useState(false);
     const [errorShares, setErrorShares] = useState(false);
     const onBlurPrice = () => {
         let rgx = /^[0-9]*\.?[0-9]*$/;
-        if (!inputPriceValue.match(rgx)) setErrorPrice(true)
-    }
-    const onFocusPrice = () => {
-        if (errorPrice) setErrorPrice(false)
-    }
+        if (!priceValue.toString().match(rgx) || priceValue === '') setErrorPrice(true);
+    };
+    const onFocusPrice = (e) => {
+        e.target.select();
+        if (errorPrice) setErrorPrice(false);
+    };
     const onBlurShares = () => {
         let rgx = /^[0-9]*\.?[0-9]*$/;
-        if (!inputSharesValue.match(rgx) || '') setErrorShares(true)
-    }
-    const onFocusShares = () => {
-        if (errorShares) setErrorShares(false)
-    }
+        if (!sharesValue.toString().match(rgx) || sharesValue === '') setErrorShares(true);
+    };
+    const onFocusShares = (e) => {
+        e.target.select();
+        if (errorShares) setErrorShares(false);
+    };
     
     const inside = (
         <div>
             <div className={styles.insideSmall}>
                 <Input
                     label={'Price'}
-                    value={priceInputValue}
+                    value={priceValue}
                     width={'245'}
                     onChange={e => {
-                        setPriceInputValue(e.target.value)
-                        setInputPriceValue(e.target.value)
                         setPriceValue(e.target.value);
                     }}
                     onBlur={onBlurPrice}
@@ -93,11 +90,9 @@ const ComponentEditStockPopup = ({ onClose, stock, editStock }) => {
                     errorMessage={'Something went wrong'} />
                 <Input
                     label={'Shares'}
-                    value={sharesInputValue}
+                    value={sharesValue}
                     width={'245'}
                     onChange={e => {
-                        setSharesInputValue(e.target.value)
-                        setInputSharesValue(e.target.value)
                         setSharesValue(e.target.value);
                     }}
                     onBlur={onBlurShares}
@@ -125,6 +120,10 @@ ComponentEditStockPopup.propTypes = {
     editStock: PropTypes.func,
     stock: PropTypes.object
 }
+
+
+
+
 
 
 
