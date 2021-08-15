@@ -6,5 +6,9 @@ import './spinner.css';
  * @returns {Element} Spinner component.
  */
 export const Spinner = () => {
-    return <div>Loading...</div>
+    return (
+        <div className="loadingio-spinner-rolling-p982p7fse9"><div className="ldio-7vtcznexcxe">
+            <div></div>
+        </div></div>
+    )
 }

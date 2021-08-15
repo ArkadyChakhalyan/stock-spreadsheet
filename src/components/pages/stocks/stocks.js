@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { Button, Table } from '../../../ui/';
+import { Button, Spinner, Table } from '../../../ui/';
 import { MiniaturesGains } from '../miniatures';
 import { StockPopup, AddStockPopup } from './popups';
 import { compose } from '../../../utils';
+import { bindActionCreators } from 'redux';
 import { withStockService } from '../../hoc';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './stocks.module.css';
+import { load, ready } from '../../../actions';
 
 /**
  * Stocks page.
@@ -15,13 +17,17 @@ import styles from './stocks.module.css';
  * @param {object[]} props.stocks - Stock list from redux state.
  * @returns {Element} StocksPage component.
  */
-const ComponentStocks = ({ tableData, stocks }) => {
+const ComponentStocks = ({ tableData, stocks, loading, load, ready }) => {
 
-    const onClose = () => {
+    const onClose = (change) => {
         setStockPopupOn(false);
         setAddStockPopupOn(false);
+        if(change) {
+            load();
+            ready();
+        }
+        
     };
-
     const [ticker, setTicker] = useState('');
     const [stockPopupOn, setStockPopupOn] = useState(false);
     const stockPopup = stockPopupOn ? <StockPopup onClose={onClose} ticker={ticker} /> : null;
@@ -35,13 +41,13 @@ const ComponentStocks = ({ tableData, stocks }) => {
         setAddStockPopupOn(true);
     }
 
-    const table = (tableData.length > 0) ?
+    const table = loading ? <Spinner /> : (tableData.length > 0 ?
         <Table
             onClick={onClickStockInfo}
             sort
             width={'1180'}
             collumns={['Compnay Name', 'Ticker', 'Position', 'Avarage Price', 'Cost', 'Price', 'Market Value', 'Gains/Loses', 'Portfolio Allocation', 'Yield', 'Dividend', 'Dividend Income']}
-            data={tableData} /> : null;
+            data={tableData} /> : null);
 
     let miniatures;
     if (stocks.length < 6) miniatures = <h2>stock list</h2>
@@ -80,22 +86,33 @@ const ComponentStocks = ({ tableData, stocks }) => {
     );
 };
 
-const mapStateToProps = ({ portfolio}) => {
+const mapStateToProps = ({ portfolio, newStock }) => {
     return {
         stocks: portfolio.stocks,
-        tableData: portfolio.tableData
+        tableData: portfolio.tableData,
+        loading: newStock.loading
     };
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+        ready: ready,
+        load: load
+    }, dispatch);
+};
 
 export const Stocks = (
     compose(
         withStockService(),
-        connect(mapStateToProps, null)
+        connect(mapStateToProps, mapDispatchToProps)
     )(ComponentStocks)
 );
 
 ComponentStocks.propTypes = {
     tableData: PropTypes.array,
-    stocks: PropTypes.array
+    stocks: PropTypes.array,
+    loading: PropTypes.bool,
+    load: PropTypes.func,
+    ready: PropTypes.func
 }
 

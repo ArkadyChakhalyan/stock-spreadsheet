@@ -68,10 +68,53 @@ const addYear = (year) => {
     }
 }
 
+const stockRequested = () => {
+    return {
+        type: 'FETCH_STOCK_REQUEST'
+    };
+};
+
+const stockLoaded = (stock) => {
+    return {
+        type: 'FETCH_STOCK_SUCCESS',
+        stock: stock
+    };
+};
+
+const stockError = (error) => {
+    return {
+        type: 'FETCH_STOCK_FAILURE',
+        error: error
+    };
+};
+
+const fetchStock = (stockService) => (ticker) => async (dispatch) => {
+        dispatch(stockRequested());
+        return await stockService.getStock(ticker).then(
+            (stock) => dispatch(stockLoaded(stock)),
+            (error) => dispatch(stockError(error)),
+        );
+};
+
+const load = () => {
+    return {
+        type: 'LOADING'
+    };
+};
+
+const ready = () => (dispatch) => {
+    setTimeout(() => dispatch({
+        type: 'READY'
+    }), 650);
+};
+
 export {
     addStock,
     editStock,
     deleteStock,
     addDividend,
-    addYear
+    addYear,
+    fetchStock,
+    load,
+    ready
 };

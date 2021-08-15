@@ -8,7 +8,7 @@ export const portfolio = (state, action) => {
             stocks: [],
             tableData: [],
             allocationSector: [],
-            allocationContry: []
+            allocationContry: [],
         }
     }
 

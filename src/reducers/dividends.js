@@ -91,7 +91,7 @@ const addDividend = (state, action) => {
     const newYear = [
         year,
         newDividendsData,
-        total
+        Math.round(total * 100) / 100
     ];
 
     const newDividendsRecieved = [
@@ -135,7 +135,8 @@ const addYear = (state, action) => {
                 ['October', `$${0}`],
                 ['November', `$${0}`],
                 ['December', `$${0}`],
-            ]
+            ],
+            0
         ];
 
         const newDividendsRecieved = [

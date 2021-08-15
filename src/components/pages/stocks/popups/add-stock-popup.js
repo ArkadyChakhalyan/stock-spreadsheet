@@ -1,42 +1,41 @@
 import React, { useState, Fragment } from 'react';
 import { Popup, Input, Button } from '../../../../ui';
-import { addStock } from '../../../../actions';
+import { addStock, fetchStock } from '../../../../actions';
 import { withStockService } from '../../../hoc';
 import { connect } from 'react-redux';
 import { compose } from '../../../../utils';
 import PropTypes from 'prop-types';
 import styles from './popup.module.css';
+import { bindActionCreators } from 'redux';
 
 /**
  * Add new stock popup.
  * @param {object} props - Props.
  * @param {Function} props.onClose - Callback function for closing popup.
- * @param {Function} props.addStock - Redux action fro additing new stock.
- * @param {object} props.stockService - Stock API service.
+ * @param {Function} props.addStock - Redux action for adding a new stock.
  * @returns {Element} StockPopup component.
  */
-const ComponentAddStockPopup = ({ onClose, stockService, addStock }) => {
+const ComponentAddStockPopup = ({ onClose, addStock, newStock, fetchStock }) => {
 
     const close = () => {
         setErrorPrice(false);
         setErrorShares(false);
-        onClose();
+        onClose(newStock);
     }
 
     const [tickerValue, setTickerValue] = useState('');
     const [priceValue, setPriceValue] = useState('');
     const [sharesValue, setSharesValue] = useState('');
 
-    let newStock;
-
     const onSubmit = () => {
 
-        newStock = stockService.getStock(tickerValue);
-
         let rgx = /^[0-9]*\.?[0-9]*$/;
+        console.log(newStock)
+        if (!newStock) setErrorTicker(true);
+        console.log(errorTicker)
 
-        if (tickerValue === '' || priceValue === '' || sharesValue === '' || +sharesValue === 0 || !sharesValue.match(rgx) || errorTicker || errorShares || errorPrice) return
-
+        if (tickerValue === '' || priceValue === '' || sharesValue === '' || +sharesValue === 0 || !sharesValue.match(rgx) || errorTicker || errorShares || errorPrice ) return
+        
         if (newStock) {
             let ticker = tickerValue;
             let avarageCost = Math.round(priceValue * 100) / 100;
@@ -53,11 +52,11 @@ const ComponentAddStockPopup = ({ onClose, stockService, addStock }) => {
     const [errorShares, setErrorShares] = useState(false);
 
     const onBlurTicker = () => {
-        newStock = stockService.getStock(tickerValue);
-        if (!newStock) setErrorTicker(true);
+        fetchStock(tickerValue)
+        if (tickerValue === '') setErrorTicker(true);
     }
     const onFocusTicker = () => {
-        if (errorTicker) setErrorTicker(false);
+        if (errorTicker || newStock) setErrorTicker(false);
     }
     const onBlurPrice = () => {
         let rgx = /^[0-9]*\.?[0-9]*$/;
@@ -132,19 +131,31 @@ const ComponentAddStockPopup = ({ onClose, stockService, addStock }) => {
     );
 }
 
-const mapDispatchToProps = { addStock }
+const mapStateToProps = ({ newStock }) => {
+    return {
+        newStock: newStock.stock
+    };
+};
+
+const mapDispatchToProps = (dispatch, { stockService }) => {
+    return bindActionCreators({
+        fetchStock: fetchStock(stockService),
+        addStock: addStock
+    }, dispatch);
+};
 
 export const AddStockPopup = (
     compose(
         withStockService(),
-        connect(null, mapDispatchToProps)
+        connect(mapStateToProps, mapDispatchToProps)
     )(ComponentAddStockPopup)
 );
 
 ComponentAddStockPopup.propTypes = {
     onClose: PropTypes.func,
     addStock: PropTypes.func,
-    stockService: PropTypes.object
+    fetchStock: PropTypes.func,
+    newStock: PropTypes.object
 }
 
 
