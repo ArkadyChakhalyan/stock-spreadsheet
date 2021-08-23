@@ -96,6 +96,12 @@ const fetchStock = (stockService) => (ticker) => async (dispatch) => {
         );
 };
 
+const clearState = () => {
+    return {
+        type: 'CLEAR_STATE'
+    };
+};
+
 const load = () => {
     return {
         type: 'LOADING'
@@ -105,7 +111,7 @@ const load = () => {
 const ready = () => (dispatch) => {
     setTimeout(() => dispatch({
         type: 'READY'
-    }), 650);
+    }), 500);
 };
 
 export {
@@ -116,5 +122,6 @@ export {
     addYear,
     fetchStock,
     load,
-    ready
+    ready,
+    clearState
 };

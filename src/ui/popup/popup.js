@@ -19,16 +19,24 @@ export const Popup = ({ onClose, head, inside, onKeyPress }) => {
     const close = () => {
         document.body.style.overflow = 'overlay';
         onClose();
-    }
+    };
 
     return (
-        <div className={styles.popup} onClick={close} onKeyPress={onKeyPress}>
+        <div
+            className={styles.popup}
+            onClick={close}
+            onKeyPress={onKeyPress}>
             <div className={styles.content}>
             </div>
-            <div className={styles.bg} onClick={e => e.stopPropagation()}>
+            <div
+                className={styles.bg}
+                onClick={e => e.stopPropagation()}>
                 {head}
                 <span className={styles.close}>
-                    <Button navigation onClick={close} icon={'fas fa-times fa-2x'} />
+                    <Button
+                        navigation
+                        onClick={close}
+                        icon={'fas fa-times fa-2x'} />
                 </span>
                 <span className={styles.inside}>
                     {inside}

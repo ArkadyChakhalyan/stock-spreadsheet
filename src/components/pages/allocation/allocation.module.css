@@ -5,6 +5,7 @@
     box-shadow: var(--shadow);
     display: flex;
     align-items: flex-start;
+    justify-content: center;
     padding: 20px;
     position: relative;
 }
@@ -17,6 +18,9 @@
     width: 830px;
     height: 570px;
     margin-right: 23px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: 1px solid red   
 }
 

@@ -22,29 +22,39 @@ const ComponentEditStockPopup = ({ onClose, stock, editStock }) => {
         setSharesValue(stock.shares);
         onClose();
     }
-    
+
+    const rgx = /^[0-9]*\.?[0-9]*$/;
+
+    let disabled = true;
+
     const [priceValue, setPriceValue] = useState(stock.avarageCost);
     const [sharesValue, setSharesValue] = useState(stock.shares);
-    
+
     const onSubmit = () => {
 
-        let rgx = /^[0-9]*\.?[0-9]*$/;
-        
-        if (priceValue === '' || sharesValue === '' || errorShares || errorPrice || +sharesValue === 0 || !sharesValue.toString().match(rgx)) return;
-    
+        if (priceValue === ''
+            || sharesValue === ''
+            || errorShares
+            || errorPrice
+            || +sharesValue === 0
+            || !sharesValue.toString().match(rgx)
+        ) {
+            disabled = true;
+            return;
+        }
+
         stock.avarageCost = Math.round(priceValue * 100) / 100;
         stock.shares = Math.round(sharesValue * 100) / 100;
-    
+
         editStock(stock);
-    
-        document.body.style.overflow = 'overlay';
+
         close();
     };
-    
+
     const onKeyPress = (e) => {
         if (e.code === 'Enter') onSubmit();
     };
-    
+
     const head = (
         <div className={styles.headSmall}>
             <p className={styles.company}>{stock.longName}</p>
@@ -53,12 +63,24 @@ const ComponentEditStockPopup = ({ onClose, stock, editStock }) => {
             <div className={styles.barSmall}></div>
         </div>
     );
-    
 
     const [errorPrice, setErrorPrice] = useState(false);
     const [errorShares, setErrorShares] = useState(false);
+
+    if (!(priceValue === '')
+        && priceValue.toString().match(rgx)
+        && sharesValue.toString().match(rgx)
+        && !(sharesValue === '')
+        && !(+sharesValue === 0)
+        && !errorShares
+        && !errorPrice
+    ) {
+        disabled = false;
+    } else {
+        disabled = true;
+    }
+
     const onBlurPrice = () => {
-        let rgx = /^[0-9]*\.?[0-9]*$/;
         if (!priceValue.toString().match(rgx) || priceValue === '') setErrorPrice(true);
     };
     const onFocusPrice = (e) => {
@@ -66,14 +88,13 @@ const ComponentEditStockPopup = ({ onClose, stock, editStock }) => {
         if (errorPrice) setErrorPrice(false);
     };
     const onBlurShares = () => {
-        let rgx = /^[0-9]*\.?[0-9]*$/;
         if (!sharesValue.toString().match(rgx) || sharesValue === '') setErrorShares(true);
     };
     const onFocusShares = (e) => {
         e.target.select();
         if (errorShares) setErrorShares(false);
     };
-    
+
     const inside = (
         <div>
             <div className={styles.insideSmall}>
@@ -87,7 +108,7 @@ const ComponentEditStockPopup = ({ onClose, stock, editStock }) => {
                     onBlur={onBlurPrice}
                     onFocus={onFocusPrice}
                     error={errorPrice}
-                    errorMessage={'Something went wrong'} />
+                    errorMessage={'Invalid format'} />
                 <Input
                     label={'Shares'}
                     value={sharesValue}
@@ -98,10 +119,13 @@ const ComponentEditStockPopup = ({ onClose, stock, editStock }) => {
                     onBlur={onBlurShares}
                     onFocus={onFocusShares}
                     error={errorShares}
-                    errorMessage={'Something went wrong'} />
+                    errorMessage={'Invalid format'} />
             </div>
             <div className={styles.submit}>
-                <Button onClick={onSubmit} width={'257'}>submit</Button>
+                <Button
+                    onClick={onSubmit}
+                    width={'257'}
+                    disabled={disabled} >submit</Button>
             </div>
         </div>
     );

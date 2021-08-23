@@ -1,0 +1,45 @@
+.group {
+    font-weight: bold;
+    font-size: 11pt;
+    margin-bottom: 8px;
+}
+
+.label {
+    padding-left: 6px;
+    font-size: 8pt;
+    display: flex;
+}
+
+.revenue {
+    width: 9px;
+    height: 9px;
+    background: #238823;
+    margin-right: 5px
+}
+
+.earnings {
+    width: 9px;
+    height: 9px;
+    background: var(--color-accent);
+    margin-right: 5px;
+}
+
+.line {
+    display: flex;
+    align-items: center;
+    margin-right: 8px;
+}
+
+.years {
+    font-size: 9pt;
+    color: var(--color-secondary-strong);
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 59px;
+    margin-top: -8px;
+}
+
+.years p+p {
+    margin-left: 103px
+}
+

@@ -11,9 +11,10 @@ import styles from './button.module.css';
  * @param {boolean} props.navigation - Small button without borders on true.
  * @param {string} props.icon - Icon name from font-awesome.
  * @param {string} props.color - Background color of a button.
+ * @param {boolean} props.disabled - Disabled button.
  * @returns {Element} Button component.
  */
-export const Button = ({ navigation, icon, width, onClick, children, color }) => {
+export const Button = ({ navigation, icon, width, onClick, children, color, disabled }) => {
 
   const insertIcon = icon ? <i className={`${icon} ${styles.icon}`} /> : null;
   const text = children ? <p className={styles.text}>{children}</p> : null;
@@ -24,6 +25,7 @@ export const Button = ({ navigation, icon, width, onClick, children, color }) =>
     <button
       className={className}
       onClick={onClick}
+      disabled={disabled}
       style={{ width: `${width}px`, backgroundColor: color }}>
       {insertIcon}
       {text}
@@ -41,4 +43,5 @@ Button.propTypes = {
   onClick: PropTypes.func,
   children: PropTypes.string,
   color: PropTypes.string,
+  disabled: PropTypes.bool
 }

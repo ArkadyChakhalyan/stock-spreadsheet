@@ -7,21 +7,17 @@
     justify-content: flex-start;
 }
 
-.chart {
-    height: 160px;
-    width: 550px;
-    border: 1px solid red
-}
-
 .valuation {
     padding: 20px;
     padding-top: 16px;
+    padding-bottom: 0px;
 }
 
 .group {
     font-weight: bold;
     font-size: 11pt;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+    margin-top: 32px;
 }
 
 .line {
@@ -64,11 +60,4 @@
     padding-right: 8px;
     text-indent: 8pt;
     text-align: justify;
-}
-
-.sales {
-    height: 220px;
-    width: 550px;
-    border: 1px solid red;
-    margin-bottom: 16px;
 }

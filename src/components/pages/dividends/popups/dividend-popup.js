@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Input, Popup } from '../../../../ui/';
+import { Button, Input, Popup } from '../../../../ui';
 import PropTypes from 'prop-types';
 import styles from './dividend-popup.module.css';
 
@@ -15,17 +15,21 @@ import styles from './dividend-popup.module.css';
  */
 export const DividendPopup = ({ onClose, addDividend, month, year, dividendAmount }) => {
 
+    const rgx = /^[0-9]*\.?[0-9]*$/;
+
+    let disabled = true;
+
     const onSubmit = () => {
 
-        let rgx = /^[0-9]*\.?[0-9]*$/;
-        
-        if (error ||!dividend.toString().match(rgx)) return;
+        if (error || !dividend.toString().match(rgx)) {
+            disabled = true;
+            return;
+        }
 
-        if (dividend === '' ) setDividend(0);
-        
+        if (dividend === '') setDividend(0);
+
         addDividend(year, month, Math.round(dividend * 100) / 100);
-
-        document.body.style.overflow = 'overlay';
+        
         onClose();
     };
 
@@ -36,8 +40,13 @@ export const DividendPopup = ({ onClose, addDividend, month, year, dividendAmoun
     const [dividend, setDividend] = useState(dividendAmount.slice(1));
     const [error, setError] = useState(false);
 
+    if (!error && dividend.toString().match(rgx)) {
+        disabled = false;
+    } else {
+        disabled = true;
+    }
+
     const onBlur = () => {
-        let rgx = /^[0-9]*\.?[0-9]*$/;
         if (!dividend.toString().match(rgx)) setError(true)
     };
     const onFocus = (e) => {
@@ -57,21 +66,24 @@ export const DividendPopup = ({ onClose, addDividend, month, year, dividendAmoun
     const inside = (
         <div>
             <div className={styles.inside}>
-                <Input 
-                label={'Recieved'}
-                value={dividend}
-                width={'250'}
-                onBlur={onBlur}
-                onFocus={onFocus}
-                error={error}
-                focus
-                errorMessage={'Something went wrong'}
-                onChange={e => {
-                    setDividend(e.target.value);
-                }} />
+                <Input
+                    label={'Recieved'}
+                    value={dividend}
+                    width={'250'}
+                    onBlur={onBlur}
+                    onFocus={onFocus}
+                    error={error}
+                    focus
+                    errorMessage={'Invalid format'}
+                    onChange={e => {
+                        setDividend(e.target.value);
+                    }} />
             </div>
             <div className={styles.submit}>
-                <Button onClick={onSubmit} width={'262'}>submit</Button>
+                <Button
+                    onClick={onSubmit}
+                    width={'262'}
+                    disabled={disabled} >submit</Button>
             </div>
         </div>
     );

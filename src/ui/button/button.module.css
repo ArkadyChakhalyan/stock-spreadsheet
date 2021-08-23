@@ -19,6 +19,10 @@
     margin: auto;
 }
 
+.button:disabled {
+    background: var(--color-secondary);
+}
+
 .icon {
     transform: scale(85%);
 }

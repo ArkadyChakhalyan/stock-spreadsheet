@@ -3,8 +3,7 @@ export const dividends = (state, action) => {
     const date = new Date();
     const currentYear = date.getFullYear();
 
-    if (state === undefined) {
-       
+    if (state === undefined) {  
         return {
             dividendsRecieved: [
                 [
@@ -43,8 +42,8 @@ export const dividends = (state, action) => {
                     ],
                     0
                 ]
-            ]
-
+            ],
+            empty: true
         }
     }
 
@@ -56,6 +55,14 @@ export const dividends = (state, action) => {
         default:
             return state.dividends;
     }
+};
+
+const updateEmpty = (dividendsRecieved) => {
+    let empty = true;
+    dividendsRecieved.map((item) => {
+        if (item[2] > 0) empty = false;
+    });
+    return empty;
 };
 
 /**
@@ -102,7 +109,8 @@ const addDividend = (state, action) => {
 
     return {
         ...state,
-        dividendsRecieved: newDividendsRecieved
+        dividendsRecieved: newDividendsRecieved,
+        empty: updateEmpty(newDividendsRecieved)
     }
 };
 
@@ -146,7 +154,7 @@ const addYear = (state, action) => {
 
         return {
             ...state,
-            dividendsRecieved: newDividendsRecieved
+            dividendsRecieved: newDividendsRecieved,
         }
     } else return state;
 };

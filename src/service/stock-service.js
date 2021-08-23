@@ -22,10 +22,10 @@ const data = {
         totalCash: '122.13M',
         totalDebt: '138M',
         yearly: {
-            0: { date: 2017, earnings: -72000, revenue: 6420000 },
-            1: { date: 2018, earnings: 6985000, revenue: 14787000 },
-            2: { date: 2019, earnings: 23475000, revenue: 44667000 },
-            3: { date: 2020, earnings: 65730000, revenue: 116896000 }
+            0: { date: 2017, earnings: 48000, revenue: 229000 },
+            1: { date: 2018, earnings: 59000, revenue: 265000 },
+            2: { date: 2019, earnings: 55000, revenue: 260000 },
+            3: { date: 2020, earnings: 57000, revenue: 274000 }
         }
     },
 
@@ -52,10 +52,10 @@ const data = {
         totalCash: '122.13M',
         totalDebt: '138M',
         yearly: {
-            0: { date: 2017, earnings: -72000, revenue: 6420000 },
-            1: { date: 2018, earnings: 6985000, revenue: 14787000 },
-            2: { date: 2019, earnings: 23475000, revenue: 44667000 },
-            3: { date: 2020, earnings: 65730000, revenue: 116896000 }
+            0: { date: 2017, earnings: -0.072, revenue: 6.4 },
+            1: { date: 2018, earnings: 6.98, revenue: 14.78 },
+            2: { date: 2019, earnings: 23.47, revenue: 44.6 },
+            3: { date: 2020, earnings: 65.73, revenue: 116.89 }
         }
     },
 
@@ -112,10 +112,8 @@ const data = {
         totalCash: '122.13M',
         totalDebt: '138M',
         yearly: {
-            0: { date: 2017, earnings: -72000, revenue: 6420000 },
-            1: { date: 2018, earnings: 6985000, revenue: 14787000 },
-            2: { date: 2019, earnings: 23475000, revenue: 44667000 },
-            3: { date: 2020, earnings: 65730000, revenue: 116896000 }
+            0: { date: 2017, earnings: 52000, revenue: 175000 },
+            1: { date: 2018, earnings: 32000, revenue: 215000 },
         }
     },
 
@@ -142,10 +140,10 @@ const data = {
         totalCash: '122.13M',
         totalDebt: '138M',
         yearly: {
-            0: { date: 2017, earnings: -72000, revenue: 6420000 },
-            1: { date: 2018, earnings: 6985000, revenue: 14787000 },
-            2: { date: 2019, earnings: 23475000, revenue: 44667000 },
-            3: { date: 2020, earnings: 65730000, revenue: 116896000 }
+            0: { date: 2017, earnings: -5700, revenue: 70000 },
+            1: { date: 2018, earnings: 1800, revenue: 66000 },
+            2: { date: 2019, earnings: 6500, revenue: 66000 },
+            3: { date: 2020, earnings: 1100, revenue: 58000 }
         }
     },
 
@@ -172,10 +170,7 @@ const data = {
         totalCash: '122.13M',
         totalDebt: '138M',
         yearly: {
-            0: { date: 2017, earnings: -72000, revenue: 6420000 },
-            1: { date: 2018, earnings: 6985000, revenue: 14787000 },
-            2: { date: 2019, earnings: 23475000, revenue: 44667000 },
-            3: { date: 2020, earnings: 65730000, revenue: 116896000 }
+            
         }
     },
 }

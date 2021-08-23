@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { Table, Tabs, Button } from '../../../ui/';
+import { Tabs, Button, Spinner } from '../../../ui/';
 import { MiniaturesAllocation } from '../miniatures';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './allocation.module.css';
 import { AddStockPopup } from '../stocks/popups';
+import { load, ready } from '../../../actions';
+import { bindActionCreators } from 'redux';
+import { AllocationSector } from './allocation-sector/allocation-sector';
+import { AllocationContry } from './allocation-country/allocation-contry';
 
 /**
  * Allocation page.
@@ -15,18 +19,22 @@ import { AddStockPopup } from '../stocks/popups';
  * @param {string[]} props.allocationContry - Allocation by contry data btfor table from redux state.
  * @returns {Element} Allocation component.
  */
-export const ComponentAllocation = ({ stocks, allocationSector, allocationContry }) => {
+export const ComponentAllocation = ({ stocks, allocationSector, allocationContry, loading, load, ready }) => {
 
-    const onClose = () => {
+    const onClose = (change) => {
         setAddStockPopupOn(false);
-    }
+        if (change) {
+            load();
+            ready();
+        }
+    };
 
     const [addStockPopupOn, setAddStockPopupOn] = useState(false);
     const addStockPopup = addStockPopupOn ? <AddStockPopup onClose={onClose} /> : null;
 
     const onAddStock = () => {
         setAddStockPopupOn(true);
-    }
+    };
 
     const miniatures = stocks.length > 5 ? <MiniaturesAllocation /> : <h2>portfolio allocation</h2>;
 
@@ -41,45 +49,48 @@ export const ComponentAllocation = ({ stocks, allocationSector, allocationContry
         </div>
     )
 
+    const content = loading ?
+        <Spinner />
+        :
+        (<div className={styles.container}>
+            <span className={styles.switch}>
+                <Tabs options={['sector', 'contry']} small />
+            </span>
+            <Switch>
+                <Route path='/(allocation/sector|allocation/)' >
+                    <AllocationSector allocationSector={allocationSector} />
+                </Route>
+                <Route path='/allocation/contry' >
+                    <AllocationContry allocationContry={allocationContry} />
+                </Route>
+            </Switch>
+        </div>);
+
     return (
         <div className={styles.page}>
             {miniatures}
-            <div className={styles.container}>
-                <span className={styles.switch}>
-                    <Tabs options={['sector', 'contry']} small />
-                </span>
-                <Switch>
-                    <Route path='/(allocation/sector|allocation/)'>
-                        <div className={styles.chart}>allocation by sector</div>
-                        <Table
-                            width={'280'}
-                            collumns={['Sector', 'Allocation']}
-                            data={allocationSector}
-                            onClick={() => {}} />
-                    </Route>
-                    <Route path='/allocation/contry'>
-                        <div className={styles.chart}>allocation by contry</div>
-                        <Table
-                            width={'280'}
-                            collumns={['Contry', 'Allocation']}
-                            data={allocationContry}
-                            onClick={() => {}} />
-                    </Route>
-                </Switch>
-            </div>
+            {content}
         </div>
     );
 };
 
-const mapStateToProps = ({ portfolio }) => {
+const mapStateToProps = ({ portfolio, newStock }) => {
     return {
         stocks: portfolio.stocks,
         allocationSector: portfolio.allocationSector,
-        allocationContry: portfolio.allocationContry
+        allocationContry: portfolio.allocationContry,
+        loading: newStock.loading
     };
-}
+};
 
-export const Allocation = connect(mapStateToProps, null)(ComponentAllocation);
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+        ready: ready,
+        load: load
+    }, dispatch);
+};
+
+export const Allocation = connect(mapStateToProps, mapDispatchToProps)(ComponentAllocation);
 
 ComponentAllocation.propTypes = {
     stocks: PropTypes.array,

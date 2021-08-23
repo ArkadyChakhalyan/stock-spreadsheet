@@ -1,13 +1,16 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { MiniaturesDividends } from '../miniatures';
-import { Button } from '../../../ui/';
+import { Button, Spinner } from '../../../ui/';
 import { DividendsPeriod } from './dividends-period';
 import { DividendsRecieved } from './dividends-recieved';
 import { DividendsSector } from './dividends-sector';
 import { connect } from 'react-redux';
 import { AddStockPopup } from '../stocks/popups';
+import { load, ready } from '../../../actions';
 import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
 import styles from './dividends.module.css';
+import { Fragment } from 'react';
 
 /**
  * Dividends page.
@@ -15,51 +18,78 @@ import styles from './dividends.module.css';
  * @param {object[]} props.stocks - Stock list from redux state.
  * @returns {Element} Dividends component.
  */
-const ComponentDividends = ({ stocks }) => {
+const ComponentDividends = ({ stocks, loading, load, ready, dividends, empty }) => {
 
-    const onClose = () => {
+    const onClose = (change) => {
         setAddStockPopupOn(false);
+        if (change) {
+            load();
+            ready();
+        }
     }
-   
+
     const [addStockPopupOn, setAddStockPopupOn] = useState(false);
     const addStockPopup = addStockPopupOn ? <AddStockPopup onClose={onClose} /> : null;
 
     const onAddStock = () => {
         setAddStockPopupOn(true);
-    }
+    };
 
-    const miniatures = stocks.length > 5 ? <MiniaturesDividends /> : <h2 className={styles.miniatures}>dividend activity</h2>;
+    const title = empty ? 'dividend activity' : '';
+
+    const miniatures = stocks.length > 5 ? <MiniaturesDividends /> : <h2 className={styles.miniatures}>{title}</h2>;
 
     if (stocks.length < 1) return (
         <div className={styles.empty}>
             {miniatures}
             <p className={styles.text}>Add few stocks and fill up how many dividends have been recived</p>
             {addStockPopup}
-            <Button icon={'fas fa-plus fa-sm'} width={'240'} color={'var(--color-gain)'} onClick={onAddStock}>
+            <Button
+                icon={'fas fa-plus fa-sm'}
+                width={'240'}
+                color={'var(--color-gain)'}
+                onClick={onAddStock}
+            >
                 add new holding
             </Button>
         </div>
     )
+    const content = loading ?
+        <Spinner />
+        :
+        <Fragment>
+            <DividendsPeriod dividends={dividends} empty={empty} />
+            <div className={styles.container}>
+                <DividendsRecieved />
+                <DividendsSector stocks={stocks} empty={empty} />
+            </div>
+        </Fragment>
 
     return (
         <div className={styles.page}>
-            {miniatures}
-            <DividendsPeriod />
-            <div className={styles.container}>
-                <DividendsRecieved />
-                <DividendsSector />
-            </div>
+        {miniatures}
+        {content}
         </div>
     );
 };
 
-const mapStateToProps = ({ portfolio }) => {
+const mapStateToProps = ({ portfolio, newStock, dividends }) => {
     return {
         stocks: portfolio.stocks,
+        loading: newStock.loading,
+        dividends: dividends.dividendsRecieved,
+        empty: dividends.empty
     };
-}
+};
 
-export const Dividends = connect(mapStateToProps, null)(ComponentDividends);
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+        ready: ready,
+        load: load
+    }, dispatch);
+};
+
+export const Dividends = connect(mapStateToProps, mapDispatchToProps)(ComponentDividends);
 
 ComponentDividends.propTypes = {
     stocks: PropTypes.array

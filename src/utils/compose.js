@@ -1,5 +1,5 @@
 /**
- * Function compose (when new stock added to a portfolio).
+ * Function compose
  * @param {...Function} func - All the functions for callback.
  * @param {Element} comp - React component.
  * @returns {Element} React component inside callback functions .

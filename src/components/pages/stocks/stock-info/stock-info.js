@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Holdings } from './holdings';
 import styles from './stock-info.module.css';
+import { SalesChart } from './sales-chart/sales-chart';
+import { PriceChart } from './price-chart/price-chart';
 
 /**
  * Stock's info page inside stock popup.
@@ -15,7 +17,7 @@ export const StockInfo = ({ stock, onDeleteStock }) => {
     return (
         <div className={styles.container}>
             <Holdings stock={stock} onDeleteStock={onDeleteStock} />
-            <div className={styles.chart}>Stock chart</div>
+            <PriceChart />
             <div className={styles.valuation}>
                 <div>
                     <p className={styles.group}>Valutaion</p>
@@ -48,7 +50,7 @@ export const StockInfo = ({ stock, onDeleteStock }) => {
                     <p className={styles.description}>{stock.longBusinessSummery}</p>
                 </div>
             </div>
-            <div className={styles.sales}>Sales and profits charts</div>
+            <SalesChart stock={stock}/>
         </div>
     );
 }

@@ -20,13 +20,13 @@ import { load, ready } from '../../../actions';
 const ComponentStocks = ({ tableData, stocks, loading, load, ready }) => {
 
     const onClose = (change) => {
+        document.body.style.overflow = 'overlay';
         setStockPopupOn(false);
         setAddStockPopupOn(false);
         if(change) {
             load();
             ready();
         }
-        
     };
     const [ticker, setTicker] = useState('');
     const [stockPopupOn, setStockPopupOn] = useState(false);
@@ -53,7 +53,7 @@ const ComponentStocks = ({ tableData, stocks, loading, load, ready }) => {
     if (stocks.length < 6) miniatures = <h2>stock list</h2>
     else miniatures = <MiniaturesGains />
 
-    const button = stocks.length < 1 ?
+    const empty = stocks.length < 1 ?
         <div className={styles.empty}>
             <p className={styles.text}>Add your first stock for the start</p>
             <Button icon={'fas fa-plus fa-sm'}
@@ -81,7 +81,7 @@ const ComponentStocks = ({ tableData, stocks, loading, load, ready }) => {
                 {table}
             </div>
             {addStockPopup}
-            {button}
+            {empty}
         </div>
     );
 };

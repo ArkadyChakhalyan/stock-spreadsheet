@@ -15,9 +15,10 @@ export const Tabs = ({ options, small }) => {
     let className = `${styles.tab} ${styles.single} `;
     let barClassName = `${styles.bar} `;
 
+    const history = useHistory();
+
     let activeTab = 0;
     if (!small) {
-        const history = useHistory();
         let rgx = /\/(.*)\//;
         let opened = history.location.pathname.match(rgx)[1];
         activeTab = options.indexOf(opened);

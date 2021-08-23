@@ -29,12 +29,19 @@ export const newStock = (state, action) => {
             };
         case 'LOADING':
             return {
+                ...state,
                 loading: true
             };
         case 'READY':
             return {
+                ...state,
                 loading: false
             };
+        case 'CLEAR_STATE':
+            return {
+                ...state,
+                stock: null
+            }
         default:
             return state.newStock;
     }
