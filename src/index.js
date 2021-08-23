@@ -8,6 +8,10 @@ import { Provider } from 'react-redux';
 import { store } from './store';
 import { StockService } from './service/stock-service';
 
+// fetch('/api/test')
+// .then((response) => response.json())
+// .then((data) => console.log('data', data))
+
 const stockService = new StockService();
 
 ReactDOM.render(
