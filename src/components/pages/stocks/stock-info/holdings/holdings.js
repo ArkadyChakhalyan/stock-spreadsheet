@@ -46,8 +46,8 @@ const ComponentHoldings = ({ stock, deleteStock, onDeleteStock }) => {
                 <span className={styles.data}><p className={styles.label}>Total Gains</p><p className={styles.number}>{Math.round(((stock.currentPrice - stock.avarageCost) * stock.shares) * 100) / 100} ({Math.round(((stock.currentPrice - stock.avarageCost) / stock.avarageCost) * 100 * 100) / 100}%)</p></span>
             </div>
             <div className={styles.buttons}>
-                <Button width={'95'} icon={'fas fa-pen fa-sm'} onClick={onClick}>Edit</Button>
-                <Button icon={'fas fa-trash fa-sm'} color={'var(--color-error)'} onClick={onDelete}>delete</Button>
+                <Button width={'79'} onClick={onClick}>Edit</Button>
+                <Button color={'var(--color-error)'} onClick={onDelete}>delete</Button>
             </div>
         </div>
     );

@@ -17,7 +17,7 @@ export const StockInfo = ({ stock, onDeleteStock }) => {
     return (
         <div className={styles.container}>
             <Holdings stock={stock} onDeleteStock={onDeleteStock} />
-            <PriceChart />
+            <PriceChart stock={stock}/>
             <div className={styles.valuation}>
                 <div>
                     <p className={styles.group}>Valutaion</p>
