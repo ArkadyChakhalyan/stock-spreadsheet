@@ -19,9 +19,9 @@
     height: 570px;
     margin-right: 23px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    border: 1px solid red   
+    justify-content: center; 
 }
 
 .switch {

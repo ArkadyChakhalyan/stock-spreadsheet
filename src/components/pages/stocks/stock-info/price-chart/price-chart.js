@@ -3,17 +3,6 @@ import styles from './price-chart.module.css';
 
 export const PriceChart = ({ stock }) => {
 
-    //     fetch("https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v3/get-historical-data?symbol=AAPL&region=US", {
-    // 	"method": "GET",
-    // 	"headers": {
-    // 		"x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
-    // 		"x-rapidapi-key": "2d223f7ed3msh31a354bc2e0981fp1cad94jsn2995c8dcda59"
-    // 	}
-    // })
-    //     .then((response) => response.json())
-    //     .then((stock) => console.log(stock))
-
-
     const data = stock.chartData;
 
     const canvasRef = useRef(null);
@@ -81,17 +70,17 @@ const chart = (ctx, canvasHeight, canvasWidth, data, stock) => {
             ctx.lineTo(t + 2.5, (price - lowestPoint) / (highestPoint - lowestPoint) * (canvasHeight - 30) + 16);
             ctx.stroke();
 
-            t += 2.2;
+            t += 1.7;
         }
     }
 
     ctx.closePath();
 
-    const currentPriceCollumnHeight = (+stock.currentPrice - lowestPoint) / (highestPoint - lowestPoint) * (canvasHeight - 16) - 15;
+    const currentPriceCollumnHeight = (data[0].close - lowestPoint) / (highestPoint - lowestPoint) * (canvasHeight - 16) - 15;
 
     ctx.font = `11pt Roboto`;
     ctx.fillStyle = 'black';
-    ctx.fillText(Math.round(+stock.currentPrice * 100) / 100, t + 10, canvasHeight - currentPriceCollumnHeight - 12);
+    ctx.fillText(Math.round(+data[0].close * 100) / 100, t + 10, canvasHeight - currentPriceCollumnHeight - 12);
 
     ctx.beginPath();
     if (stock.currentPrice < data[data.length - 1]) {

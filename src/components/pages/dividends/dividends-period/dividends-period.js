@@ -46,7 +46,7 @@ export const DividendsPeriod = ({ empty, dividends }) => {
                         <Yearly dividends={dividends} />
                     </Route>
                 </Switch>
-            </Fragment>)
+            </Fragment >)
 
     return (
         <div className={styles.container}>
