@@ -1,4 +1,7 @@
 import { Button } from "./button/button";
+import { CollumnChart } from "./charts/collumn-chart";
+import { PieChart } from "./charts/pie-chart";
+import { LineChart } from "./charts/line-chart";
 import { Input } from "./input/input";
 import { Popup } from "./popup/popup";
 import { Spinner } from "./spinner/spinner";
@@ -12,7 +15,9 @@ export {
     Popup,
     Spinner,
     StockMiniature,
+    CollumnChart,
+    PieChart,
+    LineChart,
     Table,
     Tabs
 }
-

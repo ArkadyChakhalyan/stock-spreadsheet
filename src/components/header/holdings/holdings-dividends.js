@@ -18,8 +18,8 @@ const ComponentHoldingsDividends = ({ totalDividends, totalValue, totalGains }) 
     return (
         <div className={styles.container}>
             <div className={styles.left}>
-                <span><p className={styles.label}>Annual Dividend Income</p>
-                    <p className={styles.total}>${totalDividends}</p></span>
+                    <p className={styles.label}>Annual Dividend Income</p>
+                    <p className={styles.total}>${totalDividends}</p>
             </div>
             <table className={styles.right}>
                 <tbody>

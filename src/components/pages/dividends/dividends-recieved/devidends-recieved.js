@@ -106,7 +106,8 @@ export const ComponentDividendsRecieved = ({ dividendsRecieved, addYear, addDivi
                     collumns={['Month', 'Dividends Recieved']}
                     data={tableData}
                     bottom={['TOTAL', `$${total}`]}
-                    onClick={onClick} />
+                    onClick={onClick}
+                    onlyDesktop />
                 <Button navigation icon={'fas fa-chevron-right fa-3x'} onClick={rightClick} />
             </div>
         </div>

@@ -15,6 +15,9 @@ import { load, ready } from '../../../actions';
  * @param {object} props - Props.
  * @param {string[]} props.tableData - Stock list with necessery data for the table from redux state.
  * @param {object[]} props.stocks - Stock list from redux state.
+ * @param {boolean} props.loading - Loading redux state.
+ * @param {Function} props.load - Redux action for setting loading on.
+ * @param {Function} props.ready - Redux action for setting loading off.
  * @returns {Element} StocksPage component.
  */
 const ComponentStocks = ({ tableData, stocks, loading, load, ready }) => {
@@ -41,7 +44,7 @@ const ComponentStocks = ({ tableData, stocks, loading, load, ready }) => {
         setAddStockPopupOn(true);
     }
 
-    const table = loading ? <Spinner /> : (tableData.length > 0 ?
+    const table = loading ? <div className={styles.spinner}><Spinner /></div> : (tableData.length > 0 ?
         <Table
             onClick={onClickStockInfo}
             sort
@@ -76,7 +79,7 @@ const ComponentStocks = ({ tableData, stocks, loading, load, ready }) => {
     return (
         <div className={styles.page}>
             {miniatures}
-            <div className='stock-list'>
+            <div className={styles.table}>
                 {stockPopup}
                 {table}
             </div>

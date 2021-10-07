@@ -13,12 +13,20 @@
     display: flex;
 }
 
-.arrows table {
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
 .container h2 {
     font-size: 19pt;
     margin-top: 2px;
+}
+
+@media only screen and (max-width: 1200px) {
+    .container {
+        width: 710px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        width: 446px;
+    }
+
 }

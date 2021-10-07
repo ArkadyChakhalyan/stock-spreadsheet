@@ -16,11 +16,17 @@ import { Fragment } from 'react';
  * Dividends page.
  * @param {object} props - Props.
  * @param {object[]} props.stocks - Stock list from redux state.
+ * @param {boolean} props.loading - Loading redux state.
+ * @param {Function} props.load - Redux action for setting loading on.
+ * @param {Function} props.ready - Redux action for setting loading off.
+ * @param {string[]} props.dividends - Dividends data from redux state.
+ * @param {boolean} props.empty - True if no dividends data in redux state.
  * @returns {Element} Dividends component.
  */
 const ComponentDividends = ({ stocks, loading, load, ready, dividends, empty }) => {
 
     const onClose = (change) => {
+        document.body.style.overflow = 'overlay';
         setAddStockPopupOn(false);
         if (change) {
             load();
@@ -92,5 +98,10 @@ const mapDispatchToProps = (dispatch) => {
 export const Dividends = connect(mapStateToProps, mapDispatchToProps)(ComponentDividends);
 
 ComponentDividends.propTypes = {
-    stocks: PropTypes.array
+    stocks: PropTypes.array,
+    loading: PropTypes.bool,
+    load: PropTypes.func,
+    ready: PropTypes.func,
+    dividends: PropTypes.array,
+    empty: PropTypes.bool
 }

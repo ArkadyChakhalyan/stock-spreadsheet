@@ -2,6 +2,7 @@ import React from 'react';
 import { StockMiniature } from '../../../ui';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import styles from './miniatures.module.css';
 
 /**
  * Miniatrues Gains.
@@ -22,7 +23,7 @@ const ComponentMiniaturesGains = ({ stocks }) => {
     return (
         <div>
             <h2>top movers</h2>
-            <div className='miniatures'>
+            <div className={styles.miniatures}>
                 <StockMiniature
                     gain={stock1.currentPrice - stock1.avarageCost}
                     ticker={stock1.symbol} company={stock1.longName}

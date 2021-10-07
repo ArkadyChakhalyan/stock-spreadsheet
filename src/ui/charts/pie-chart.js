@@ -1,23 +1,28 @@
 import React, { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 
-export const AllocationContryChart = ({ allocationContry }) => {
+/**
+ * Pie chart.
+ * @param {object} props - Props.
+ * @param {number} props.canvasWidth - Canvas width.
+ * @param {number} props.canvasHeight - Canvas height.
+ * @param {number[]} props.data - Chart data.
+ * @returns {Element} PieChart component.
+ */
+export const PieChart = ({ canvasWidth, canvasHeight, data }) => {
 
     const canvasRef = useRef(null);
 
-    const canvasWidth = 830;
-    const canvasHeight = 570;
-
     useEffect(() => {
         const canvas = canvasRef.current;
-        const context = canvas.getContext('2d');
+        const context = setupCanvas(canvas);
 
-        chart(context, canvasHeight, canvasWidth, allocationContry);
+        chart(context, canvasHeight, canvasWidth, data);
     }, [chart])
 
     return (
         <canvas
-            width={canvasWidth}
-            height={canvasHeight}
+            style={{width:canvasWidth, height:canvasHeight}}
             ref={canvasRef} />
     )
 }
@@ -77,4 +82,20 @@ const  calculateEndAngle = (data, idx) => {
 
 const degreeToRadians = (angle) => {
     return angle * Math.PI / 180;
+}
+
+const setupCanvas = (canvas) => {
+    let dpr = window.devicePixelRatio || 1;
+    let rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    let ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+    return ctx;
+}
+
+PieChart.propTypes = {
+    canvasHeight: PropTypes.number,
+    canvasWidth: PropTypes.number,
+    data: PropTypes.array,
 }

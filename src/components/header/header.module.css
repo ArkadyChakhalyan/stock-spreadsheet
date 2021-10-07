@@ -17,15 +17,49 @@
 
 .header h2 {
     color: var(--font-color-secondary);
-    font-size: 12px;
+    font-size: 9pt;
 }
 
 .name {
     margin-left: 5px;
-    margin-top: 5px;
+    margin-top:5px;
     text-align: left;
     margin-right: 150px;
 }
+
+@media only screen and (max-width: 1200px) {
+    .name {
+        margin-right: 24px;
+    }
+    
+    .header {
+        height: 136px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .name {
+        margin-right: 40px;
+        margin-top: -8px;
+        align-self: flex-start;
+    }
+
+    .name h1 {
+        font-size: 13pt;
+        line-height: 13pt; 
+    }
+
+    .name h2 {
+        font-size: 7.5pt;
+    }
+
+    .header {
+        height: 180px;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
 
 
 

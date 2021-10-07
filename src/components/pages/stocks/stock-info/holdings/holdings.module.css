@@ -59,4 +59,29 @@
 .buttons button {
     margin-top: 2px;
     margin-bottom: 2px;
+    width: 79px
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .buttons {
+        flex-direction: row;
+        margin-left: 0px;
+        margin-top: -6px;
+    }
+
+    .holdings {
+        width: 394px
+    }
+
+    .buttons button+button {
+        margin-left: 4px;
+    }
+
+    .buttons button {
+        width: 204.5px
+    }
 }

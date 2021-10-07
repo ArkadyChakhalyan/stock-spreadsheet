@@ -12,14 +12,14 @@ import styles from './holdings.module.css';
  */
 const ComponentHoldingsGains = ({ totalGains, totalValue }) => {
 
-    let gainTotal = totalGains ? `${totalGains > 0 ? `+${totalGains}` : totalGains} ${totalGains > 0 ? `(+${Math.round((totalGains / totalValue) * 100 * 100) / 100}%)` : `(${Math.round((totalGains / totalValue) * 100 * 100) / 100}%)`}` : '-';
-    let gainMonth = totalGains ? `${totalGains > 0 ? `+${totalGains}` : totalGains} ${totalGains > 0 ? `(+${Math.round((totalGains / totalValue) * 100 * 100) / 100}%)` : `(${Math.round((totalGains / totalValue) * 100 * 100) / 100}%)`}` : '-';
+    const gainTotal = totalGains ? `${totalGains > 0 ? `+${totalGains}` : totalGains} ${totalGains > 0 ? `(+${Math.round((totalGains / totalValue) * 100 * 100) / 100}%)` : `(${Math.round((totalGains / totalValue) * 100 * 100) / 100}%)`}` : '-';
+    const gainMonth = totalGains ? `${totalGains > 0 ? `+${totalGains}` : totalGains} ${totalGains > 0 ? `(+${Math.round((totalGains / totalValue) * 100 * 100) / 100}%)` : `(${Math.round((totalGains / totalValue) * 100 * 100) / 100}%)`}` : '-';
 
     return (
         <div className={styles.container}>
-            <div className={styles.left}>
-                <span><p className={styles.label}>Portfolio Value</p>
-                    <p className={styles.total}>${totalValue}</p></span>
+            <div className={styles.left}>        
+                    <p className={styles.label}>Portfolio Value</p>
+                    <p className={styles.total}>${totalValue}</p>
             </div>
             <table className={styles.right}>
                 <tbody>

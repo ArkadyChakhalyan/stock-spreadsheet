@@ -2,6 +2,7 @@ import React from 'react';
 import { StockMiniature } from '../../../ui';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import styles from './miniatures.module.css';
 
 /**
  * Miniatrues Allocation.
@@ -24,7 +25,7 @@ export const ComponentMiniaturesAllocation = ({ stocks, totalValue }) => {
     return (
         <div>
             <h2>top holdings</h2>
-            <div className='miniatures'>
+            <div className={styles.miniatures}>
                 <StockMiniature
                     gain={1}
                     ticker={stock1.symbol} company={stock1.longName}
@@ -56,7 +57,7 @@ export const ComponentMiniaturesAllocation = ({ stocks, totalValue }) => {
                     number={'$' + Math.round(stock6.currentPrice * stock6.shares * 100) / 100}
                     percent={Math.round(((stock6.currentPrice * stock6.shares) / totalValue) * 10000) / 100 + '%'} />
             </div>
-        </div>
+        </div >
     );
 };
 

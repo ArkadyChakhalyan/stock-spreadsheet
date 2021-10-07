@@ -12,6 +12,10 @@
     box-shadow: var(--shadow);
 }
 
+.container:hover {
+    cursor: pointer;
+}
+
 .container+.container {
     margin-left: 6px;
 }
@@ -66,4 +70,94 @@
 
 .popup {
     display: inline-flex;
+}
+
+@media only screen and (max-width: 1200px) {
+    .container {
+        width: 726px;
+        height: 24px;
+        margin-bottom: 6px;
+        border-radius: 3px;
+    }
+
+    .container+.container {
+        margin-left: 0px;
+    }
+
+    .ticker {
+        margin-bottom: 0px;
+        margin-top: 3.5px;
+        margin-right: 10px;
+        font-size: 10pt;
+    }
+
+    .company {
+        font-size: 8pt;
+        margin-top: 8px;
+    }
+
+    .left {
+        display: flex;
+    }
+
+    .right {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    .number {
+        margin-top: 8px;
+    }
+
+    .percent {
+        margin-bottom: 0px;
+        margin-top: 5px;
+        margin-left: 12px;
+        font-size: 11pt;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        width: 461px;
+        height: 24px;
+        margin-bottom: 6px;
+        border-radius: 3px;
+    }
+
+    .container+.container {
+        margin-left: 0px;
+    }
+
+    .ticker {
+        margin-bottom: 0px;
+        margin-top: 3.5px;
+        margin-right: 10px;
+        font-size: 10pt;
+    }
+
+    .company {
+        font-size: 8pt;
+        margin-top: 8px;
+    }
+
+    .left {
+        display: flex;
+    }
+
+    .right {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    .number {
+        margin-top: 8px;
+    }
+
+    .percent {
+        margin-bottom: 0px;
+        margin-top: 5px;
+        margin-left: 12px;
+        font-size: 11pt;
+    }
 }

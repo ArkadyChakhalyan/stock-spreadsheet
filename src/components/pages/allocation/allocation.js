@@ -8,20 +8,23 @@ import styles from './allocation.module.css';
 import { AddStockPopup } from '../stocks/popups';
 import { load, ready } from '../../../actions';
 import { bindActionCreators } from 'redux';
-import { AllocationSector } from './allocation-sector/allocation-sector';
-import { AllocationContry } from './allocation-country/allocation-contry';
+import { AllocationCountry, AllocationSector } from './allocation-sector-country';
 
 /**
  * Allocation page.
  * @param {object} props - Props.
  * @param {object[]} props.stocks - Stock list from redux state.
  * @param {string[]} props.allocationSector - Allocation by sector data for table from redux state.
- * @param {string[]} props.allocationContry - Allocation by contry data btfor table from redux state.
+ * @param {string[]} props.allocationCountry - Allocation by contry data btfor table from redux state.
+ * @param {boolean} props.loading - Loading redux state.
+ * @param {Function} props.load - Redux action for setting loading on.
+ * @param {Function} props.ready - Redux action for setting loading off.
  * @returns {Element} Allocation component.
  */
-export const ComponentAllocation = ({ stocks, allocationSector, allocationContry, loading, load, ready }) => {
+export const ComponentAllocation = ({ stocks, allocationSector, allocationCountry, loading, load, ready }) => {
 
     const onClose = (change) => {
+        document.body.style.overflow = 'overlay';
         setAddStockPopupOn(false);
         if (change) {
             load();
@@ -54,14 +57,14 @@ export const ComponentAllocation = ({ stocks, allocationSector, allocationContry
         :
         (<div className={styles.container}>
             <span className={styles.switch}>
-                <Tabs options={['sector', 'contry']} small />
+                <Tabs options={['sector', 'country']} small />
             </span>
             <Switch>
                 <Route path='/(allocation/sector|allocation/)' >
-                    <AllocationSector allocationSector={allocationSector} />
+                    <AllocationSector data={allocationSector} />
                 </Route>
-                <Route path='/allocation/contry' >
-                    <AllocationContry allocationContry={allocationContry} />
+                <Route path='/allocation/country' >
+                    <AllocationCountry data={allocationCountry} />
                 </Route>
             </Switch>
         </div>);
@@ -78,7 +81,7 @@ const mapStateToProps = ({ portfolio, newStock }) => {
     return {
         stocks: portfolio.stocks,
         allocationSector: portfolio.allocationSector,
-        allocationContry: portfolio.allocationContry,
+        allocationCountry: portfolio.allocationCountry,
         loading: newStock.loading
     };
 };
@@ -95,5 +98,8 @@ export const Allocation = connect(mapStateToProps, mapDispatchToProps)(Component
 ComponentAllocation.propTypes = {
     stocks: PropTypes.array,
     allocationSector: PropTypes.array,
-    allocationContry: PropTypes.array,
+    allocationCountry: PropTypes.array,
+    loading: PropTypes.bool,
+    load: PropTypes.func,
+    ready: PropTypes.func
 }

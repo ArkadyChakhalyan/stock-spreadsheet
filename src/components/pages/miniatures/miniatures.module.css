@@ -1,0 +1,16 @@
+.miniatures {
+    display: flex;
+    align-items: center;
+}
+
+@media only screen and (max-width: 1200px) {
+    .miniatures {
+        flex-direction: column;
+    }  
+}
+
+@media only screen and (max-width: 768px) {
+    .miniatures {
+        flex-direction: column;
+    }
+}

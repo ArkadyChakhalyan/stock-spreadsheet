@@ -1,50 +1,260 @@
-.table {
+.tableOnlyDesktop {
+    display: table;
     border-radius: var(--border-radius);
     background: var(--color-bg-accent);
     box-shadow: var(--shadow);
-    text-align: left;
     border-collapse: collapse;
-    text-align: center;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
-.table th {
-    padding-right: 18px;
-    padding-left: 10px;
-    padding-top: 16px;
-    padding-bottom: 10px;
-    font-size: var(--font-size);
-    font-weight: 400;
-    text-align: right;
-    border-bottom: 1px solid var(--color-secondary);
+.table {
+    display: table;
+    border-radius: var(--border-radius);
+    background: var(--color-bg-accent);
+    box-shadow: var(--shadow);
+    border-collapse: collapse;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
-.head th:hover {
-    background-color: transparent;
-    cursor: default;
-}
-
-.table td {
-    text-align: right;
-    padding-right: 18px;
-    padding-left: 10px;
-    padding-top: 12px;
-    padding-bottom: 12px;
+.td {
+    display: table-cell;
     word-wrap: break-word;
-    font-size: var(--font-size);
     font-weight: bold;
+    text-align: right;
+    padding: 10px;
     border-bottom: 1px solid var(--color-secondary);
 }
 
-tr:hover {
+.tr {
+    display: table-row;
+}
+
+.th {
+    display: table-cell;
+    word-wrap: break-word;
+    text-align: right;
+    padding: 10px;
+    border-bottom: 1px solid var(--color-secondary);
+}
+
+.thead {
+    display: table-header-group;
+}
+
+.tbody {
+    display: table-row-group;
+}
+
+.tfoot {
+    display: table-footer-group;
+}
+
+.tr:hover {
     background-color: var(--color-bg-secondary);
     cursor: pointer;
 }
 
-.head:hover {
-    background: transparent;
-}
-
-.foot tr:hover {
+.thead .tr:hover {
     background-color: transparent;
     cursor: default;
 }
+
+.tfoot .tr:hover {
+    background-color: transparent;
+    cursor: default;
+}
+
+@media only screen and (max-width: 1200px) {
+    .table {
+        display: flex;
+        flex-direction: column;
+        width: 750px !important;
+        border-radius: none;
+        background: none;
+        box-shadow: none;
+    }
+
+    .table .thead {
+        display: block
+    }
+
+    .table .tbody {
+        display: block
+    }
+
+    .table .tfoot {
+        display: block
+    }
+
+    .table .tr {
+        display: block;
+        border-radius: var(--border-radius);
+        background: var(--color-bg-accent);
+        box-shadow: var(--shadow);
+    }
+
+    .table .tr+.tr {
+        margin-top: 10px;
+    }
+
+    .table .th {
+        display: block
+    }
+
+    .table .td {
+        display: block;
+        border-bottom: none;
+        text-align: left;
+        font-weight: normal;
+        font-size: 9pt;
+    }
+
+    .table .thead .tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+
+    .table .td:before { 
+		font-weight: bold;
+		white-space: nowrap;
+        margin-right: 8px;
+        font-size: 9pt;
+	}
+
+    .table .td:nth-of-type(1) {
+        font-size: 11pt;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    .table .td:nth-of-type(2) {
+        font-size: 8pt;
+        text-align: left;
+        margin-top: -16px
+    }
+
+    .table .td:nth-of-type(7) {
+        text-align: right;
+        margin-top: -84px;
+        font-size: 10pt;
+    }
+
+    .table .td:nth-of-type(8) {
+        text-align: right;
+        margin-top: -16px;
+        font-size: 10pt;
+    }
+
+    .table .td:nth-of-type(7):before, .table .td:nth-of-type(8):before {
+        font-size: 10pt;
+    }
+
+    .table .td:nth-of-type(3) {
+        margin-left: 60px;
+    }
+
+    .table .td:nth-of-type(4) {
+        margin-left: 240px;
+        margin-top: -34px;
+    }
+
+    .table .td:nth-of-type(9) {
+        margin-left: 460px;
+        margin-top: -4px;
+    }
+
+    .table .td:nth-of-type(5), .table .td:nth-of-type(6) {
+        display: none;
+    }
+
+    .table .td:nth-of-type(10) {
+        margin-left: 60px;
+        margin-top: -16px;
+    }
+
+    .table .td:nth-of-type(11) {
+        margin-left: 240px;
+        margin-top: -34px;
+    }
+
+    .table .td:nth-of-type(12) {
+        margin-left: 460px;
+        margin-top: -34px;
+    }
+
+	.table .td:nth-of-type(3):before { content: "Position:"; }
+	.table .td:nth-of-type(4):before { content: "Avarage Price:"; }
+	.table .td:nth-of-type(7):before { content: "Market Value:"; }
+	.table .td:nth-of-type(8):before { content: "Total Gains:"; }
+	.table .td:nth-of-type(9):before { content: "Allocation:"; }
+	.table .td:nth-of-type(10):before { content: "Yield:"; }
+    .table .td:nth-of-type(11):before { content: "Dividend:"; }
+    .table .td:nth-of-type(12):before { content: "Dividend Income:"; }
+
+    .tr:hover {
+        background-color: var(--color-bg-secondary);
+        cursor: pointer;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .table {
+        width: 486px !important;
+    }
+
+    .table .td:nth-of-type(7):before, .table .td:nth-of-type(8):before {
+        font-size: 9.5pt;
+    }
+
+    .table .td:nth-of-type(7), .table .td:nth-of-type(8) {
+        font-size: 9.5pt;
+    }
+
+    .table .td:nth-of-type(1) {
+        font-size: 10pt;
+    }
+
+    .table .td:nth-of-type(2) {
+        font-size: 7.5pt;
+    }
+
+    .table .td {
+        font-size: 8.5pt;
+    }
+
+    .table .td:before { 
+        margin-right: 6px;
+        font-size: 8.5pt;
+	}
+
+    .table .td:nth-of-type(3) {
+        margin-left: 20px;
+    }
+
+    .table .td:nth-of-type(4) {
+        margin-left: 160px;
+    }
+
+    .table .td:nth-of-type(9) {
+        margin-left: 350px;
+    }
+
+    .table .td:nth-of-type(10) {
+        margin-left: 20px;
+    }
+
+    .table .td:nth-of-type(11) {
+        margin-left: 160px;
+    }
+
+    .table .td:nth-of-type(12) {
+        margin-left: 320px;
+    }
+
+
+}
+
+

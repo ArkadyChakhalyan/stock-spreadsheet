@@ -8,7 +8,7 @@ export const portfolio = (state, action) => {
             stocks: [],
             tableData: [],
             allocationSector: [],
-            allocationContry: [],
+            allocationCountry: [],
         }
     }
 
@@ -67,16 +67,16 @@ const updatePortfolio = (state, stockList) => {
         newAllocationSector.push([key, percent]);
     }
 
-    let newAllocationContry = [];
-    let allocationContry = {};
+    let newAllocationCountry = [];
+    let allocationCountry = {};
     stockList.map((item) => {
-        if (allocationContry[item.contry]) allocationContry[item.contry] += item.currentPrice * item.shares;
-        else allocationContry[item.contry] = item.currentPrice * item.shares;
+        if (allocationCountry[item.country]) allocationCountry[item.country] += item.currentPrice * item.shares;
+        else allocationCountry[item.country] = item.currentPrice * item.shares;
     });
-    for (let key in allocationContry) {
-        let percent = Math.round((allocationContry[key] / newTotalValue) * 10000) / 100;
+    for (let key in allocationCountry) {
+        let percent = Math.round((allocationCountry[key] / newTotalValue) * 10000) / 100;
         percent += '%';
-        newAllocationContry.push([key, percent]);
+        newAllocationCountry.push([key, percent]);
     }
 
     return {
@@ -87,7 +87,7 @@ const updatePortfolio = (state, stockList) => {
         totalGains: newTotalGains,
         totalDividends: newTotalDividends,
         allocationSector: newAllocationSector,
-        allocationContry: newAllocationContry
+        allocationCountry: newAllocationCountry
     }
 }
 

@@ -11,17 +11,16 @@ import styles from './holdings.module.css';
  * @param {string[]} props.allocationContry - Portfolio allocation by contries rom redux state.
  * @returns {Element} HoldingsAllocations component.
  */
-export const ComponentHoldingsAllocation = ({ stocks, allocationSector, allocationContry }) => {
-
+export const ComponentHoldingsAllocation = ({ stocks, allocationSector, allocationCountry }) => {
 
     const sectors = allocationSector.length > 0 ? allocationSector.length : '-';
-    const contries = allocationContry.length > 0 ? allocationContry.length : '-';
+    const countries = allocationCountry.length > 0 ? allocationCountry.length : '-';
 
     return (
         <div className={styles.container}>
             <div className={styles.left}>
-                <span><p className={styles.label}>Number of Holdings</p>
-                    <p className={styles.total}>{stocks.length}</p></span>
+                    <p className={styles.label}>Number of Holdings</p>
+                    <p className={styles.total}>{stocks.length}</p>
             </div>
             <table className={styles.right}>
                 <tbody>
@@ -31,7 +30,7 @@ export const ComponentHoldingsAllocation = ({ stocks, allocationSector, allocati
                     </tr>
                     <tr className={styles.gains}>
                         <td><p>Geographic Exposure</p></td>
-                        <td><p className={styles.number}>{contries}</p></td>
+                        <td><p className={styles.number}>{countries}</p></td>
                     </tr>
                 </tbody>
             </table>
@@ -43,7 +42,7 @@ const mapStateToProps = ({ portfolio }) => {
     return {
         stocks: portfolio.stocks,
         allocationSector: portfolio.allocationSector,
-        allocationContry: portfolio.allocationContry
+        allocationCountry: portfolio.allocationCountry
     };
 }
 
@@ -51,6 +50,6 @@ export const HoldingsAllocation = connect(mapStateToProps, null)(ComponentHoldin
 
 ComponentHoldingsAllocation.propTypes = {
     stocks: PropTypes.array,
-    allocationContry: PropTypes.array,
+    allocationCountry: PropTypes.array,
     allocationSector: PropTypes.array
 }

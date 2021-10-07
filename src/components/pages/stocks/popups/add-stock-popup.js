@@ -13,6 +13,9 @@ import { bindActionCreators } from 'redux';
  * @param {object} props - Props.
  * @param {Function} props.onClose - Callback function for closing popup.
  * @param {Function} props.addStock - Redux action for adding a new stock.
+ * @param {object} props.newStock - New stock data from API stock service from redux state.
+ * @param {Function} props.fetchStock - Redux action for requesting and reciving result from API stock service.
+ * @param {Function} props.clearState - Redux action for clearing new stock data from redux state.
  * @returns {Element} StockPopup component.
  */
 const ComponentAddStockPopup = ({ onClose, addStock, newStock, fetchStock, clearState }) => {
@@ -37,7 +40,7 @@ const ComponentAddStockPopup = ({ onClose, addStock, newStock, fetchStock, clear
     const onSubmit = () => {
         let rgxNum = /^[0-9]*\.?[0-9]*$/;
         let rgxStr = /^[A-Za-z]*$/;
-
+        
         if (!newStock) {
             setErrorTicker(true);
         }
@@ -72,9 +75,8 @@ const ComponentAddStockPopup = ({ onClose, addStock, newStock, fetchStock, clear
     const [errorTicker, setErrorTicker] = useState(false);
     const [errorPrice, setErrorPrice] = useState(false);
     const [errorShares, setErrorShares] = useState(false);
-
+    
     const onBlurTicker = () => {
-        if (!newStock || tickerValue !== newStock.symbol.toLowerCase()) fetchStock(tickerValue);
         if (tickerValue === '' || !tickerValue.match(rgxStr)) setErrorTicker(true);
     };
     const onFocusTicker = () => {
@@ -92,7 +94,7 @@ const ComponentAddStockPopup = ({ onClose, addStock, newStock, fetchStock, clear
     const onFocusShares = () => {
         if (errorShares) setErrorShares(false);
     };
-
+    
     if (!(tickerValue === '')
         && !(priceValue === '')
         && !(sharesValue === '')

@@ -11,10 +11,29 @@
 
 .button {
     margin-top: 14px;
+    display: flex;
 }
 
 .page {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.table {
+    display: flex;
+    align-content: center;
+}
+
+@media only screen and (max-width: 1200px) {
+    .button {
+        width: 753px;
+    }
+
+}
+
+@media only screen and (max-width: 768px) {
+    .button {
+        width: 488px;
+    }
 }

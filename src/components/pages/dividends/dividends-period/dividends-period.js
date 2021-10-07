@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import { Spinner, Tabs } from '../../../../ui/';
 import { Route, Switch, useHistory } from 'react-router-dom';
-import styles from './dividends-period.module.css';
-import { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { Monthly } from './monthly';
 import { Yearly } from './yearly';
+import styles from './dividends-period.module.css';
 
 /**
  * Dividends by month/year chart.
+ * @param {object} props - Props.
+ * @param {boolean} props.empty - True if there is no dividend data in redux state.
+ * @param {Array} props.dividends - Dividend data from redux state.
  * @returns {Element} DividendsPeriod component.
  */
 export const DividendsPeriod = ({ empty, dividends }) => {
@@ -40,10 +43,10 @@ export const DividendsPeriod = ({ empty, dividends }) => {
                 <h2 className={styles.title}>dividends recieved</h2>
                 <Switch>
                     <Route path='/(dividends/monthly|dividends/)'>
-                        <Monthly dividends={dividends} />
+                        <Monthly data={dividends} />
                     </Route>
                     <Route path='/dividends/yearly'>
-                        <Yearly dividends={dividends} />
+                        <Yearly data={dividends} />
                     </Route>
                 </Switch>
             </Fragment >)
@@ -53,4 +56,9 @@ export const DividendsPeriod = ({ empty, dividends }) => {
             {content}
         </div>
     );
+}
+
+DividendsPeriod.propTypes = {
+    empty: PropTypes.bool,
+    dividends: PropTypes.array
 }

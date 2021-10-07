@@ -1,5 +1,6 @@
 .container {
     display: inline-flex;
+    justify-content: space-between;
     padding-top: 18px;
 }
 
@@ -29,13 +30,8 @@
     margin-top: 5px;
 }
 
-.container .left{
-    width: 120px;
-}
-
 .container .right {
-    padding-top: 10px;
-    width: 280px;
+    width: 220px;
     text-align: right;
 }
 
@@ -52,5 +48,54 @@
 
 .container td+td {
     margin-left: 16px;
+}
+
+@media only screen and (max-width: 1200px) {
+    .container { 
+        display: inline-flex;
+        justify-items: flex-end;
+        padding-top: 22px;
+    }
+
+    .container .total {
+        margin-top: 2px;
+    }
+
+    .container .left {
+        width: 0px;
+    }
+
+    .container .right {
+        display: inline-flex; 
+        padding-top: 0px;
+        padding-left: 160px;
+    }
+
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        display: inline-flex;
+        padding-top: 0px;
+        padding-top: 10px;
+        margin-left: -120px;
+    }
+
+    .container .label {
+        font-size: 9pt;
+    }
+
+    .container .total {
+        margin-top: 3px;
+        font-size: 13pt;
+    }
+
+    .container .number {
+        font-size: 10pt;
+    }
+
+    .container p {
+        font-size: 9pt;
+    }
 }
 
