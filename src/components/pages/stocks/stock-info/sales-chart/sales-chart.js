@@ -1,6 +1,6 @@
 import React from 'react';
 import { CollumnChart } from '../../../../../ui';
-import PropTypes from 'prop-types'; 
+import PropTypes from 'prop-types';
 import styles from './sales-chart.module.css';
 
 /**
@@ -17,7 +17,7 @@ export const SalesChart = ({ stock }) => {
     for (let key in yearly) {
         if (yearly[key]) years++;
     }
-    
+
     if (years < 1 || !yearly) {
         return (
             <p>No financial data yet</p>
@@ -31,12 +31,12 @@ export const SalesChart = ({ stock }) => {
                 <span className={styles.line}><div className={styles.revenue} /><p>Revenue</p></span>
                 <span className={styles.line}><div className={styles.earnings} /><p>Earnings</p></span>
             </span>
-           <CollumnChart
-            canvasHeight={240}
-            canvasWidth={550}
-            double
-            scaleData={scaleData}
-            data={yearly} />
+            <div className={styles.chart}>
+                <CollumnChart
+                    double
+                    scaleData={scaleData}
+                    data={yearly} />
+            </div>
         </div>
     )
 };
@@ -45,7 +45,7 @@ const scaleData = (data, idx, low) => {
     let scales = [0];
     for (let i = Math.ceil(data[idx].revenue); ; i++) {
         if (i > 9999) {
-            if (i % 10000 === 0) {
+            if (i % 5000 === 0) {
                 for (let j = 1; j < 8; j++) {
                     scales.push(Math.round(i / 8 * j));
                 }

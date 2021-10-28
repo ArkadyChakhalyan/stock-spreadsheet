@@ -11,8 +11,6 @@ import PropTypes from 'prop-types';
 export const Yearly = ({ data }) => {
     return (
         <CollumnChart
-            canvasWidth={1100}
-            canvasHeight={264}
             scaleData={scaleData}
             data={paidByYear(data)}
         />

@@ -1,18 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
+import styles from './charts.module.css'
 import PropTypes from 'prop-types';
 
 /**
  * Collumn chart.
  * @param {object} props - Props.
- * @param {number} props.canvasWidth - Canvas width.
- * @param {number} props.canvasHeight - Canvas height.
  * @param {number[] | object} props.data - Chart data.
  * @param {Function} props.scaleData - Scale data for chart.
  * @param {boolean} props.double - True for charts with double collumns.
  * @param {boolean} props.horizontal - True for horizontal collumns.
  * @returns {Element} CollumnChart component.
  */
-export const  CollumnChart = ({ canvasWidth, canvasHeight, data, scaleData, double, horizontal })  => {
+export const  CollumnChart = ({ data, scaleData, double, horizontal })  => {
 
     let [windowWidth, setWindowWidth] = useState(window.innerWidth);
     
@@ -33,6 +32,9 @@ export const  CollumnChart = ({ canvasWidth, canvasHeight, data, scaleData, doub
 
     useEffect(() => {
         const canvas = canvasRef.current;
+        const rect = canvas.getBoundingClientRect();
+        let canvasWidth = rect.width;
+        let canvasHeight = rect.height;
         const context = setupCanvas(canvas);
         
         if (horizontal) chart = chartHorizontal(context, canvasHeight, canvasWidth, scaleData, data);
@@ -43,7 +45,7 @@ export const  CollumnChart = ({ canvasWidth, canvasHeight, data, scaleData, doub
 
     return (
         <canvas
-            style={{width:canvasWidth, height:canvasHeight}}
+            className={styles.canvas}
             ref={canvasRef} />
     )
 };
@@ -120,7 +122,11 @@ const chartVertical = (ctx, canvasHeight, canvasWidth, scaleData, data) => {
 
     let collumnWidth = (canvasWidth - textWidth + 10 - padding * 2 - numberOfCollumns * inBetween) / numberOfCollumns;
 
-    if (numberOfCollumns < 6) {
+    if (numberOfCollumns < 6 && canvasWidth < 450) {
+        collumnWidth = 90;
+        padding = (canvasWidth - collumnWidth * numberOfCollumns - inBetween * numberOfCollumns) / 2;
+    }
+    else if (numberOfCollumns < 6) {
         collumnWidth = 160;
         padding = (canvasWidth - collumnWidth * numberOfCollumns - inBetween * numberOfCollumns) / 2;
     }
@@ -157,7 +163,7 @@ const chartHorizontal = (ctx, canvasHeight, canvasWidth, scaleData, data) => {
         }
     }
 
-    let lineX = canvasHeight - 1;
+    let lineX = canvasWidth - 16;
     const scales = scaleData(data, longestRow);
 
     const textMarginBottom = 1;
@@ -215,7 +221,7 @@ const chartHorizontal = (ctx, canvasHeight, canvasWidth, scaleData, data) => {
         let rowWidth = canvasWidth - canvasWidth / 9;
 
         rowWidth = data[key] / scales[scales.length - 1] * rowWidth - 1;
-        row.rect(28, padding, rowWidth, rowHeight);
+        row.rect(18, padding, rowWidth, rowHeight);
 
         ctx.fillStyle = 'dodgerblue';
         ctx.fill(row);
@@ -229,22 +235,22 @@ const chartHorizontal = (ctx, canvasHeight, canvasWidth, scaleData, data) => {
                 case 5:
                 case 6:
                 case 7:
-                    return 18;
-                case 8:
                     return 17;
-                case 9:
+                case 8:
                     return 16;
-                case 10:
+                case 9:
                     return 15;
-                case 11:
+                case 10:
                     return 14;
+                case 11:
+                    return 13;
             }
         }
 
         ctx.font = `${font(numberOfRows)}pt Roboto`;
         ctx.fillStyle = 'white';
         if (rowWidth > ctx.measureText(key).width + 20) {
-            ctx.fillText(key, rowWidth - ctx.measureText(key).width + 16, (rowHeight + 16) / 2 + padding);
+            ctx.fillText(key, rowWidth - ctx.measureText(key).width, (rowHeight + 16) / 2 + padding);
         }
 
         padding += rowHeight + inBetween;
@@ -259,7 +265,7 @@ const chartDouble = (ctx, canvasHeight, canvasWidth, scaleData, data) => {
     for (let key in data) {
         if (data[key]) numberOfCollumns++;
     }
-    let inBetween = 80;
+    
     let paddingBottom = 40;
 
     let zeroHeight = 1;
@@ -334,10 +340,18 @@ const chartDouble = (ctx, canvasHeight, canvasWidth, scaleData, data) => {
         lineY -= (canvasHeight - paddingBottom) / scales.length;
     }
 
-    const collumnWidth = 40;
-    const margin = 44;
+    let collumnWidth = 40;
+    let margin = 44;
+    let inBetween = 80;
+
+    if (canvasWidth < 450) {
+        collumnWidth = 20;
+        margin = 24;
+        inBetween = 60;
+    }
     
-    let padding = (canvasWidth - (margin + collumnWidth) * numberOfCollumns - textWidth) / numberOfCollumns;
+    let padding = (canvasWidth - textWidth - (margin + collumnWidth) * numberOfCollumns) / numberOfCollumns;
+    
 
     for (let key in data) {
 
@@ -370,7 +384,7 @@ const chartDouble = (ctx, canvasHeight, canvasWidth, scaleData, data) => {
         ctx.font = `9pt Roboto`;
         ctx.fillStyle = 'rgb(102, 102, 102)';
 
-        ctx.fillText(data[key].date, padding + textWidth + (collumnWidth + margin) / 2 - ctx.measureText(data[key].date).width / 2, canvasHeight - 12);
+        ctx.fillText(data[key].date, padding + textWidth + (collumnWidth + margin) / 2 - ctx.measureText(data[key].date).width / 2, canvasHeight - 8);
 
         padding += collumnWidth + inBetween;
     }
@@ -380,16 +394,17 @@ const chartDouble = (ctx, canvasHeight, canvasWidth, scaleData, data) => {
 const setupCanvas = (canvas) => {
     let dpr = window.devicePixelRatio || 1;
     let rect = canvas.getBoundingClientRect();
+    let rectParent = canvas.parentElement.getBoundingClientRect();
     canvas.width = rect.width * dpr;
     canvas.height = rect.height * dpr;
+    canvas.style.width = rectParent.width + 'px';
+    canvas.style.height = rectParent.height + 'px';
     let ctx = canvas.getContext('2d');
     ctx.scale(dpr, dpr);
     return ctx;
 }
 
 CollumnChart.propTypes = {
-    canvasHeight: PropTypes.number,
-    canvasWidth: PropTypes.number,
     data: PropTypes.oneOfType([
         PropTypes.func,
         PropTypes.object,

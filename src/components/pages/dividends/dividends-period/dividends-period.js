@@ -41,14 +41,16 @@ export const DividendsPeriod = ({ empty, dividends }) => {
                     <Tabs options={['monthly', 'yearly']} small />
                 </span>
                 <h2 className={styles.title}>dividends recieved</h2>
-                <Switch>
-                    <Route path='/(dividends/monthly|dividends/)'>
-                        <Monthly data={dividends} />
-                    </Route>
-                    <Route path='/dividends/yearly'>
-                        <Yearly data={dividends} />
-                    </Route>
-                </Switch>
+                <div className={styles.content}>
+                    <Switch>
+                        <Route path='/(dividends/monthly|dividends/)'>
+                            <Monthly data={dividends} />
+                        </Route>
+                        <Route path='/dividends/yearly'>
+                            <Yearly data={dividends} />
+                        </Route>
+                    </Switch>
+                </div>
             </Fragment >)
 
     return (

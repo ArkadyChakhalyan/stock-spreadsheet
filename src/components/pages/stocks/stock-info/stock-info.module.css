@@ -62,8 +62,27 @@
     text-align: justify;
 }
 
+.chart {
+    display: flex;
+    flex: 1;
+    align-items: stretch;
+    width: 502px;
+    height: 160px;
+    background: var(--color-bg-secondary);
+    border-radius: var(--border-radius);
+    padding: 24px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    box-shadow: var(--shadow);
+    margin-bottom: -16px;
+}
+
 @media only screen and (max-width: 768px) {
     .container {
         width: 424px;
+    }
+
+    .chart {
+        width: 362px;
     }
 }

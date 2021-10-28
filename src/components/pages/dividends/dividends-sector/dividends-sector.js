@@ -33,16 +33,16 @@ export const DividendsSector = ({ stocks }) => {
     });
 
     const content = loading ? load()
-            :
-            (<Fragment>
-                <h2>Dividends By Sector</h2>
-                <CollumnChart 
-                    canvasHeight={587}
-                    canvasWidth={612}
+        :
+        (<Fragment>
+            <h2>Dividends By Sector</h2>
+            <div className={styles.content}>
+                <CollumnChart
                     data={sort(paid)}
                     scaleData={scaleData}
                     horizontal />
-            </Fragment>)
+            </div>
+        </Fragment>)
 
     return (
         <div className={styles.container}>

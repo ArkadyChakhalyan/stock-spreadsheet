@@ -17,10 +17,11 @@ export const StockInfo = ({ stock, onDeleteStock }) => {
     return (
         <div className={styles.container}>
             <Holdings stock={stock} onDeleteStock={onDeleteStock} />
-            <LineChart 
-                data={getData(stock.chartData)}
-                canvasHeight={140}
-                canvasWidth={502} />
+            <div>
+                <div className={styles.chart}>
+                    <LineChart data={getData(stock.chartData)} />
+                </div>
+            </div>
             <div className={styles.valuation}>
                 <div>
                     <p className={styles.group}>Valutaion</p>

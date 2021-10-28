@@ -1,3 +1,10 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 546px;
+    height: 360px;
+}
+
 .group {
     font-weight: bold;
     font-size: 11pt;
@@ -30,6 +37,14 @@
     margin-right: 8px;
 }
 
+.chart {
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    height: 273px;
+}
+
 .years {
     font-size: 9pt;
     color: var(--color-secondary-strong);
@@ -43,3 +58,8 @@
     margin-left: 103px
 }
 
+@media only screen and (max-width: 768px) {
+    .container {
+        width: 380px;
+    }
+}

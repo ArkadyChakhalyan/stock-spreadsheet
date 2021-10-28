@@ -1,12 +1,14 @@
+import { ApiKey } from "./api-key";
+
 export class StockService {
 
     getRes = async (stock) => {
 
-        const res = await fetch(`https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/get-detail?symbol=${stock}&region=US`, {
+        const res = await fetch(`https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-summary?symbol=${stock}&region=US`, {
             "method": "GET",
             "headers": {
-                "x-rapidapi-key": "2d223f7ed3msh31a354bc2e0981fp1cad94jsn2995c8dcda59",
-                "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
+                "x-rapidapi-host": "yh-finance.p.rapidapi.com",
+                "x-rapidapi-key": ApiKey
             }
         });
 
@@ -18,7 +20,6 @@ export class StockService {
     }
 
     getStock = async (ticker) => {
-
         const stock = await this.getRes(ticker);
         
         return new Promise((resolve) => {
@@ -31,7 +32,7 @@ export class StockService {
         const transformYearly = (data) => {
             if (data) {
                 let yearly = {};
-    
+
                 for (let i = 0; i < data.length; i++) {
                     yearly[i] = {
                         date: data[i].date,
@@ -39,10 +40,10 @@ export class StockService {
                         earnings: data[i].earnings.raw / 1000000
                     }
                 }
-                
+
                 return yearly;
             }
-    
+
         }
 
         return {

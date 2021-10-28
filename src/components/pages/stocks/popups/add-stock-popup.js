@@ -7,6 +7,7 @@ import { compose } from '../../../../utils';
 import PropTypes from 'prop-types';
 import styles from './popup.module.css';
 import { bindActionCreators } from 'redux';
+import { throttle } from '../../../../utils/throttle';
 
 /**
  * Add new stock popup.
@@ -19,7 +20,6 @@ import { bindActionCreators } from 'redux';
  * @returns {Element} StockPopup component.
  */
 const ComponentAddStockPopup = ({ onClose, addStock, newStock, fetchStock, clearState }) => {
-
     let change;
 
     const close = () => {
@@ -37,7 +37,9 @@ const ComponentAddStockPopup = ({ onClose, addStock, newStock, fetchStock, clear
 
     let disabled = true;
 
-    const onSubmit = () => {
+    const onSubmit = async () => {
+        let finalTicker = tickerValue;
+
         let rgxNum = /^[0-9]*\.?[0-9]*$/;
         let rgxStr = /^[A-Za-z]*$/;
         
@@ -59,8 +61,16 @@ const ComponentAddStockPopup = ({ onClose, addStock, newStock, fetchStock, clear
             disabled = true;
             return;
         }
-
-        if (newStock) {
+        
+        if (newStock && finalTicker.toUpperCase() === newStock.symbol) {
+            let ticker = tickerValue;
+            let avarageCost = Math.round(priceValue * 100) / 100;
+            let shares = Math.round(sharesValue * 100) / 100;
+            addStock(newStock, ticker, avarageCost, shares);
+            change = true;
+            clearState();
+        } else {
+            await fetchStock(finalTicker.toUpperCase());
             let ticker = tickerValue;
             let avarageCost = Math.round(priceValue * 100) / 100;
             let shares = Math.round(sharesValue * 100) / 100;
@@ -75,9 +85,12 @@ const ComponentAddStockPopup = ({ onClose, addStock, newStock, fetchStock, clear
     const [errorTicker, setErrorTicker] = useState(false);
     const [errorPrice, setErrorPrice] = useState(false);
     const [errorShares, setErrorShares] = useState(false);
+
+    let requestStock = throttle(fetchStock, 1000);
     
     const onBlurTicker = () => {
         if (tickerValue === '' || !tickerValue.match(rgxStr)) setErrorTicker(true);
+        requestStock(tickerValue);
     };
     const onFocusTicker = () => {
         if (errorTicker || newStock) setErrorTicker(false);
@@ -129,7 +142,6 @@ const ComponentAddStockPopup = ({ onClose, addStock, newStock, fetchStock, clear
                     width={'242'}
                     onChange={e => {
                         setTickerValue(e.target.value);
-                        fetchStock(e.target.value);
                     }}
                     onBlur={onBlurTicker}
                     onFocus={onFocusTicker}
@@ -202,5 +214,3 @@ ComponentAddStockPopup.propTypes = {
     clearState: PropTypes.func,
     newStock: PropTypes.object
 }
-
-

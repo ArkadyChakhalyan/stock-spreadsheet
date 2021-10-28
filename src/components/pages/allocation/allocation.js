@@ -8,7 +8,7 @@ import styles from './allocation.module.css';
 import { AddStockPopup } from '../stocks/popups';
 import { load, ready } from '../../../actions';
 import { bindActionCreators } from 'redux';
-import { AllocationCountry, AllocationSector } from './allocation-sector-country';
+import { AllocationCountry, AllocationSector } from './allocation-sector-contry';
 
 /**
  * Allocation page.
