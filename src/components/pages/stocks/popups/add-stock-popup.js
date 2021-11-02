@@ -7,7 +7,7 @@ import { compose } from '../../../../utils';
 import PropTypes from 'prop-types';
 import styles from './popup.module.css';
 import { bindActionCreators } from 'redux';
-import { throttle } from '../../../../utils/throttle';
+import { stockRequestThrottle } from '../../../../utils/stock-request-throttle';
 
 /**
  * Add new stock popup.
@@ -86,7 +86,7 @@ const ComponentAddStockPopup = ({ onClose, addStock, newStock, fetchStock, clear
     const [errorPrice, setErrorPrice] = useState(false);
     const [errorShares, setErrorShares] = useState(false);
 
-    let requestStock = throttle(fetchStock, 1000);
+    let requestStock = stockRequestThrottle(fetchStock, 1000);
     
     const onBlurTicker = () => {
         if (tickerValue === '' || !tickerValue.match(rgxStr)) setErrorTicker(true);
