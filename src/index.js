@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import { App } from './components/app/';
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -7,7 +6,6 @@ import { StockServiceProvider } from './stock-service-context/stock-service-cont
 import { Provider } from 'react-redux';
 import { store } from './store';
 import { StockService } from './service/stock-service';
-import { func } from 'prop-types';
 
 const stockService = new StockService();
 
@@ -21,5 +19,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
-
-
