@@ -12,7 +12,7 @@ const stockService = new StockService();
 ReactDOM.render(
   <Provider store={store}>
     <StockServiceProvider value={stockService}>
-      <HashRouter basename="/stock-spreadsheet">
+      <HashRouter>
         <App />
       </HashRouter>
     </StockServiceProvider>

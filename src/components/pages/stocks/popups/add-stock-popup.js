@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from 'react';
-import { Popup, Input, Button } from '../../../../ui';
+import { Popup, Input, Button, Spinner } from '../../../../ui';
 import { addStock, clearState, fetchStock } from '../../../../actions';
 import { withStockService } from '../../../hoc';
 import { connect } from 'react-redux';
@@ -134,8 +134,11 @@ const ComponentAddStockPopup = ({ onClose, addStock, newStock, fetchStock, clear
         </div>
     );
 
+    const spinner = (newStock || tickerValue === '') ? null : <div className={styles.spinner}><Spinner /></div> ;
+
     const inside = (
         <Fragment>
+            {spinner}
             <div className={styles.insideSmall}>
                 <Input
                     label={'Ticker'}

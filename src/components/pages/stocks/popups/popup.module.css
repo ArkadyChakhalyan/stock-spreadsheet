@@ -61,6 +61,14 @@
     margin-bottom: 8px;
 }
 
+.spinner {
+    position: absolute;
+    margin-top: 72px;
+    margin-left: 200px;
+    z-index: 1;
+    transform: scale(0.4);
+}
+
 @media only screen and (max-width: 768px) {
     .bar {
         width: 424px
