@@ -11,7 +11,7 @@ export const newStock = (state, action) => {
     switch (action.type) {
         case 'FETCH_STOCK_REQUEST':
             return {
-                loading: false,
+                loading: true,
                 stock: null,
                 error: null
             };
@@ -25,7 +25,7 @@ export const newStock = (state, action) => {
             return {
                 loading: false,
                 stock: null,
-                error: action.error
+                error: true
             };
         case 'LOADING':
             return {

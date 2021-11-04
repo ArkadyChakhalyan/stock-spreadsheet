@@ -19,7 +19,7 @@ import { stockRequestThrottle } from '../../../../utils/stock-request-throttle';
  * @param {Function} props.clearState - Redux action for clearing new stock data from redux state.
  * @returns {Element} StockPopup component.
  */
-const ComponentAddStockPopup = ({ onClose, addStock, newStock, fetchStock, clearState }) => {
+const ComponentAddStockPopup = ({ onClose, addStock, newStock, loading, error, fetchStock, clearState }) => {
     let change;
 
     const close = () => {
@@ -80,7 +80,7 @@ const ComponentAddStockPopup = ({ onClose, addStock, newStock, fetchStock, clear
         }
 
         close();
-    };
+    }; console.log()
 
     const [errorTicker, setErrorTicker] = useState(false);
     const [errorPrice, setErrorPrice] = useState(false);
@@ -89,7 +89,7 @@ const ComponentAddStockPopup = ({ onClose, addStock, newStock, fetchStock, clear
     let requestStock = stockRequestThrottle(fetchStock, 1000);
     
     const onBlurTicker = () => {
-        if (tickerValue === '' || !tickerValue.match(rgxStr)) setErrorTicker(true);
+        if (tickerValue === '' || !tickerValue.match(rgxStr) || error) setErrorTicker(true);
         requestStock(tickerValue);
     };
     const onFocusTicker = () => {
@@ -124,7 +124,7 @@ const ComponentAddStockPopup = ({ onClose, addStock, newStock, fetchStock, clear
     } else {
         disabled = true;
     }
-
+    
     const head = (
         <div className={styles.headSmall}>
             <p className={styles.company}>New Holding</p>
@@ -134,11 +134,13 @@ const ComponentAddStockPopup = ({ onClose, addStock, newStock, fetchStock, clear
         </div>
     );
 
-    const spinner = (newStock || tickerValue === '') ? null : <div className={styles.spinner}><Spinner /></div> ;
+    const spinner = loading ? <div className={styles.spinner}><Spinner /></div> : null;
+    const errorMessage = error ? "We coudn't find the stock" : 'Invalid format';
 
     const inside = (
         <Fragment>
             {spinner}
+            {errorMessage}
             <div className={styles.insideSmall}>
                 <Input
                     label={'Ticker'}
@@ -149,7 +151,7 @@ const ComponentAddStockPopup = ({ onClose, addStock, newStock, fetchStock, clear
                     onBlur={onBlurTicker}
                     onFocus={onFocusTicker}
                     error={errorTicker}
-                    errorMessage={`Invalid format`} />
+                    errorMessage={errorMessage} />
                 <Input
                     label={'Price'}
                     width={'242'}
@@ -191,7 +193,9 @@ const ComponentAddStockPopup = ({ onClose, addStock, newStock, fetchStock, clear
 
 const mapStateToProps = ({ newStock }) => {
     return {
-        newStock: newStock.stock
+        newStock: newStock.stock,
+        loading: newStock.loading,
+        error: newStock.error
     };
 };
 
