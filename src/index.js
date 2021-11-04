@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom';
+import React from 'react';
 import { App } from './components/app/';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import './index.css';
 import { StockServiceProvider } from './stock-service-context/stock-service-context';
 import { Provider } from 'react-redux';
@@ -12,9 +13,9 @@ const stockService = new StockService();
 ReactDOM.render(
   <Provider store={store}>
     <StockServiceProvider value={stockService}>
-      <Router>
+      <HashRouter>
         <App />
-      </Router>
+      </HashRouter>
     </StockServiceProvider>
   </Provider>,
   document.getElementById('root')
