@@ -93,7 +93,7 @@ const mapStateToProps = ({ portfolio, newStock }) => {
     return {
         stocks: portfolio.stocks,
         tableData: portfolio.tableData,
-        loading: newStock.loading
+        loading: newStock.fakeLoading
     };
 }
 

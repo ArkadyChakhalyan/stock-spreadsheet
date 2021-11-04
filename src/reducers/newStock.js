@@ -4,6 +4,7 @@ export const newStock = (state, action) => {
         return {
             stock: null,
             loading: false,
+            fakeLoading: false,
             error: null
         }
     }
@@ -30,12 +31,12 @@ export const newStock = (state, action) => {
         case 'LOADING':
             return {
                 ...state,
-                loading: true
+                fakeLoading: true
             };
         case 'READY':
             return {
                 ...state,
-                loading: false
+                fakeLoading: false
             };
         case 'CLEAR_STATE':
             return {
