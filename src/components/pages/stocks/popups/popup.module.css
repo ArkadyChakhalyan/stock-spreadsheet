@@ -63,7 +63,7 @@
 
 .spinner {
     position: absolute;
-    margin-top: 72px;
+    margin-top: 85px;
     margin-left: 200px;
     z-index: 1;
     transform: scale(0.4);
