@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import React from 'react';
 import { Header } from '../header/'
 import { Stocks, Dividends, Allocation } from '../pages';
@@ -17,6 +17,7 @@ export const App = () => {
           <Route path='/stocks/' component={Stocks} />
           <Route path='/dividends/' component={Dividends} />
           <Route path='/allocation/' component={Allocation} />
+          <Redirect from="/" to="/stocks" />
         </Switch>
       </div>
     </div>

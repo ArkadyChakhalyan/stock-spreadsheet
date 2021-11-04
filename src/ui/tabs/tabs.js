@@ -17,7 +17,7 @@ export const Tabs = ({ options, small, opened }) => {
 
     let activeTab = 0;
     if (!small) {
-        activeTab = options.indexOf(opened);
+        activeTab = options.indexOf(opened) > -1 ? options.indexOf(opened) : 0;
     }
 
     const [active, setActive] = useState(activeTab);
