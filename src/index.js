@@ -1,7 +1,6 @@
 import ReactDOM from 'react-dom';
-import React from 'react';
 import { App } from './components/app/';
-import { HashRouter } from 'react-router-dom';
+import {  HashRouter } from 'react-router-dom';
 import './index.css';
 import { StockServiceProvider } from './stock-service-context/stock-service-context';
 import { Provider } from 'react-redux';
@@ -13,7 +12,7 @@ const stockService = new StockService();
 ReactDOM.render(
   <Provider store={store}>
     <StockServiceProvider value={stockService}>
-      <HashRouter>
+      <HashRouter basename="/stock-spreadsheet">
         <App />
       </HashRouter>
     </StockServiceProvider>

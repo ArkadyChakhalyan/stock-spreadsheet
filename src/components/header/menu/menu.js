@@ -6,10 +6,10 @@ import './menu.css';
  * Menu.
  * @returns {Element} Menu component.
  */
-export const Menu = () => {
+export const Menu = ({ opened }) => {
     return (
         <div className='menu'>
-            <Tabs className='m' options={['stocks', 'dividends', 'allocation']} />
+            <Tabs className='m' options={['stocks', 'dividends', 'allocation']} opened={opened} />
         </div>
     );
 };

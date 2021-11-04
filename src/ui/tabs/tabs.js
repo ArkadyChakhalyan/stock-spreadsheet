@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styles from './tabs.module.css';
 
@@ -10,17 +10,13 @@ import styles from './tabs.module.css';
  * @param {boolean} props.small - Creates small version.
  * @returns {Element} Tabs component.
  */
-export const Tabs = ({ options, small }) => {
+export const Tabs = ({ options, small, opened }) => {
 
     let className = `${styles.tab} ${styles.single} `;
     let barClassName = `${styles.bar} `;
 
-    const history = useHistory();
-
     let activeTab = 0;
     if (!small) {
-        let rgx = /\/(.*)\//;
-        let opened = history.location.pathname.match(rgx)[1];
         activeTab = options.indexOf(opened);
     }
 
